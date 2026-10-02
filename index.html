@@ -175,11 +175,6 @@ input[type=range]{flex:1;min-width:120px;accent-color:var(--blue);height:4px;cur
 .alert{background:rgba(245,158,11,.1);border:0.5px solid rgba(245,158,11,.3);border-radius:var(--radius-sm);padding:10px 14px;font-size:12px;color:#fcd34d;margin-bottom:14px;display:flex;align-items:center;gap:8px}
 
 /* ══ CONCILIACIÓN ══ */
-.conc-month-nav{display:flex;gap:5px;background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius);padding:4px;margin-bottom:16px;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-.conc-month-nav::-webkit-scrollbar{display:none}
-.conc-m-btn{padding:7px 16px;border-radius:var(--radius-sm);font-size:13px;font-weight:600;color:var(--text2);cursor:pointer;background:none;border:none;font-family:var(--font);transition:.15s;white-space:nowrap;flex-shrink:0}
-.conc-m-btn:hover{color:var(--text1);background:var(--bg4)}
-.conc-m-btn.active{background:var(--teal);color:#fff}
 .conc-kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:16px}
 .conc-kpi{background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius);padding:13px 15px;position:relative;overflow:hidden}
 .conc-kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
@@ -592,11 +587,6 @@ input[type=range]{flex:1;min-width:120px;accent-color:var(--blue);height:4px;cur
   <section class="page-section" id="page-conciliacion">
     <div class="page-header">
       <div><div class="page-title">Conciliación de cobros</div><div class="page-sub">Banco Patagonia CA $ 373-373006047-000 · Cruzado con factura Claro</div></div>
-    </div>
-    <div class="conc-month-nav" id="conc-month-nav">
-      <button class="conc-m-btn" onclick="concShow('jul',this)">Julio 2026</button>
-      <button class="conc-m-btn" onclick="concShow('ago',this)">Agosto 2026</button>
-      <button class="conc-m-btn active" onclick="concShow('sep',this)">Septiembre 2026</button>
     </div>
     <div id="conc-kpis" class="conc-kpi-row"></div>
     <div class="conc-note" id="conc-note"></div>
@@ -1214,6 +1204,7 @@ function showPage(id) {
   // Esperar a que el CSS aplique display:block antes de renderizar charts
   if (id==='estadisticas') setTimeout(()=>renderEstadisticas(), 50);
   if (id==='grupos') renderGruposPage();
+  if (id==='conciliacion') concRender();
 }
 
 /* ─── RENDER PRINCIPAL ─── */
@@ -1227,6 +1218,9 @@ function renderTodo() {
   renderHistorial();
   renderExtrasResumen(f);
   renderLineas(f, ($('lineas-search')||{value:''}).value);
+  // Si la vista de conciliación está activa, actualizarla también
+  const secConc = $('page-conciliacion');
+  if (secConc && secConc.classList.contains('active')) concRender();
   renderImpuestos(f);
   renderExtrasAll();
   renderCharts();
@@ -1849,7 +1843,16 @@ const CONC_MESES = {
   }
 };
 
-let CONC_KEY = 'sep';
+// La key de conciliación se deriva del mes global
+function getConcKey() {
+  const f = getMes();
+  if (!f) return null;
+  // Buscar en CONC_MESES el mes que coincida con mesLabel del mes activo
+  for (const [k, v] of Object.entries(CONC_MESES)) {
+    if (v.label === f.mesLabel) return k;
+  }
+  return null;
+}
 
 function concFormaTexto(forma) {
   if(forma==='transf') return 'Transferencia';
@@ -1877,7 +1880,14 @@ function concGetEstado(g, savedData) {
 }
 
 function concRender() {
-  const d = CONC_MESES[CONC_KEY];
+  const key = getConcKey();
+  const d = key ? CONC_MESES[key] : null;
+  if (!d) {
+    const kpis = $('conc-kpis'); if(kpis) kpis.innerHTML = '<div style="color:var(--text3);padding:20px;text-align:center">No hay datos de conciliación para este mes.</div>';
+    const tbody = $('conc-tbody'); if(tbody) tbody.innerHTML = '';
+    const cards = $('cobro-cards'); if(cards) cards.innerHTML = '';
+    return;
+  }
   const saved = concLoad();
   const AR2 = n => n==null?'—':'$ '+Math.round(n).toLocaleString('es-AR');
   const fmtDiff = n => (n>=0?'+':'') + '$ '+Math.abs(Math.round(n)).toLocaleString('es-AR');
@@ -1954,7 +1964,7 @@ function concRender() {
       <td><span class="conc-cell" style="font-family:var(--mono);color:var(--teal)">${montoCobrado>0?AR2(montoCobrado)+'<span style="font-size:10px;color:var(--text3)">'+montoCobradoSub+'</span>':'<span style="color:var(--text3)">—</span>'}</span></td>
       <td><span class="conc-cell"><select style="background:var(--bg3);border:0.5px solid var(--border2);border-radius:6px;color:var(--text1);font-size:12px;padding:4px 8px;cursor:pointer;font-family:var(--font)" onchange="concSetForma('${g.id}',this.value)">${formaOpts}</select></span></td>
       <td><span class="conc-cell">${g.rec
-        ? `<label style="display:inline-flex;align-items:center;gap:6px;cursor:pointer;font-size:12px;font-weight:600"><input type="checkbox" style="width:16px;height:16px;accent-color:var(--teal);cursor:pointer" ${(estado==='cobrado_transf'||estado==='cobrado_efectivo')?'checked':''} onchange="concToggle('${g.id}',this.checked,CONC_KEY)"> ${concBadge(g,estado)}</label>`
+        ? `<label style="display:inline-flex;align-items:center;gap:6px;cursor:pointer;font-size:12px;font-weight:600"><input type="checkbox" style="width:16px;height:16px;accent-color:var(--teal);cursor:pointer" ${(estado==='cobrado_transf'||estado==='cobrado_efectivo')?'checked':''} onchange="concToggle('${g.id}',this.checked,getConcKey())"> ${concBadge(g,estado)}</label>`
         : concBadge(g,estado)
       }</span></td>
       <td><span class="conc-cell"><input class="cobro-nota" style="width:100%;min-width:100px" placeholder="Nota…" value="${nota.replace(/"/g,'&quot;')}" onchange="concSetNota('${g.id}',this.value)"></span></td>
@@ -2014,7 +2024,7 @@ function concRender() {
       ${g.rec ? `<div class="cobro-toggle-row">
         <select onchange="concSetForma('${g.id}',this.value)">${formaOpts}</select>
         <label class="cobro-check-lbl ${(estado==='cobrado_transf'||estado==='cobrado_efectivo')?'cobrado':''}">
-          <input type="checkbox" ${(estado==='cobrado_transf'||estado==='cobrado_efectivo')?'checked':''} onchange="concToggle('${g.id}',this.checked,CONC_KEY)">
+          <input type="checkbox" ${(estado==='cobrado_transf'||estado==='cobrado_efectivo')?'checked':''} onchange="concToggle('${g.id}',this.checked,getConcKey())">
           ${(estado==='cobrado_transf'||estado==='cobrado_efectivo')?'Cobrado ✓':'Marcar cobrado'}
         </label>
       </div>
@@ -2057,12 +2067,7 @@ function concSetNota(id, val) {
   concSave(saved);
 }
 
-function concShow(key, btn) {
-  CONC_KEY = key;
-  document.querySelectorAll('.conc-m-btn').forEach(b=>b.classList.remove('active'));
-  if(btn) btn.classList.add('active');
-  concRender();
-}
+// concShow eliminado — conciliación usa el nav global
 
 /* ─── DRIVE ─── */
 window.addEventListener('load', () => {
