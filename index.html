@@ -1953,10 +1953,18 @@ function concSave(obj) {
   // Sincronizar a la nube (async, sin bloquear UI)
   if (CONC_GAS_URL && !CONC_GAS_URL.includes('PLACEHOLDER') && !_concSyncing) {
     _concSyncing = true;
+    // Armar payload por mes — cada mes es una fila única en el Sheets
+    const mesKeys = Object.keys(CONC_MESES);
+    const mesMeses = {};
+    mesKeys.forEach(k => {
+      const mesData = {};
+      Object.keys(obj).forEach(key => { if(key.endsWith('_'+k) || key === '_ts') mesData[key] = obj[key]; });
+      if(Object.keys(mesData).length > 1) mesMeses[k] = mesData;
+    });
     fetch(CONC_GAS_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify({ timestamp: obj._ts, data: JSON.stringify(obj) })
+      body: JSON.stringify({ timestamp: obj._ts, data: JSON.stringify(obj), meses: mesMeses })
     }).catch(()=>{}).finally(()=>{ _concSyncing = false; });
   }
 }
