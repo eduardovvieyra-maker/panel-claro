@@ -34,8 +34,8 @@ input,select{font-family:var(--font)}
   .sidebar{display:none}
   .main{padding:12px 12px 80px}
   .topbar-btns{display:none!important}
-  .m-tab{flex:1;text-align:center;padding:8px 4px;font-size:12px}
-  #month-tabs-global{scrollbar-width:none}
+  .m-tab{flex:1;text-align:center;padding:10px 4px;font-size:13px;font-weight:600}
+  #month-tabs-global{justify-content:stretch}
   #month-tabs-global::-webkit-scrollbar{display:none}
   .bottom-nav{
     display:flex;
@@ -111,7 +111,7 @@ input,select{font-family:var(--font)}
 .search-bar input::placeholder{color:var(--text3)}
 
 /* ── Year/Month nav ── */
-.year-tabs{display:flex;gap:4px;margin-bottom:0;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}.year-tabs::-webkit-scrollbar{display:none}
+.year-tabs{display:flex;gap:4px;margin-bottom:0;flex-wrap:nowrap;overflow-x:auto;flex-shrink:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.year-tabs::-webkit-scrollbar{display:none}
 .year-tab{padding:5px 14px;border-radius:var(--radius-sm);font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;background:var(--bg2);border:0.5px solid var(--border);transition:.15s}
 .year-tab:hover{color:var(--text1)}
 .year-tab.active{background:rgba(168,85,247,.2);color:#c084fc;border-color:rgba(168,85,247,.4)}
@@ -548,17 +548,17 @@ input[type=range]{flex:1;min-width:120px;accent-color:var(--blue);height:4px;cur
   </div>
 
   <!-- TOPBAR GLOBAL -->
-  <div style="background:var(--bg2);border-bottom:0.5px solid var(--border);padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;position:sticky;top:0;z-index:10">
-    <div style="display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-width:0;flex:1">
-      <div class="year-tabs" id="year-tabs-global" style="display:flex;gap:4px;flex-wrap:wrap"></div>
-      <div id="month-tabs-global" style="display:flex;gap:3px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px;margin-top:6px;scrollbar-width:none;max-width:100%;width:100%"></div>
+  <div class="topbar-global" style="background:var(--bg2);border-bottom:0.5px solid var(--border);padding:8px 14px;position:sticky;top:0;z-index:10">
+    <div style="display:flex;align-items:center;gap:8px;width:100%">
+      <div class="year-tabs" id="year-tabs-global"></div>
+      <div class="topbar-btns" style="display:flex;gap:6px;margin-left:auto;flex-shrink:0">
+        <button class="btn btn-ghost" onclick="doRefresh()">↺ Drive</button>
+        <button class="btn btn-ghost" onclick="exportXLSX()">Excel</button>
+        <button class="btn btn-ghost" onclick="printResumen()">Imprimir</button>
+        <button class="btn btn-primary" onclick="printGrupos()">Recibos</button>
+      </div>
     </div>
-    <div class="topbar-btns" style="display:flex;gap:6px">
-      <button class="btn btn-ghost" onclick="doRefresh()">↺ Drive</button>
-      <button class="btn btn-ghost" onclick="exportXLSX()">Excel</button>
-      <button class="btn btn-ghost" onclick="printResumen()">Imprimir</button>
-      <button class="btn btn-primary" onclick="printGrupos()">Recibos</button>
-    </div>
+    <div id="month-tabs-global" style="display:flex;gap:2px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px;margin-top:6px;scrollbar-width:none;max-width:100%"></div>
   </div>
 
   <!-- ══════ RESUMEN ══════ -->
