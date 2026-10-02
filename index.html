@@ -264,6 +264,12 @@ input[type=range]{flex:1;min-width:120px;accent-color:var(--blue);height:4px;cur
 .conc-diff-row td{background:var(--bg4)!important;font-weight:700;border-top:0.5px solid var(--border2)!important}
 /* nota al pie */
 .conc-note{font-size:11px;color:var(--text3);padding:8px 12px;background:var(--bg2);border-left:3px solid var(--teal);border-radius:0 4px 4px 0;margin-bottom:14px;line-height:1.6}
+.conc-mob-totales{background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius);padding:4px 0;margin-top:8px}
+.cmt-row{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;font-size:13px;border-bottom:0.5px solid var(--border)}
+.cmt-row:last-child{border-bottom:none}
+.cmt-row span:last-child{font-family:var(--mono);font-weight:600}
+.cmt-subtotal{font-weight:700;background:var(--bg3)}
+.cmt-diff{font-weight:800;font-size:14px;background:var(--bg3)}
 @media(max-width:640px){
   .conc-tbl{display:none}
   .cobro-cards-wrap{display:block}
@@ -704,6 +710,7 @@ input[type=range]{flex:1;min-width:120px;accent-color:var(--blue);height:4px;cur
     </div>
     <!-- cards móvil -->
     <div class="cobro-cards-wrap" id="cobro-cards"></div>
+    <div class="cobro-cards-wrap" id="conc-mob-totales"></div>
   </section>
 
   <!-- ══════ IMPUESTOS ══════ -->
@@ -2047,11 +2054,7 @@ function concRender() {
     <div class="conc-kpi ck-green"><div class="conc-kpi-lbl">Grupos cobrados</div><div class="conc-kpi-val" style="color:var(--green)">${countCob}</div><div class="conc-kpi-sub">confirmados</div></div>
   `;
 
-  $('conc-note').innerHTML = `
-    💳 <strong>Carlitos Boari</strong> paga siempre en efectivo — marcá si cobró con el selector.<br>
-    🔀 <strong>Delcausse / Hornus</strong> puede ser transferencia o efectivo según el mes.<br>
-    ✏️ Podés editar la forma de cobro y agregar notas a cualquier grupo.
-  `;
+  $('conc-note').innerHTML = '';
 
   // TABLA DESKTOP
   $('conc-tbl-head').textContent = `${d.label} — Cobros por grupo`;
@@ -2156,6 +2159,20 @@ function concRender() {
   });
 
   $('cobro-cards').innerHTML = cards;
+
+  // TOTALES MÓVIL
+  let totHtml = `<div class="conc-mob-totales">`;
+  totHtml += `<div class="cmt-row"><span>Total transferencias</span><span>${AR2(totalTransf+totalTransfExtra)}</span></div>`;
+  if(totalEfectivo>0) {
+    totHtml += `<div class="cmt-row"><span>Total efectivo</span><span>${AR2(totalEfectivo)}</span></div>`;
+    totHtml += `<div class="cmt-row cmt-subtotal"><span>Total cobrado</span><span>${AR2(totalCobrado)}</span></div>`;
+  }
+  totHtml += `<div class="cmt-row"><span>Pago Claro</span><span>${AR2(d.pagoClaro.monto)}</span></div>`;
+  totHtml += `<div class="cmt-row cmt-diff" style="color:var(--${diff>=0?'green':'red'})"><span>Diferencia</span><span>${fmtDiff(diff)}</span></div>`;
+  totHtml += `</div>`;
+
+  const mobTot = document.getElementById('conc-mob-totales');
+  if(mobTot) mobTot.innerHTML = totHtml;
 }
 
 function concToggle(id, checked, key) {
