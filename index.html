@@ -1066,6 +1066,11 @@ function buildNav() {
     const dot = f.totalExtras>0 ? '<span class="m-tab-dot"></span>' : '';
     return `<button class="m-tab ${idx===S.midx?'active':''}" onclick="setMes(${idx})">${f.mesLabel.split(' ')[0]}${dot}</button>`;
   }).join('');
+  // Scroll al tab activo para que siempre sea visible
+  setTimeout(() => {
+    const activeTab = mEl.querySelector('.m-tab.active');
+    if (activeTab) activeTab.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+  }, 50);
 }
 
 function setAnio(a) {
