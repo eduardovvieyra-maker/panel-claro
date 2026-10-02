@@ -1561,15 +1561,30 @@ function renderGruposPage() {
 
   const html = GRUPOS.map(g => {
     const c = calcGrupo(g, f, f2);
-    const lineasHTML = c.ls.map(l => `
-      <tr>
-        <td style="font-family:monospace;font-size:11px;color:var(--text3)">${l.linea}</td>
-        <td>${nom(l)}</td>
-        <td><span style="font-family:monospace;font-size:10px;background:var(--bg3);color:var(--blue);padding:1px 5px;border-radius:3px">${l.plan}</span></td>
-        <td style="text-align:center">${PLAN_GB[l.plan]||'—'}</td>
-        <td style="text-align:right">${AR(l.base)}</td>
-        <td style="text-align:right;color:${l.extra>0?'#b45309':'var(--text3)'}">${l.extra>0?AR(l.extra):'—'}</td>
-        <td style="text-align:right;font-weight:600">${AR(l.base+l.extra)}</td>
+    // Prorratear recargo por línea (proporcional al subtotal de cada línea)
+    const lineasConRec = c.ls.map(l => {
+      const linSub  = l.base + l.extra;
+      const linRec  = g.rec && c.sub > 0 ? Math.round(linSub * f2 * 100) / 100 : 0;
+      const linTot  = linSub + linRec;
+      return { ...l, linSub, linRec, linTot };
+    });
+    // Ajustar último ítem para que el total cuadre exactamente
+    const sumTot = lineasConRec.reduce((s,l)=>s+l.linTot,0);
+    const diff   = Math.round((c.total - sumTot)*100)/100;
+    if (lineasConRec.length > 0) {
+      lineasConRec[lineasConRec.length-1].linRec  = Math.round((lineasConRec[lineasConRec.length-1].linRec + diff)*100)/100;
+      lineasConRec[lineasConRec.length-1].linTot  = Math.round((lineasConRec[lineasConRec.length-1].linTot + diff)*100)/100;
+    }
+
+    const thS = 'text-align:right;padding:6px 8px;font-size:10px;text-transform:uppercase;letter-spacing:.4px;color:var(--text3)';
+    const lineasHTML = lineasConRec.map(l => `
+      <tr style="border-bottom:0.5px solid var(--border)">
+        <td style="font-family:monospace;font-size:11px;color:var(--text3);padding:7px 8px">${l.linea}</td>
+        <td style="padding:7px 8px">${nom(l)}</td>
+        <td style="padding:7px 8px"><span style="font-family:monospace;font-size:10px;background:var(--bg3);color:var(--blue);padding:1px 5px;border-radius:3px">${l.plan}</span></td>
+        <td style="text-align:right;padding:7px 8px;font-variant-numeric:tabular-nums">${AR(l.linSub)}</td>
+        <td style="text-align:right;padding:7px 8px;font-variant-numeric:tabular-nums;color:${g.rec?'#92400e':'var(--text3)'}">${g.rec?AR(l.linRec):'—'}</td>
+        <td style="text-align:right;padding:7px 8px;font-weight:700;font-variant-numeric:tabular-nums;color:${g.col}">${AR(l.linTot)}</td>
       </tr>`).join('');
 
     return `
@@ -1587,38 +1602,31 @@ function renderGruposPage() {
           <div style="font-size:22px;font-weight:700">${AR(c.total)}</div>
         </div>
       </div>
-      <div style="overflow-x:auto;padding:0 12px">
-        <table style="width:100%;border-collapse:collapse;font-size:12px;min-width:480px">
+      <div style="overflow-x:auto;padding:0">
+        <table style="width:100%;border-collapse:collapse;font-size:12px;min-width:420px">
           <thead>
-            <tr style="border-bottom:0.5px solid var(--border);color:var(--text3);font-size:10px;text-transform:uppercase;letter-spacing:.5px">
-              <th style="text-align:left;padding:7px 6px">Línea</th>
-              <th style="text-align:left;padding:7px 6px">Usuario</th>
-              <th style="text-align:left;padding:7px 6px">Plan</th>
-              <th style="text-align:center;padding:7px 6px">GB</th>
-              <th style="text-align:right;padding:7px 6px">Base Claro</th>
-              <th style="text-align:right;padding:7px 6px">Extras</th>
-              <th style="text-align:right;padding:7px 6px">Total línea</th>
+            <tr style="border-bottom:0.5px solid var(--border);background:var(--bg3)">
+              <th style="text-align:left;padding:6px 8px;font-size:10px;text-transform:uppercase;letter-spacing:.4px;color:var(--text3)">Línea</th>
+              <th style="text-align:left;padding:6px 8px;font-size:10px;text-transform:uppercase;letter-spacing:.4px;color:var(--text3)">Usuario</th>
+              <th style="text-align:left;padding:6px 8px;font-size:10px;text-transform:uppercase;letter-spacing:.4px;color:var(--text3)">Plan</th>
+              <th style="${thS}">Precio Claro</th>
+              <th style="${thS}">Gasto admin</th>
+              <th style="${thS}">Total a cobrar</th>
             </tr>
           </thead>
           <tbody style="color:var(--text1)">
             ${lineasHTML}
-            <tr style="border-top:0.5px solid var(--border);font-weight:700;font-size:11px;color:var(--text2)">
-              <td colspan="4" style="padding:6px 6px">Subtotal (${c.ls.length} líneas)</td>
-              <td style="text-align:right;padding:6px 6px">${AR(c.base)}</td>
-              <td style="text-align:right;padding:6px 6px;color:${c.extra>0?'#b45309':'var(--text3)'}">${c.extra>0?AR(c.extra):'—'}</td>
-              <td style="text-align:right;padding:6px 6px">${AR(c.sub)}</td>
+            <tr style="background:var(--bg3);font-weight:700;font-size:12px">
+              <td colspan="3" style="padding:8px 8px;color:var(--text2)">TOTAL (${c.ls.length} línea${c.ls.length!==1?'s':''})</td>
+              <td style="text-align:right;padding:8px 8px;font-variant-numeric:tabular-nums">${AR(c.sub)}</td>
+              <td style="text-align:right;padding:8px 8px;font-variant-numeric:tabular-nums;color:${g.rec?'#92400e':'var(--text3)'}">${g.rec?AR(c.rec):'—'}</td>
+              <td style="text-align:right;padding:8px 8px;font-variant-numeric:tabular-nums;color:${g.col};font-size:13px">${AR(c.total)}</td>
             </tr>
           </tbody>
         </table>
       </div>
       <div style="padding:8px 16px 12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;border-top:0.5px solid var(--border)">
-        ${g.rec ? `<span style="font-size:11px;color:var(--text2)">Subtotal Claro: <b>${AR(c.sub)}</b></span>
-          <span style="font-size:11px;color:var(--text3)">+</span>
-          <span style="font-size:11px;color:#92400e">Recargo ${(f2*100).toFixed(2)}%: <b>${AR(c.rec)}</b></span>
-          <span style="font-size:11px;color:var(--text3)">=</span>
-          <span style="font-size:12px;font-weight:700;color:${g.col}">Total: ${AR(c.total)}</span>`
-        : `<span style="font-size:11px;color:var(--text2)">Precio exacto Claro, sin recargo</span>
-           <span style="font-size:12px;font-weight:700;color:${g.col}">Total: ${AR(c.total)}</span>`}
+        <span style="font-size:11px;color:var(--text3)">Precio Claro ${AR(c.sub)}${g.rec?` + Gasto admin ${AR(c.rec)} = <b style="color:var(--text1)">${AR(c.total)}</b>`:''}</span>
         <span style="flex:1"></span>
         <button onclick="doPrint([window._gruposGRUPOS[${g.id-1}]].map(gr=>buildReciboGrupo(gr,window._gruposF)).join(''))" style="font-size:11px;padding:4px 10px;border-radius:5px;border:0.5px solid var(--border);background:var(--bg3);color:var(--text1);cursor:pointer">
           🖨 Imprimir recibo
