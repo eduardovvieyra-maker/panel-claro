@@ -170,6 +170,66 @@ input[type=range]{flex:1;min-width:120px;accent-color:var(--blue);height:4px;cur
 /* ── Alert ── */
 .alert{background:rgba(245,158,11,.1);border:0.5px solid rgba(245,158,11,.3);border-radius:var(--radius-sm);padding:10px 14px;font-size:12px;color:#fcd34d;margin-bottom:14px;display:flex;align-items:center;gap:8px}
 
+/* ══ CONCILIACIÓN ══ */
+.conc-month-nav{display:flex;gap:5px;background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius);padding:4px;margin-bottom:16px;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.conc-month-nav::-webkit-scrollbar{display:none}
+.conc-m-btn{padding:7px 16px;border-radius:var(--radius-sm);font-size:13px;font-weight:600;color:var(--text2);cursor:pointer;background:none;border:none;font-family:var(--font);transition:.15s;white-space:nowrap;flex-shrink:0}
+.conc-m-btn:hover{color:var(--text1);background:var(--bg4)}
+.conc-m-btn.active{background:var(--teal);color:#fff}
+.conc-kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:16px}
+.conc-kpi{background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius);padding:13px 15px;position:relative;overflow:hidden}
+.conc-kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.conc-kpi.ck-blue::before{background:var(--blue)}
+.conc-kpi.ck-green::before{background:var(--green)}
+.conc-kpi.ck-amber::before{background:var(--amber)}
+.conc-kpi.ck-red::before{background:var(--red)}
+.conc-kpi.ck-teal::before{background:var(--teal)}
+.conc-kpi-lbl{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:6px}
+.conc-kpi-val{font-size:20px;font-weight:700;line-height:1}
+.conc-kpi-sub{font-size:11px;margin-top:4px;color:var(--text2)}
+/* Tabla cobros */
+.conc-table-wrap{background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:14px}
+.conc-tbl-head{padding:12px 16px;border-bottom:0.5px solid var(--border);font-size:13px;font-weight:600}
+.conc-tbl{width:100%;border-collapse:collapse}
+.conc-tbl th{background:var(--bg3);padding:9px 14px;text-align:left;font-size:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--text3);white-space:nowrap}
+.conc-tbl td{padding:0;border-top:0.5px solid var(--border);vertical-align:middle}
+.conc-cell{padding:11px 14px;display:block}
+.conc-tbl tr:hover td{background:rgba(255,255,255,0.02)}
+/* Cobro card mobile-friendly */
+.cobro-card{background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:8px}
+.cobro-header{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:10px}
+.cobro-nombre{font-size:14px;font-weight:700;color:var(--text1)}
+.cobro-fecha{font-size:11px;color:var(--text3);margin-top:2px}
+.cobro-monto{font-size:16px;font-weight:700;font-family:var(--mono);color:var(--teal)}
+/* Toggle cobro */
+.cobro-toggle-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px}
+.cobro-toggle-row select{background:var(--bg3);border:0.5px solid var(--border2);border-radius:var(--radius-sm);color:var(--text1);font-size:12px;font-weight:600;padding:5px 10px;cursor:pointer;font-family:var(--font);flex:1;min-width:120px}
+.cobro-toggle-row select:focus{outline:none;border-color:var(--teal)}
+.cobro-check-lbl{display:inline-flex;align-items:center;gap:7px;cursor:pointer;background:var(--bg3);border:0.5px solid var(--border2);border-radius:var(--radius-sm);padding:6px 12px;font-size:12px;font-weight:600;color:var(--text2);transition:.15s;user-select:none;flex:1;min-width:140px;justify-content:center}
+.cobro-check-lbl input{width:16px;height:16px;cursor:pointer;accent-color:var(--teal);flex-shrink:0}
+.cobro-check-lbl.cobrado{background:rgba(20,184,166,.12);border-color:rgba(20,184,166,.4);color:var(--teal)}
+.cobro-nota{background:var(--bg3);border:0.5px solid var(--border);border-radius:var(--radius-sm);color:var(--text1);font-size:12px;padding:5px 10px;flex:2;min-width:140px;font-family:var(--font)}
+.cobro-nota:focus{outline:none;border-color:var(--teal)}
+/* Badges conciliacion */
+.cbadge{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:600}
+.cb-ok{background:rgba(20,184,166,.15);color:#2dd4bf;border:0.5px solid rgba(20,184,166,.3)}
+.cb-cash{background:rgba(249,115,22,.15);color:#fb923c;border:0.5px solid rgba(249,115,22,.3)}
+.cb-pend{background:rgba(239,68,68,.15);color:#fca5a5;border:0.5px solid rgba(239,68,68,.3)}
+.cb-nr{background:rgba(71,85,105,.18);color:#64748b;border:0.5px solid rgba(71,85,105,.3)}
+.cb-partial{background:rgba(168,85,247,.15);color:#c084fc;border:0.5px solid rgba(168,85,247,.3)}
+/* total filas */
+.conc-total-row td{background:var(--bg3)!important;font-weight:700;color:var(--text1)!important;border-top:0.5px solid var(--border2)!important}
+.conc-diff-row td{background:var(--bg4)!important;font-weight:700;border-top:0.5px solid var(--border2)!important}
+/* nota al pie */
+.conc-note{font-size:11px;color:var(--text3);padding:8px 12px;background:var(--bg2);border-left:3px solid var(--teal);border-radius:0 4px 4px 0;margin-bottom:14px;line-height:1.6}
+@media(max-width:640px){
+  .conc-tbl{display:none}
+  .cobro-cards-wrap{display:block}
+}
+@media(min-width:641px){
+  .cobro-cards-wrap{display:none}
+}
+
 /* ── Page sections ── */
 .page-section{display:none}
 .page-section.active{display:block}
@@ -350,6 +410,10 @@ input[type=range]{flex:1;min-width:120px;accent-color:var(--blue);height:4px;cur
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 14l6-6m-5-.5h.01M14 14.5h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
       Impuestos
     </button>
+    <button class="sidebar-link" onclick="showPage('conciliacion')" id="nav-conciliacion">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      Conciliación
+    </button>
   </div>
   <div class="sidebar-section-label">Imprimir</div>
   <div class="sidebar-links">
@@ -506,6 +570,39 @@ input[type=range]{flex:1;min-width:120px;accent-color:var(--blue);height:4px;cur
       <input type="text" id="extras-search" placeholder="Buscar por concepto o usuario…" oninput="filterExtras(this.value)">
     </div>
     <div id="extras-all-content"></div>
+  </section>
+
+  <!-- ══════ CONCILIACIÓN ══════ -->
+  <section class="page-section" id="page-conciliacion">
+    <div class="page-header">
+      <div><div class="page-title">Conciliación de cobros</div><div class="page-sub">Banco Patagonia CA $ 373-373006047-000 · Cruzado con factura Claro</div></div>
+    </div>
+    <div class="conc-month-nav" id="conc-month-nav">
+      <button class="conc-m-btn" onclick="concShow('jul',this)">Julio 2026</button>
+      <button class="conc-m-btn" onclick="concShow('ago',this)">Agosto 2026</button>
+      <button class="conc-m-btn active" onclick="concShow('sep',this)">Septiembre 2026</button>
+    </div>
+    <div id="conc-kpis" class="conc-kpi-row"></div>
+    <div class="conc-note" id="conc-note"></div>
+    <!-- tabla desktop -->
+    <div class="conc-table-wrap">
+      <div class="conc-tbl-head" id="conc-tbl-head">Cobros del mes</div>
+      <div style="overflow-x:auto">
+        <table class="conc-tbl" id="conc-tbl">
+          <thead><tr>
+            <th>Grupo / Persona</th>
+            <th>Acredit. bancaria</th>
+            <th>Cobrado (transf.)</th>
+            <th>Forma cobro</th>
+            <th>Estado</th>
+            <th>Nota</th>
+          </tr></thead>
+          <tbody id="conc-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+    <!-- cards móvil -->
+    <div class="cobro-cards-wrap" id="cobro-cards"></div>
   </section>
 
   <!-- ══════ IMPUESTOS ══════ -->
@@ -1578,6 +1675,250 @@ function exportXLSX() {
   ]), 'Historial');
 
   XLSX.writeFile(wb, `Claro_${f.mesLabel.replace(' ','_')}_VesHnos.xlsx`);
+}
+
+/* ══════════════════════════════════════
+   CONCILIACIÓN — datos y lógica
+══════════════════════════════════════ */
+const CONC_LS = 'claro_conc_v2';
+function concLoad() { try { return JSON.parse(localStorage.getItem(CONC_LS)||'{}'); } catch { return {}; } }
+function concSave(obj) { try { localStorage.setItem(CONC_LS, JSON.stringify(obj)); } catch {} }
+
+// Grupos con transferencias conocidas del estado de cuenta
+// metodo: 'transf'=siempre transfiere, 'efectivo'=siempre efectivo, 'mixto'=puede ser cualquiera
+const CONC_MESES = {
+  sep:{
+    label:'Septiembre 2026', pagoClaro:{fecha:'08/09/2026', monto:490899.19},
+    grupos:[
+      {id:'boari_sep',       n:'Boari',               rec:true,  metodo:'transf',   cobros:[{f:'08/09',q:'Boari Javier',m:113500}]},
+      {id:'fior_dl_sep',     n:'Fiorini / De Lucas',  rec:true,  metodo:'transf',   cobros:[{f:'09/09',q:'Fiorini Evangelina',m:136490},{f:'21/09',q:'Albino J.R.',m:118000},{f:'21/09',q:'Pirovani Néstor',m:18000}]},
+      {id:'fior_cab_sep',    n:'Fiorini / Cabrera',   rec:true,  metodo:'transf',   cobros:[{f:'08/09',q:'Fiorini Claudia',m:42750}]},
+      {id:'rev_sep',         n:'Reverdito / Fiorini', rec:true,  metodo:'transf',   cobros:[]},
+      {id:'horacio_sep',     n:'Horacio Vieyra',      rec:true,  metodo:'transf',   cobros:[{f:'16/09',q:'Vieyra E.H.',m:18000}]},
+      {id:'vcab_sep',        n:'Vieyra / Caballero',  rec:false, metodo:'nr',       cobros:[]},
+      {id:'vfam_sep',        n:'Vieyra familia',      rec:false, metodo:'nr',       cobros:[]},
+      {id:'delc_sep',        n:'Delcausse / Hornus',  rec:true,  metodo:'mixto',    cobros:[{f:'15/09',q:'Del Caus Mario',m:62300}]},
+      {id:'carlitos_sep',    n:'Carlitos Boari',      rec:true,  metodo:'efectivo', cobros:[]},
+      {id:'taller_sep',      n:'Taller / VES Hnos',   rec:false, metodo:'nr',       cobros:[]},
+      {id:'dolche_sep',      n:'Dolche Lucas',        rec:true,  metodo:'transf',   cobros:[{f:'21/09',q:'Dolche Lucas',m:210000},{f:'28/09',q:'Dolche Lucas',m:450000}]},
+      {id:'minaur_sep',      n:'Minaur Pedro',        rec:true,  metodo:'transf',   cobros:[{f:'21/09',q:'Minaur Pedro',m:30000}]},
+    ]
+  },
+  ago:{
+    label:'Agosto 2026', pagoClaro:{fecha:'07/08/2026', monto:450741.77},
+    grupos:[
+      {id:'boari_ago',       n:'Boari',               rec:true,  metodo:'transf',   cobros:[{f:'06/08',q:'Boari Javier',m:108300}]},
+      {id:'fior_dl_ago',     n:'Fiorini / De Lucas',  rec:true,  metodo:'transf',   cobros:[{f:'07/08',q:'Fiorini Evangelina',m:133490}]},
+      {id:'fior_cab_ago',    n:'Fiorini / Cabrera',   rec:true,  metodo:'transf',   cobros:[{f:'06/08',q:'Fiorini Claudia',m:34200}]},
+      {id:'rev_ago',         n:'Reverdito / Fiorini', rec:true,  metodo:'transf',   cobros:[]},
+      {id:'horacio_ago',     n:'Horacio Vieyra',      rec:true,  metodo:'transf',   cobros:[]},
+      {id:'vcab_ago',        n:'Vieyra / Caballero',  rec:false, metodo:'nr',       cobros:[]},
+      {id:'vfam_ago',        n:'Vieyra familia',      rec:false, metodo:'nr',       cobros:[]},
+      {id:'delc_ago',        n:'Delcausse / Hornus',  rec:true,  metodo:'mixto',    cobros:[{f:'06/08',q:'Del Caus Mario',m:117600}]},
+      {id:'carlitos_ago',    n:'Carlitos Boari',      rec:true,  metodo:'efectivo', cobros:[]},
+      {id:'taller_ago',      n:'Taller / VES Hnos',   rec:false, metodo:'nr',       cobros:[]},
+      {id:'dolche_ago',      n:'Dolche Lucas',        rec:true,  metodo:'transf',   cobros:[{f:'02/09*',q:'Dolche Lucas',m:150750}]},
+    ]
+  },
+  jul:{
+    label:'Julio 2026', pagoClaro:{fecha:'07/07/2026', monto:438299.76},
+    grupos:[
+      {id:'boari_jul',       n:'Boari',               rec:true,  metodo:'transf',   cobros:[]},
+      {id:'fior_dl_jul',     n:'Fiorini / De Lucas',  rec:true,  metodo:'transf',   cobros:[{f:'07/07',q:'Fiorini Evangelina',m:133490},{f:'07/07',q:'Albino / Fiorini',m:115000}]},
+      {id:'fior_cab_jul',    n:'Fiorini / Cabrera',   rec:true,  metodo:'transf',   cobros:[{f:'07/07',q:'Fiorini Claudia',m:39500}]},
+      {id:'rev_jul',         n:'Reverdito / Fiorini', rec:true,  metodo:'transf',   cobros:[]},
+      {id:'horacio_jul',     n:'Horacio Vieyra',      rec:true,  metodo:'transf',   cobros:[]},
+      {id:'vcab_jul',        n:'Vieyra / Caballero',  rec:false, metodo:'nr',       cobros:[]},
+      {id:'vfam_jul',        n:'Vieyra familia',      rec:false, metodo:'nr',       cobros:[]},
+      {id:'delc_jul',        n:'Delcausse / Hornus',  rec:true,  metodo:'mixto',    cobros:[]},
+      {id:'carlitos_jul',    n:'Carlitos Boari',      rec:true,  metodo:'efectivo', cobros:[]},
+      {id:'taller_jul',      n:'Taller / VES Hnos',   rec:false, metodo:'nr',       cobros:[]},
+      {id:'mc_jul',          n:'Fiorini M. Cristina', rec:true,  metodo:'transf',   cobros:[{f:'08/07',q:'Fiorini M.C.',m:110000}]},
+      {id:'dolche_jul',      n:'Dolche Lucas',        rec:true,  metodo:'transf',   cobros:[{f:'02/07',q:'Dolche Lucas',m:123750}]},
+    ]
+  }
+};
+
+let CONC_KEY = 'sep';
+
+function concFormaTexto(forma) {
+  if(forma==='transf') return 'Transferencia';
+  if(forma==='efectivo') return 'Efectivo';
+  if(forma==='mixto') return 'Transf. / Efectivo';
+  return '—';
+}
+
+function concBadge(g, estado) {
+  if(!g.rec) return `<span class="cbadge cb-nr">Sin recibo</span>`;
+  if(estado==='cobrado_transf') return `<span class="cbadge cb-ok">✓ Transferido</span>`;
+  if(estado==='cobrado_efectivo') return `<span class="cbadge cb-cash">✓ Efectivo</span>`;
+  if(estado==='parcial') return `<span class="cbadge cb-partial">Parcial</span>`;
+  return `<span class="cbadge cb-pend">Pendiente</span>`;
+}
+
+function concGetEstado(g, savedData) {
+  // Si tiene transferencia bancaria conocida, ya está cobrado por transf
+  const transfTotal = g.cobros.reduce((s,c)=>s+c.m, 0);
+  if(transfTotal > 0 && !savedData) return 'cobrado_transf';
+  if(savedData) return savedData.estado || 'pendiente';
+  if(g.metodo==='efectivo') return 'pendiente'; // requiere confirmación manual
+  if(g.metodo==='mixto' && transfTotal > 0) return 'cobrado_transf';
+  return 'pendiente';
+}
+
+function concRender() {
+  const d = CONC_MESES[CONC_KEY];
+  const saved = concLoad();
+  const AR2 = n => n==null?'—':'$ '+Math.round(n).toLocaleString('es-AR');
+  const fmtDiff = n => (n>=0?'+':'') + '$ '+Math.abs(Math.round(n)).toLocaleString('es-AR');
+
+  // KPIs
+  let totalTransf = 0, countCob = 0, countPend = 0;
+  d.grupos.forEach(g => {
+    const t = g.cobros.reduce((s,c)=>s+c.m,0);
+    totalTransf += t;
+    const sd = saved[g.id];
+    const est = concGetEstado(g, sd);
+    if(!g.rec) return;
+    if(est==='cobrado_transf'||est==='cobrado_efectivo'||est==='parcial') countCob++;
+    else countPend++;
+  });
+  const diff = totalTransf - d.pagoClaro.monto;
+
+  $('conc-kpis').innerHTML = `
+    <div class="conc-kpi ck-blue"><div class="conc-kpi-lbl">Pago Claro</div><div class="conc-kpi-val">${AR2(d.pagoClaro.monto)}</div><div class="conc-kpi-sub">${d.pagoClaro.fecha}</div></div>
+    <div class="conc-kpi ck-teal"><div class="conc-kpi-lbl">Cobrado (transf.)</div><div class="conc-kpi-val">${AR2(totalTransf)}</div><div class="conc-kpi-sub">acreditaciones bancarias</div></div>
+    <div class="conc-kpi ${diff>=0?'ck-green':'ck-red'}"><div class="conc-kpi-lbl">Diferencia</div><div class="conc-kpi-val" style="color:var(--${diff>=0?'green':'red'})">${fmtDiff(diff)}</div><div class="conc-kpi-sub">${diff>=0?'Superávit':'Falta cobrar'}</div></div>
+    <div class="conc-kpi ck-amber"><div class="conc-kpi-lbl">Grupos pendientes</div><div class="conc-kpi-val" style="color:var(--amber)">${countPend}</div><div class="conc-kpi-sub">con recibo, sin confirmar</div></div>
+    <div class="conc-kpi ck-green"><div class="conc-kpi-lbl">Grupos cobrados</div><div class="conc-kpi-val" style="color:var(--green)">${countCob}</div><div class="conc-kpi-sub">confirmados</div></div>
+  `;
+
+  $('conc-note').innerHTML = `
+    💳 <strong>Carlitos Boari</strong> paga siempre en efectivo — marcá si cobró con el selector.<br>
+    🔀 <strong>Delcausse / Hornus</strong> puede ser transferencia o efectivo según el mes.<br>
+    ✏️ Podés editar la forma de cobro y agregar notas a cualquier grupo.
+  `;
+
+  // TABLA DESKTOP
+  $('conc-tbl-head').textContent = `${d.label} — Cobros por grupo`;
+  let rows = '';
+  d.grupos.forEach(g => {
+    const transfTotal = g.cobros.reduce((s,c)=>s+c.m,0);
+    const sd = saved[g.id] || {};
+    const estado = concGetEstado(g, saved[g.id]);
+    const nota = sd.nota||'';
+    // forma cobro select
+    const formaOpts = ['transf','efectivo','mixto'].map(v=>`<option value="${v}" ${(sd.forma||g.metodo)===v?'selected':''}>${concFormaTexto(v)}</option>`).join('');
+
+    // acreditaciones
+    const acred = g.cobros.length
+      ? g.cobros.map(c=>`<span style="display:block;font-size:11px">${c.f} ${c.q}: <strong>${AR2(c.m)}</strong></span>`).join('')
+      : '<span style="color:var(--text3);font-size:11px">—</span>';
+
+    rows += `<tr id="crow-${g.id}">
+      <td><span class="conc-cell" style="font-weight:600;color:var(--text1)">${g.n}</span></td>
+      <td><span class="conc-cell">${acred}</span></td>
+      <td><span class="conc-cell" style="font-family:var(--mono);color:var(--teal)">${transfTotal>0?AR2(transfTotal):'<span style="color:var(--text3)">—</span>'}</span></td>
+      <td><span class="conc-cell"><select style="background:var(--bg3);border:0.5px solid var(--border2);border-radius:6px;color:var(--text1);font-size:12px;padding:4px 8px;cursor:pointer;font-family:var(--font)" onchange="concSetForma('${g.id}',this.value)">${formaOpts}</select></span></td>
+      <td><span class="conc-cell">${g.rec
+        ? `<label style="display:inline-flex;align-items:center;gap:6px;cursor:pointer;font-size:12px;font-weight:600"><input type="checkbox" style="width:16px;height:16px;accent-color:var(--teal);cursor:pointer" ${(estado==='cobrado_transf'||estado==='cobrado_efectivo')?'checked':''} onchange="concToggle('${g.id}',this.checked,CONC_KEY)"> ${concBadge(g,estado)}</label>`
+        : concBadge(g,estado)
+      }</span></td>
+      <td><span class="conc-cell"><input class="cobro-nota" style="width:100%;min-width:100px" placeholder="Nota…" value="${nota.replace(/"/g,'&quot;')}" onchange="concSetNota('${g.id}',this.value)"></span></td>
+    </tr>`;
+  });
+
+  // Totales
+  rows += `<tr class="conc-total-row">
+    <td colspan="2"><span class="conc-cell">TOTAL TRANSFERENCIAS</span></td>
+    <td><span class="conc-cell" style="font-family:var(--mono)">${AR2(totalTransf)}</span></td>
+    <td colspan="3"></td>
+  </tr>
+  <tr class="conc-total-row">
+    <td colspan="2"><span class="conc-cell">PAGO CLARO</span></td>
+    <td><span class="conc-cell" style="font-family:var(--mono)">${AR2(d.pagoClaro.monto)}</span></td>
+    <td colspan="3"></td>
+  </tr>
+  <tr class="conc-diff-row">
+    <td colspan="2"><span class="conc-cell">DIFERENCIA</span></td>
+    <td><span class="conc-cell" style="font-family:var(--mono);font-weight:700;color:var(--${diff>=0?'green':'red'})">${fmtDiff(diff)}</span></td>
+    <td colspan="3"></td>
+  </tr>`;
+
+  $('conc-tbody').innerHTML = rows;
+
+  // CARDS MÓVIL
+  let cards = '';
+  d.grupos.forEach(g => {
+    const transfTotal = g.cobros.reduce((s,c)=>s+c.m,0);
+    const sd = saved[g.id]||{};
+    const estado = concGetEstado(g, saved[g.id]);
+    const nota = sd.nota||'';
+    const formaOpts = ['transf','efectivo','mixto'].map(v=>`<option value="${v}" ${(sd.forma||g.metodo)===v?'selected':''}>${concFormaTexto(v)}</option>`).join('');
+
+    const acred = g.cobros.length
+      ? g.cobros.map(c=>`${c.f} · ${c.q}: ${AR2(c.m)}`).join('<br>')
+      : g.rec ? '<span style="color:var(--text3)">Sin acreditación bancaria</span>' : '<span style="color:var(--text3)">Sin recibo — no se gestiona</span>';
+
+    cards += `<div class="cobro-card" id="ccard-${g.id}">
+      <div class="cobro-header">
+        <div>
+          <div class="cobro-nombre">${g.n}</div>
+          <div class="cobro-fecha" style="font-size:11px;margin-top:3px">${acred}</div>
+        </div>
+        <div class="cobro-monto">${transfTotal>0?AR2(transfTotal):'—'}</div>
+      </div>
+      ${g.rec ? `<div class="cobro-toggle-row">
+        <select onchange="concSetForma('${g.id}',this.value)">${formaOpts}</select>
+        <label class="cobro-check-lbl ${(estado==='cobrado_transf'||estado==='cobrado_efectivo')?'cobrado':''}">
+          <input type="checkbox" ${(estado==='cobrado_transf'||estado==='cobrado_efectivo')?'checked':''} onchange="concToggle('${g.id}',this.checked,CONC_KEY)">
+          ${(estado==='cobrado_transf'||estado==='cobrado_efectivo')?'Cobrado ✓':'Marcar cobrado'}
+        </label>
+      </div>
+      <div class="cobro-toggle-row" style="margin-top:6px">
+        <input class="cobro-nota" placeholder="Nota…" value="${nota.replace(/"/g,'&quot;')}" onchange="concSetNota('${g.id}',this.value)" style="width:100%">
+      </div>` : `<div style="margin-top:4px">${concBadge(g,'nr')}</div>`}
+    </div>`;
+  });
+
+  $('cobro-cards').innerHTML = cards;
+}
+
+function concToggle(id, checked, key) {
+  const d = CONC_MESES[key];
+  const g = d.grupos.find(x=>x.id===id);
+  const saved = concLoad();
+  if(!saved[id]) saved[id] = {};
+  const forma = saved[id].forma || g.metodo;
+  saved[id].estado = checked ? (forma==='efectivo'?'cobrado_efectivo':'cobrado_transf') : 'pendiente';
+  concSave(saved);
+  concRender();
+}
+
+function concSetForma(id, val) {
+  const saved = concLoad();
+  if(!saved[id]) saved[id] = {};
+  saved[id].forma = val;
+  // Si el estado era cobrado, actualizar el tipo
+  if(saved[id].estado && saved[id].estado.startsWith('cobrado')) {
+    saved[id].estado = val==='efectivo'?'cobrado_efectivo':'cobrado_transf';
+  }
+  concSave(saved);
+  concRender();
+}
+
+function concSetNota(id, val) {
+  const saved = concLoad();
+  if(!saved[id]) saved[id] = {};
+  saved[id].nota = val;
+  concSave(saved);
+}
+
+function concShow(key, btn) {
+  CONC_KEY = key;
+  document.querySelectorAll('.conc-m-btn').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  concRender();
 }
 
 /* ─── DRIVE ─── */
