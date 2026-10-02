@@ -1881,28 +1881,31 @@ function concRender() {
   // KPIs
   const fMes = getMes();
   const f2   = S.F2;
-  let totalTransf = 0, totalEfectivo = 0, countCob = 0, countPend = 0;
+  let totalTransf = 0, totalEfectivo = 0, totalTransfExtra = 0, countCob = 0, countPend = 0;
   d.grupos.forEach(g => {
     const t   = g.cobros.reduce((s,c)=>s+c.m, 0);
     totalTransf += t;
     const sd  = saved[g.id];
     const est = concGetEstado(g, sd);
     if(!g.rec) return;
+    const grObj = GRUPOS.find(gr => gr.n === g.n);
+    const cg = grObj ? calcGrupo(grObj, fMes, f2) : null;
     if(est==='cobrado_efectivo') {
-      // Sumar el total esperado del grupo como cobrado en efectivo
-      const grObj = GRUPOS.find(gr => gr.n === g.n || gr.n.replace(/\s*\/\s*/g,' / ')===g.n.replace(/\s*\/\s*/g,' / '));
-      const cg = grObj ? calcGrupo(grObj, fMes, f2) : null;
       totalEfectivo += cg ? cg.total : 0;
       countCob++;
-    } else if(est==='cobrado_transf'||est==='parcial') countCob++;
+    } else if(est==='cobrado_transf') {
+      // Si no tiene transferencia bancaria registrada, sumar el total calculado
+      if(t===0 && cg) totalTransfExtra += cg.total;
+      countCob++;
+    } else if(est==='parcial') countCob++;
     else countPend++;
   });
-  const totalCobrado = totalTransf + totalEfectivo;
+  const totalCobrado = totalTransf + totalTransfExtra + totalEfectivo;
   const diff = totalCobrado - d.pagoClaro.monto;
 
   $('conc-kpis').innerHTML = `
     <div class="conc-kpi ck-blue"><div class="conc-kpi-lbl">Pago Claro</div><div class="conc-kpi-val">${AR2(d.pagoClaro.monto)}</div><div class="conc-kpi-sub">${d.pagoClaro.fecha}</div></div>
-    <div class="conc-kpi ck-teal"><div class="conc-kpi-lbl">Cobrado (transf.)</div><div class="conc-kpi-val">${AR2(totalTransf)}</div><div class="conc-kpi-sub">acreditaciones bancarias</div></div>
+    <div class="conc-kpi ck-teal"><div class="conc-kpi-lbl">Cobrado (transf.)</div><div class="conc-kpi-val">${AR2(totalTransf+totalTransfExtra)}</div><div class="conc-kpi-sub">acreditaciones bancarias</div></div>
     ${totalEfectivo>0?`<div class="conc-kpi ck-amber"><div class="conc-kpi-lbl">Cobrado (efectivo)</div><div class="conc-kpi-val">${AR2(totalEfectivo)}</div><div class="conc-kpi-sub">confirmado manual</div></div>`:''}
     <div class="conc-kpi ${diff>=0?'ck-green':'ck-red'}"><div class="conc-kpi-lbl">Diferencia</div><div class="conc-kpi-val" style="color:var(--${diff>=0?'green':'red'})">${fmtDiff(diff)}</div><div class="conc-kpi-sub">${diff>=0?'Superávit':'Falta cobrar'}</div></div>
     <div class="conc-kpi ck-amber"><div class="conc-kpi-lbl">Grupos pendientes</div><div class="conc-kpi-val" style="color:var(--amber)">${countPend}</div><div class="conc-kpi-sub">con recibo, sin confirmar</div></div>
@@ -1931,10 +1934,20 @@ function concRender() {
       ? g.cobros.map(c=>`<span style="display:block;font-size:11px">${c.f} ${c.q}: <strong>${AR2(c.m)}</strong></span>`).join('')
       : '<span style="color:var(--text3);font-size:11px">—</span>';
 
+    // Monto cobrado a mostrar: transferencias bancarias si las hay,
+    // o total calculado del grupo si está marcado cobrado sin transf registrada
+    let montoCobrado = transfTotal;
+    let montoCobradoSub = '';
+    if (transfTotal === 0 && (estado==='cobrado_transf'||estado==='cobrado_efectivo')) {
+      const grObj = GRUPOS.find(gr => gr.n === g.n);
+      const cg = grObj ? calcGrupo(grObj, fMes, f2) : null;
+      if (cg) { montoCobrado = cg.total; montoCobradoSub = estado==='cobrado_efectivo'?' (efectivo)':' (transf)'; }
+    }
+
     rows += `<tr id="crow-${g.id}">
       <td><span class="conc-cell" style="font-weight:600;color:var(--text1)">${g.n}</span></td>
       <td><span class="conc-cell">${acred}</span></td>
-      <td><span class="conc-cell" style="font-family:var(--mono);color:var(--teal)">${transfTotal>0?AR2(transfTotal):'<span style="color:var(--text3)">—</span>'}</span></td>
+      <td><span class="conc-cell" style="font-family:var(--mono);color:var(--teal)">${montoCobrado>0?AR2(montoCobrado)+'<span style="font-size:10px;color:var(--text3)">'+montoCobradoSub+'</span>':'<span style="color:var(--text3)">—</span>'}</span></td>
       <td><span class="conc-cell"><select style="background:var(--bg3);border:0.5px solid var(--border2);border-radius:6px;color:var(--text1);font-size:12px;padding:4px 8px;cursor:pointer;font-family:var(--font)" onchange="concSetForma('${g.id}',this.value)">${formaOpts}</select></span></td>
       <td><span class="conc-cell">${g.rec
         ? `<label style="display:inline-flex;align-items:center;gap:6px;cursor:pointer;font-size:12px;font-weight:600"><input type="checkbox" style="width:16px;height:16px;accent-color:var(--teal);cursor:pointer" ${(estado==='cobrado_transf'||estado==='cobrado_efectivo')?'checked':''} onchange="concToggle('${g.id}',this.checked,CONC_KEY)"> ${concBadge(g,estado)}</label>`
@@ -1947,7 +1960,7 @@ function concRender() {
   // Totales
   rows += `<tr class="conc-total-row">
     <td colspan="2"><span class="conc-cell">TOTAL TRANSFERENCIAS</span></td>
-    <td><span class="conc-cell" style="font-family:var(--mono)">${AR2(totalTransf)}</span></td>
+    <td><span class="conc-cell" style="font-family:var(--mono)">${AR2(totalTransf+totalTransfExtra)}</span></td>
     <td colspan="3"></td>
   </tr>
   ${totalEfectivo>0?`<tr class="conc-total-row">
