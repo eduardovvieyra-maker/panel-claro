@@ -1195,6 +1195,9 @@ function setMes(i) {
   S.anio = S.facturas[i].anio;
   buildNav();
   renderTodo();
+  // Si la vista activa es grupos, re-renderizar
+  const secGrupos = document.getElementById('page-grupos');
+  if (secGrupos && secGrupos.classList.contains('active')) renderGruposPage();
 }
 
 function showPage(id) {
