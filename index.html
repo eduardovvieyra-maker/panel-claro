@@ -1311,7 +1311,10 @@ function showPage(id) {
   // Esperar a que el CSS aplique display:block antes de renderizar charts
   if (id==='estadisticas') setTimeout(()=>renderEstadisticas(), 50);
   if (id==='grupos') renderGruposPage();
-  if (id==='conciliacion') concRender();
+  if (id==='conciliacion') {
+    concSyncFromCloud().then(updated => { if (updated) concRender(); });
+    concRender();
+  }
 }
 
 function bnNav(id) {
@@ -1919,8 +1922,44 @@ function exportXLSX() {
    CONCILIACIÓN — datos y lógica
 ══════════════════════════════════════ */
 const CONC_LS = 'claro_conc_v2';
+const CONC_GAS_URL = 'https://script.google.com/macros/s/AKfycbzPLACEHOLDER/exec'; // reemplazar con URL real
+
+// --- sincronización Google Drive ---
+let _concSyncing = false;
+async function concSyncFromCloud() {
+  if (!CONC_GAS_URL || CONC_GAS_URL.includes('PLACEHOLDER')) return;
+  try {
+    const res = await fetch(CONC_GAS_URL, { method: 'GET' });
+    const json = await res.json();
+    if (json.ok && json.data) {
+      const cloud = JSON.parse(json.data);
+      const cloudTs = json.timestamp || 0;
+      // Comparar con timestamp local
+      const local = concLoad();
+      const localTs = local._ts || 0;
+      if (cloudTs > localTs) {
+        localStorage.setItem(CONC_LS, json.data);
+        return true; // hubo actualización desde la nube
+      }
+    }
+  } catch(e) { /* silencioso — la nube es best-effort */ }
+  return false;
+}
+
 function concLoad() { try { return JSON.parse(localStorage.getItem(CONC_LS)||'{}'); } catch { return {}; } }
-function concSave(obj) { try { localStorage.setItem(CONC_LS, JSON.stringify(obj)); } catch {} }
+function concSave(obj) {
+  obj._ts = Date.now();
+  try { localStorage.setItem(CONC_LS, JSON.stringify(obj)); } catch {}
+  // Sincronizar a la nube (async, sin bloquear UI)
+  if (CONC_GAS_URL && !CONC_GAS_URL.includes('PLACEHOLDER') && !_concSyncing) {
+    _concSyncing = true;
+    fetch(CONC_GAS_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ timestamp: obj._ts, data: JSON.stringify(obj) })
+    }).catch(()=>{}).finally(()=>{ _concSyncing = false; });
+  }
+}
 
 // Grupos con transferencias conocidas del estado de cuenta
 // metodo: 'transf'=siempre transfiere, 'efectivo'=siempre efectivo, 'mixto'=puede ser cualquiera
@@ -2291,6 +2330,8 @@ function init() {
   const lo=$('loading'); if(lo) lo.style.display='none';
   buildNav();
   renderTodo();
+  // Sincronizar estado de conciliación desde la nube al iniciar
+  concSyncFromCloud().catch(()=>{});
 }
 
 function doRefresh() {
