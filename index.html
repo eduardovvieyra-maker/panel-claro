@@ -33,6 +33,10 @@ input,select{font-family:var(--font)}
   .layout{flex-direction:column}
   .sidebar{display:none}
   .main{padding:12px 12px 80px}
+  .topbar-btns{display:none!important}
+  .m-tab{flex:1;text-align:center;padding:8px 4px;font-size:12px}
+  #month-tabs-global{scrollbar-width:none}
+  #month-tabs-global::-webkit-scrollbar{display:none}
   .bottom-nav{
     display:flex;
     position:fixed;
@@ -107,12 +111,12 @@ input,select{font-family:var(--font)}
 .search-bar input::placeholder{color:var(--text3)}
 
 /* ── Year/Month nav ── */
-.year-tabs{display:flex;gap:4px;margin-bottom:8px;flex-wrap:wrap}
+.year-tabs{display:flex;gap:4px;margin-bottom:0;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}.year-tabs::-webkit-scrollbar{display:none}
 .year-tab{padding:5px 14px;border-radius:var(--radius-sm);font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;background:var(--bg2);border:0.5px solid var(--border);transition:.15s}
 .year-tab:hover{color:var(--text1)}
 .year-tab.active{background:rgba(168,85,247,.2);color:#c084fc;border-color:rgba(168,85,247,.4)}
-.month-tabs{display:flex;gap:4px;background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius);padding:4px;margin-bottom:18px;overflow-x:auto;flex-wrap:nowrap}
-.m-tab{padding:7px 14px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;color:var(--text2);cursor:pointer;white-space:nowrap;transition:.15s;background:none;border:none;flex-shrink:0}
+.month-tabs{display:flex;gap:2px;background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius);padding:4px;margin-bottom:18px;overflow-x:auto;flex-wrap:nowrap}
+.m-tab{padding:7px 10px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;color:var(--text2);cursor:pointer;white-space:nowrap;transition:.15s;background:none;border:none;flex-shrink:0}
 .m-tab:hover{background:var(--bg4);color:var(--text1)}
 .m-tab.active{background:var(--blue);color:#fff}
 .m-tab-dot{width:5px;height:5px;border-radius:50%;background:var(--amber);display:inline-block;margin-left:4px;vertical-align:middle}
@@ -549,7 +553,7 @@ input[type=range]{flex:1;min-width:120px;accent-color:var(--blue);height:4px;cur
       <div class="year-tabs" id="year-tabs-global" style="display:flex;gap:4px;flex-wrap:wrap"></div>
       <div id="month-tabs-global" style="display:flex;gap:3px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px;margin-top:6px;scrollbar-width:none;max-width:100%;width:100%"></div>
     </div>
-    <div style="display:flex;gap:6px">
+    <div class="topbar-btns" style="display:flex;gap:6px">
       <button class="btn btn-ghost" onclick="doRefresh()">↺ Drive</button>
       <button class="btn btn-ghost" onclick="exportXLSX()">Excel</button>
       <button class="btn btn-ghost" onclick="printResumen()">Imprimir</button>
