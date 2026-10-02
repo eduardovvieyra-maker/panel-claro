@@ -1879,21 +1879,31 @@ function concRender() {
   const fmtDiff = n => (n>=0?'+':'') + '$ '+Math.abs(Math.round(n)).toLocaleString('es-AR');
 
   // KPIs
-  let totalTransf = 0, countCob = 0, countPend = 0;
+  const fMes = getMes();
+  const f2   = S.F2;
+  let totalTransf = 0, totalEfectivo = 0, countCob = 0, countPend = 0;
   d.grupos.forEach(g => {
-    const t = g.cobros.reduce((s,c)=>s+c.m,0);
+    const t   = g.cobros.reduce((s,c)=>s+c.m, 0);
     totalTransf += t;
-    const sd = saved[g.id];
+    const sd  = saved[g.id];
     const est = concGetEstado(g, sd);
     if(!g.rec) return;
-    if(est==='cobrado_transf'||est==='cobrado_efectivo'||est==='parcial') countCob++;
+    if(est==='cobrado_efectivo') {
+      // Sumar el total esperado del grupo como cobrado en efectivo
+      const grObj = GRUPOS.find(gr => gr.n === g.n || gr.n.replace(/\s*\/\s*/g,' / ')===g.n.replace(/\s*\/\s*/g,' / '));
+      const cg = grObj ? calcGrupo(grObj, fMes, f2) : null;
+      totalEfectivo += cg ? cg.total : 0;
+      countCob++;
+    } else if(est==='cobrado_transf'||est==='parcial') countCob++;
     else countPend++;
   });
-  const diff = totalTransf - d.pagoClaro.monto;
+  const totalCobrado = totalTransf + totalEfectivo;
+  const diff = totalCobrado - d.pagoClaro.monto;
 
   $('conc-kpis').innerHTML = `
     <div class="conc-kpi ck-blue"><div class="conc-kpi-lbl">Pago Claro</div><div class="conc-kpi-val">${AR2(d.pagoClaro.monto)}</div><div class="conc-kpi-sub">${d.pagoClaro.fecha}</div></div>
     <div class="conc-kpi ck-teal"><div class="conc-kpi-lbl">Cobrado (transf.)</div><div class="conc-kpi-val">${AR2(totalTransf)}</div><div class="conc-kpi-sub">acreditaciones bancarias</div></div>
+    ${totalEfectivo>0?`<div class="conc-kpi ck-amber"><div class="conc-kpi-lbl">Cobrado (efectivo)</div><div class="conc-kpi-val">${AR2(totalEfectivo)}</div><div class="conc-kpi-sub">confirmado manual</div></div>`:''}
     <div class="conc-kpi ${diff>=0?'ck-green':'ck-red'}"><div class="conc-kpi-lbl">Diferencia</div><div class="conc-kpi-val" style="color:var(--${diff>=0?'green':'red'})">${fmtDiff(diff)}</div><div class="conc-kpi-sub">${diff>=0?'Superávit':'Falta cobrar'}</div></div>
     <div class="conc-kpi ck-amber"><div class="conc-kpi-lbl">Grupos pendientes</div><div class="conc-kpi-val" style="color:var(--amber)">${countPend}</div><div class="conc-kpi-sub">con recibo, sin confirmar</div></div>
     <div class="conc-kpi ck-green"><div class="conc-kpi-lbl">Grupos cobrados</div><div class="conc-kpi-val" style="color:var(--green)">${countCob}</div><div class="conc-kpi-sub">confirmados</div></div>
@@ -1940,6 +1950,16 @@ function concRender() {
     <td><span class="conc-cell" style="font-family:var(--mono)">${AR2(totalTransf)}</span></td>
     <td colspan="3"></td>
   </tr>
+  ${totalEfectivo>0?`<tr class="conc-total-row">
+    <td colspan="2"><span class="conc-cell">TOTAL EFECTIVO</span></td>
+    <td><span class="conc-cell" style="font-family:var(--mono)">${AR2(totalEfectivo)}</span></td>
+    <td colspan="3"></td>
+  </tr>
+  <tr class="conc-total-row" style="font-weight:800">
+    <td colspan="2"><span class="conc-cell">TOTAL COBRADO</span></td>
+    <td><span class="conc-cell" style="font-family:var(--mono)">${AR2(totalCobrado)}</span></td>
+    <td colspan="3"></td>
+  </tr>`:''}
   <tr class="conc-total-row">
     <td colspan="2"><span class="conc-cell">PAGO CLARO</span></td>
     <td><span class="conc-cell" style="font-family:var(--mono)">${AR2(d.pagoClaro.monto)}</span></td>
