@@ -27,12 +27,14 @@ input,select{font-family:var(--font)}
 
 /* ── Layout ── */
 .layout{display:flex;min-height:100vh}
+html{overflow-x:hidden;-webkit-text-size-adjust:100%}
 .sidebar{width:230px;background:var(--bg2);border-right:0.5px solid var(--border);padding:20px 0;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto}
 .main{flex:1;padding:24px;overflow-x:hidden;min-width:0}
 /* Bottom nav mobile */
 .bottom-nav{display:none}
 .bn-more-menu{display:none}
-@media(max-width:768px){
+/* celular acostado (ancho >768px pero poca altura) también usa el diseño de celular */
+@media(max-width:768px),(pointer:coarse) and (max-height:520px){
   .layout{flex-direction:column}
   .sidebar{display:none}
   .main{padding:12px 12px 80px;font-size:15px}
