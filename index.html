@@ -1215,7 +1215,33 @@ let S = {
   F2:       0.874974,   // factor de ganancia del Excel (se recalcula por mes)
 };
 
-function getMes() { return S.facturas[S.midx]; }
+/* Extras por línea: algunos meses el extra viene sumado dentro de "base" y la línea figura con extra=0.
+   Se separa usando el nombre del extra (quien). Idempotente. Los totales por línea no cambian. */
+const _tok = s => (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z ]/g,' ').split(/\s+/).filter(Boolean).sort().join(' ');
+function normExtras(f) {
+  if (!f || f._nx) return f;
+  f._nx = true;
+  if (!f.lineas || !f.lineas.length || !f.extras || !f.extras.length) return f;
+  // precio "normal" de cada plan = el más repetido entre las líneas
+  const cnt = {};
+  f.lineas.forEach(l => { const k = l.plan + '|' + l.base; cnt[k] = (cnt[k]||0) + 1; });
+  const normal = {};
+  Object.keys(cnt).forEach(k => { const [pl, b] = k.split('|'); if (!normal[pl] || cnt[k] > cnt[pl + '|' + normal[pl]]) normal[pl] = +b; });
+  f.extras.forEach(e => {
+    if (!e.quien) return;
+    const t = _tok(e.quien);
+    const l = f.lineas.find(x => _tok(x.usuario) === t);
+    if (!l) return;
+    // el extra viene sumado en base solo si base - precio normal del plan coincide con el extra
+    const cand = Object.keys(normal).filter(pl => pl === l.plan || (PLAN_GB[pl] && PLAN_GB[pl] === PLAN_GB[l.plan])).map(pl => normal[pl]);
+    if (!l.extra && cand.some(n => Math.abs((l.base - n) - e.v) < 1.5)) {
+      l.base = Math.round((l.base - e.v) * 100) / 100; l.extra = e.v;
+    }
+    if (l.extra > 0) l.extraNom = l.extraNom ? l.extraNom + ' + ' + e.nom : e.nom;
+  });
+  return f;
+}
+function getMes() { return normExtras(S.facturas[S.midx]); }
 
 /* ─── CÁLCULO DE F2 ─── */
 /* F2 = (total_factura / suma_líneas_con_recargo) - 1
@@ -1716,7 +1742,7 @@ function renderGruposPage() {
     const lineasHTML = lineasConRec.map(l => `
       <tr style="border-bottom:0.5px solid var(--border)">
         <td style="font-family:monospace;font-size:11px;color:var(--text3);padding:7px 8px">${l.linea}</td>
-        <td style="padding:7px 8px">${nom(l)}</td>
+        <td style="padding:7px 8px">${nom(l)}${l.extra>0?`<div style="font-size:10px;color:#fbbf24;margin-top:2px">+ ${l.extraNom||'Extra'} ${AR(l.extra)}</div>`:''}</td>
         <td style="padding:7px 8px"><span style="font-family:monospace;font-size:10px;background:var(--bg3);color:var(--blue);padding:1px 5px;border-radius:3px">${l.plan}</span></td>
         <td style="text-align:right;padding:7px 8px;font-variant-numeric:tabular-nums">${AR(l.linSub)}</td>
         <td style="text-align:right;padding:7px 8px;font-variant-numeric:tabular-nums;color:${g.rec?'#92400e':'var(--text3)'}">${g.rec?AR(l.linRec):'—'}</td>
@@ -1974,18 +2000,14 @@ function pdfPaginaGrupo(doc, g, f, F2) {
   y += 15;
   doc.autoTable({
     ...tblBase(col), startY: y,
-    head: [['Línea', 'Usuario', 'Plan', 'GB', 'Precio Claro', 'Gasto admin', 'Total a cobrar']],
-    body: ls.map(l => [l.linea, nomCorto(l.usuario), l.plan, PLAN_GB[l.plan] || '—', AR(l.linSub), g.rec ? AR(l.linRec) : '—', AR(l.linTot)]),
-    foot: [[{ content: `TOTAL (${ls.length} línea${ls.length !== 1 ? 's' : ''})`, colSpan: 4 }, AR(c.sub), g.rec ? AR(c.rec) : '—', AR(c.total)]],
-    columnStyles: { 0: { font: 'courier', fontSize: 7.5 }, 4: { halign: 'right' }, 5: { halign: 'right', textColor: [146, 64, 14] }, 6: { halign: 'right', fontStyle: 'bold' } },
+    head: [['Línea', 'Usuario', 'Plan', 'GB', 'Plan Claro', 'Extras', 'Gasto admin', 'Total a cobrar']],
+    body: ls.map(l => [l.linea, nomCorto(l.usuario) + (l.extra > 0 ? `\n+ ${l.extraNom || 'Extra'}` : ''), l.plan, PLAN_GB[l.plan] || '—', AR(l.base), l.extra > 0 ? AR(l.extra) : '—', g.rec ? AR(l.linRec) : '—', AR(l.linTot)]),
+    foot: [[{ content: `TOTAL (${ls.length} línea${ls.length !== 1 ? 's' : ''})`, colSpan: 4 }, AR(c.base), c.extra > 0 ? AR(c.extra) : '—', g.rec ? AR(c.rec) : '—', AR(c.total)]],
+    columnStyles: { 0: { font: 'courier', fontSize: 7.5 }, 4: { halign: 'right' }, 5: { halign: 'right', textColor: [146, 64, 14] }, 6: { halign: 'right', textColor: [146, 64, 14] }, 7: { halign: 'right', fontStyle: 'bold' } },
   });
   y = doc.lastAutoTable.finalY + 5;
-  if (c.extra > 0) {
-    doc.setFontSize(8); doc.setTextColor(146, 64, 14);
-    doc.text(`Incluye extras del mes: ${AR(c.extra)}`, 14, y); y += 5;
-  }
   y = pdfBarraTotal(doc, y, `TOTAL A COBRAR — ${g.n.toUpperCase()}`,
-    g.rec ? `Precio Claro ${AR(c.sub)} + Gasto admin ${AR(c.rec)}` : 'Precio exacto de Claro, sin recargo', AR(c.total), col);
+    g.rec ? `Precio Claro ${AR(c.sub)}${c.extra > 0 ? ` (incl. extras ${AR(c.extra)})` : ''} + Gasto admin ${AR(c.rec)}` : 'Precio exacto de Claro, sin recargo', AR(c.total), col);
   doc.setFillColor(254, 249, 195); doc.roundedRect(14, y, 182, 8, 1.5, 1.5, 'F');
   doc.setTextColor(113, 63, 18); doc.setFont('helvetica', 'bold'); doc.setFontSize(8);
   doc.text(`Vence: ${f.venc || '—'}   ·   Próximo vencimiento: ${f.proxVenc || '—'}`, 105, y + 5.3, { align: 'center' });
@@ -2024,7 +2046,7 @@ function pdfPaginaResumen(doc, f) {
   doc.autoTable({
     ...tblBase(), startY: y,
     head: [['Línea', 'Usuario', 'Plan', 'GB', 'Base Claro', 'Extras', 'Total línea']],
-    body: f.lineas.map(l => [l.linea, nomCorto(l.usuario), l.plan, PLAN_GB[l.plan] || '—', AR(l.base), l.extra > 0 ? AR(l.extra) : '—', AR(l.base + l.extra)]),
+    body: f.lineas.map(l => [l.linea, nomCorto(l.usuario) + (l.extra > 0 && l.extraNom ? ` — ${l.extraNom}` : ''), l.plan, PLAN_GB[l.plan] || '—', AR(l.base), l.extra > 0 ? AR(l.extra) : '—', AR(l.base + l.extra)]),
     foot: [[{ content: `TOTAL (${f.lineas.length} líneas)`, colSpan: 4 }, AR(base), AR(f.totalExtras || 0), AR(base + (f.totalExtras || 0))]],
     columnStyles: { 0: { font: 'courier', fontSize: 7.5 }, 4: { halign: 'right' }, 5: { halign: 'right', textColor: [146, 64, 14] }, 6: { halign: 'right', fontStyle: 'bold' } },
   });
@@ -2092,17 +2114,17 @@ function exportXLSX() {
     GRUPOS.forEach(g => {
       const { c, ls } = lineasGrupo(g, f, F2);
       s1.push([`${g.id}. ${g.n}`, g.rec ? `Con recargo ${(F2 * 100).toFixed(2)}%` : 'Sin recargo']);
-      s1.push(['Línea', 'Usuario', 'Plan', 'Precio Claro', 'Gasto admin', 'Total a cobrar']);
-      ls.forEach(l => s1.push([l.linea, l.usuario, l.plan, r2(l.linSub), r2(l.linRec), r2(l.linTot)]));
+      s1.push(['Línea', 'Usuario', 'Plan', 'Precio Claro', 'Gasto admin', 'Total a cobrar', 'Extra incluido', 'Concepto extra']);
+      ls.forEach(l => s1.push([l.linea, l.usuario, l.plan, r2(l.linSub), r2(l.linRec), r2(l.linTot), l.extra > 0 ? r2(l.extra) : '', l.extraNom || '']));
       s1.push(['', 'TOTAL', '', r2(c.sub), r2(c.rec), r2(c.total)], []);
     });
-    XLSX.utils.book_append_sheet(wb, hoja(s1, [12, 26, 9, 14, 14, 16]), 'Por grupo');
+    XLSX.utils.book_append_sheet(wb, hoja(s1, [12, 26, 9, 14, 14, 16, 14, 22]), 'Por grupo');
 
     // Hoja 2: Líneas
     const base = f.lineas.reduce((s, l) => s + l.base, 0);
     const s2 = [[`CLARO — VES HNOS S.R.L. — ${f.mesLabel}`], ['Factura N°', f.nroFact, 'Fecha', f.fechaStr], ['Período', f.periodo, 'Vence', f.venc], [],
       ['Nro línea', 'Usuario', 'Plan', 'GB', 'Base Claro', 'Extras', 'Total línea'],
-      ...f.lineas.map(l => [l.linea, l.usuario, l.plan, PLAN_GB[l.plan] || '', r2(l.base), r2(l.extra), r2(l.base + l.extra)]),
+      ...f.lineas.map(l => [l.linea, l.usuario + (l.extra > 0 && l.extraNom ? ` — ${l.extraNom}` : ''), l.plan, PLAN_GB[l.plan] || '', r2(l.base), r2(l.extra), r2(l.base + l.extra)]),
       [], ['', '', '', 'TOTAL', r2(base), r2(f.totalExtras || 0), r2(base + (f.totalExtras || 0))]];
     XLSX.utils.book_append_sheet(wb, hoja(s2, [12, 28, 8, 7, 13, 11, 13]), 'Líneas');
 
