@@ -16,7 +16,7 @@
   --bg:#0b111e;--bg2:#111827;--bg3:#1a2235;--bg4:#212d42;
   --blue:#3b82f6;--blue2:#1d4ed8;--teal:#14b8a6;--purple:#a855f7;
   --amber:#f59e0b;--red:#ef4444;--green:#22c55e;
-  --text1:#f1f5f9;--text2:#94a3b8;--text3:#475569;
+  --text1:#ffffff;--text2:#f1f5f9;--text3:#e2e8f0;
   --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);
   --radius:12px;--radius-sm:8px;
   --font:'Inter',system-ui,sans-serif;--mono:'JetBrains Mono',monospace;
@@ -39,7 +39,7 @@ html{overflow-x:hidden;-webkit-text-size-adjust:100%}
   .sidebar{display:none}
   .main{padding:12px 12px 80px;font-size:15px}
   .topbar-btns{display:none!important}
-  .m-tab{flex:1;text-align:center;padding:10px 4px;font-size:13px;font-weight:600}
+  .m-tab{flex:1;text-align:center;padding:10px 4px;font-size:15px;font-weight:600}
   #month-tabs-global{justify-content:stretch}
   #month-tabs-global::-webkit-scrollbar{display:none}
   .bottom-nav{
@@ -54,35 +54,35 @@ html{overflow-x:hidden;-webkit-text-size-adjust:100%}
   .bn-item{
     flex:1;display:flex;flex-direction:column;align-items:center;
     justify-content:center;gap:4px;padding:10px 4px 9px;
-    font-size:10px;font-weight:600;color:#94a3b8;
+    font-size:12px;font-weight:700;color:#ffffff;border-radius:10px;
     background:none;border:none;cursor:pointer;
     letter-spacing:.3px;text-transform:uppercase;
     transition:.15s;
     -webkit-tap-highlight-color:transparent;
   }
-  .bn-item svg{width:22px;height:22px;opacity:.8;flex-shrink:0}
-  .bn-item.active{color:#60a5fa}
+  .bn-item svg{width:25px;height:25px;opacity:1;flex-shrink:0}
+  .bn-item.active{color:#ffffff;background:rgba(59,130,246,.45)}
   .bn-item.active svg{opacity:1}
   .bn-more-menu{
-    display:none;position:fixed;bottom:64px;right:0;left:0;
+    display:none;position:fixed;bottom:76px;right:0;left:0;
     background:#1a2233;border-top:1px solid rgba(148,163,184,.25);
     z-index:99;padding:8px 10px;
     grid-template-columns:1fr 1fr;gap:6px;
   }
   .bn-more-menu.open{display:grid}
   .bn-more-item{
-    display:flex;align-items:center;gap:8px;padding:11px 14px;
-    border-radius:10px;font-size:13px;font-weight:500;
-    color:var(--text2);background:var(--bg3);border:none;cursor:pointer;
+    display:flex;align-items:center;gap:10px;padding:13px 14px;
+    border-radius:10px;font-size:15px;font-weight:500;
+    color:#ffffff;background:var(--bg3);border:none;cursor:pointer;
     -webkit-tap-highlight-color:transparent;
   }
-  .bn-more-item svg{width:16px;height:16px;opacity:.7;flex-shrink:0}
-  .bn-more-item.active{color:var(--blue);background:rgba(59,130,246,.12)}
+  .bn-more-item svg{width:20px;height:20px;opacity:1;flex-shrink:0}
+  .bn-more-item.active{color:#ffffff;background:rgba(59,130,246,.45)}
   .kpi-val{font-size:26px!important}
-  .card-title{font-size:11px!important}
+  .card-title{font-size:13px!important}
   .page-title{font-size:22px!important}
-  .page-sub{font-size:13px!important}
-  .year-tab{font-size:13px!important;padding:6px 14px!important}
+  .page-sub{font-size:15px!important}
+  .year-tab{font-size:15px!important;padding:6px 14px!important}
   .m-tab{font-size:14px!important;padding:10px 6px!important;font-weight:700!important}
 }
 
@@ -91,17 +91,17 @@ html{overflow-x:hidden;-webkit-text-size-adjust:100%}
 .logo-mark{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--purple));display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:#fff;margin-bottom:8px}
 .sidebar-logo img{display:block}
 .logo-name{font-size:14px;font-weight:600}
-.logo-sub{font-size:10px;color:var(--text3);margin-top:1px}
-.sidebar-section-label{font-size:10px;font-weight:600;letter-spacing:.8px;color:var(--text3);text-transform:uppercase;padding:14px 20px 5px}
+.logo-sub{font-size:12px;color:var(--text3);margin-top:1px}
+.sidebar-section-label{font-size:12px;font-weight:600;letter-spacing:.8px;color:var(--text3);text-transform:uppercase;padding:14px 20px 5px}
 .sidebar-links{display:flex;flex-direction:column;gap:2px;padding:0 8px}
-.sidebar-link{display:flex;align-items:center;gap:9px;padding:9px 12px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;color:var(--text2);cursor:pointer;transition:.15s;border:none;background:none;width:100%;text-align:left}
+.sidebar-link{display:flex;align-items:center;gap:9px;padding:9px 12px;border-radius:var(--radius-sm);font-size:15px;font-weight:500;color:var(--text2);cursor:pointer;transition:.15s;border:none;background:none;width:100%;text-align:left}
 .sidebar-link:hover{background:var(--bg3);color:var(--text1)}
 .sidebar-link.active{background:rgba(59,130,246,.15);color:var(--blue)}
-.sidebar-link svg{width:15px;height:15px;opacity:.7;flex-shrink:0}
+.sidebar-link svg{width:17px;height:17px;opacity:1;flex-shrink:0}
 .sidebar-link.active svg{opacity:1}
 
 /* ── Botones ── */
-.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:var(--radius-sm);font-size:12px;font-weight:600;cursor:pointer;transition:.15s;white-space:nowrap;border:none}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:var(--radius-sm);font-size:14px;font-weight:600;cursor:pointer;transition:.15s;white-space:nowrap;border:none}
 .btn-ghost{background:transparent;border:0.5px solid var(--border2);color:var(--text2)}
 .btn-ghost:hover{background:var(--bg3);color:var(--text1)}
 .btn-primary{background:var(--blue);color:#fff}
@@ -112,22 +112,22 @@ html{overflow-x:hidden;-webkit-text-size-adjust:100%}
 /* ── Page header ── */
 .page-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px;gap:12px;flex-wrap:wrap}
 .page-title{font-size:21px;font-weight:700}
-.page-sub{font-size:12px;color:var(--text2);margin-top:3px}
+.page-sub{font-size:14px;color:var(--text2);margin-top:3px}
 .header-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 
 /* ── Buscador ── */
 .search-bar{display:flex;align-items:center;gap:8px;background:var(--bg2);border:0.5px solid var(--border2);border-radius:var(--radius-sm);padding:7px 12px;margin-bottom:14px}
 .search-bar svg{width:14px;height:14px;color:var(--text3);flex-shrink:0}
-.search-bar input{background:none;border:none;outline:none;color:var(--text1);font-size:13px;width:100%}
+.search-bar input{background:none;border:none;outline:none;color:var(--text1);font-size:15px;width:100%}
 .search-bar input::placeholder{color:var(--text3)}
 
 /* ── Year/Month nav ── */
 .year-tabs{display:flex;gap:4px;margin-bottom:0;flex-wrap:nowrap;overflow-x:auto;flex-shrink:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.year-tabs::-webkit-scrollbar{display:none}
-.year-tab{padding:5px 14px;border-radius:var(--radius-sm);font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;background:var(--bg2);border:0.5px solid var(--border);transition:.15s}
+.year-tab{padding:5px 14px;border-radius:var(--radius-sm);font-size:14px;font-weight:600;color:var(--text2);cursor:pointer;background:var(--bg2);border:0.5px solid var(--border);transition:.15s}
 .year-tab:hover{color:var(--text1)}
 .year-tab.active{background:rgba(168,85,247,.2);color:#c084fc;border-color:rgba(168,85,247,.4)}
 .month-tabs{display:flex;gap:2px;background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius);padding:4px;margin-bottom:18px;overflow-x:auto;flex-wrap:nowrap}
-.m-tab{padding:7px 10px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;color:var(--text2);cursor:pointer;white-space:nowrap;transition:.15s;background:none;border:none;flex-shrink:0}
+.m-tab{padding:7px 10px;border-radius:var(--radius-sm);font-size:15px;font-weight:500;color:var(--text2);cursor:pointer;white-space:nowrap;transition:.15s;background:none;border:none;flex-shrink:0}
 .m-tab:hover{background:var(--bg4);color:var(--text1)}
 .m-tab.active{background:var(--blue);color:#fff}
 .m-tab-dot{width:5px;height:5px;border-radius:50%;background:var(--amber);display:inline-block;margin-left:4px;vertical-align:middle}
@@ -140,15 +140,15 @@ html{overflow-x:hidden;-webkit-text-size-adjust:100%}
 .kpi.teal::before{background:var(--teal)}
 .kpi.amber::before{background:var(--amber)}
 .kpi.purple::before{background:var(--purple)}
-.kpi-label{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:7px}
+.kpi-label{font-size:12px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:7px}
 .kpi-val{font-size:24px;font-weight:700;line-height:1}
-.kpi-sub{font-size:11px;margin-top:5px}
+.kpi-sub{font-size:13px;margin-top:5px}
 .up{color:var(--red)}.down{color:var(--green)}.flat{color:var(--text3)}
 
 /* ── Factor F2 ── */
 .factor-bar{background:var(--bg2);border:0.5px solid rgba(59,130,246,.3);border-radius:var(--radius);padding:14px 18px;margin-bottom:18px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .factor-group{display:flex;flex-direction:column;gap:3px;min-width:90px}
-.factor-lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--text3)}
+.factor-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--text3)}
 .factor-pct-wrap{display:flex;align-items:center;gap:6px}
 .factor-pct-input{background:var(--bg3);border:0.5px solid var(--border2);border-radius:var(--radius-sm);color:var(--blue);font-size:20px;font-weight:700;font-family:var(--mono);width:90px;padding:4px 8px;text-align:center;outline:none}
 .factor-pct-input:focus{border-color:var(--blue)}
@@ -156,71 +156,71 @@ html{overflow-x:hidden;-webkit-text-size-adjust:100%}
 input[type=range]{flex:1;min-width:120px;accent-color:var(--blue);height:4px;cursor:pointer}
 .factor-stats{display:flex;gap:16px;flex-wrap:wrap}
 .fstat{display:flex;flex-direction:column;gap:2px}
-.fstat-lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--text3)}
+.fstat-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--text3)}
 .fstat-val{font-size:15px;font-weight:700}
 
 /* ── Cards ── */
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
 @media(max-width:640px){.g2{grid-template-columns:1fr}}
 .card{background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius);padding:16px 18px}
-.card-title{font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.6px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
+.card-title{font-size:12px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.6px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
 .chart-wrap{position:relative;width:100%;height:210px}
 
 /* ── Fechas ── */
 .fechas-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:18px}
 .fecha-card{background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius);padding:12px 14px;display:flex;align-items:center;gap:10px}
 .fecha-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.fecha-lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--text3);margin-bottom:3px}
+.fecha-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--text3);margin-bottom:3px}
 .fecha-val{font-size:14px;font-weight:700}
-.fecha-sub{font-size:10px;color:var(--text2);margin-top:1px}
+.fecha-sub{font-size:12px;color:var(--text2);margin-top:1px}
 
 /* ── Historial ── */
 .hist-row{display:flex;align-items:center;gap:8px;padding:7px 0;border-top:0.5px solid var(--border)}
 .hist-row:first-child{border-top:none}
-.hist-lbl{font-size:12px;color:var(--text2);min-width:70px}
+.hist-lbl{font-size:14px;color:var(--text2);min-width:70px}
 .hist-bar-bg{flex:1;background:rgba(255,255,255,0.05);border-radius:3px;height:6px;overflow:hidden}
 .hist-bar-fg{height:100%;border-radius:3px;transition:.4s}
-.hist-val{font-size:12px;font-weight:700;min-width:78px;text-align:right}
-.hist-delta{font-size:10px;min-width:42px;text-align:right}
+.hist-val{font-size:14px;font-weight:700;min-width:78px;text-align:right}
+.hist-delta{font-size:12px;min-width:42px;text-align:right}
 
 /* ── Extras table ── */
-.xtable{width:100%;border-collapse:collapse;font-size:12px}
-.xtable th{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--text3);text-align:left;padding:0 0 7px}
+.xtable{width:100%;border-collapse:collapse;font-size:14px}
+.xtable th{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--text3);text-align:left;padding:0 0 7px}
 .xtable td{padding:6px 0;border-top:0.5px solid var(--border);color:var(--text1)}
 .xtable td:last-child{text-align:right;font-weight:600;color:var(--amber)}
-.chip{display:inline-block;border-radius:3px;padding:1px 5px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.3px}
+.chip{display:inline-block;border-radius:3px;padding:1px 5px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.3px}
 .chip-blue{background:rgba(59,130,246,.15);color:#93c5fd}
 .chip-teal{background:rgba(20,184,166,.15);color:#5eead4}
 .chip-purple{background:rgba(168,85,247,.15);color:#c084fc}
 
 /* ── Líneas table ── */
 .ltable-wrap{overflow-x:auto;margin-bottom:18px}
-.ltable{width:100%;border-collapse:collapse;font-size:12px;min-width:700px}
-.ltable th{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--text3);text-align:left;padding:0 7px 9px;border-bottom:0.5px solid var(--border2);white-space:nowrap}
-.ltable td{padding:6px 7px;border-top:0.5px solid rgba(255,255,255,.04);color:var(--text1);font-size:12px;vertical-align:middle}
+.ltable{width:100%;border-collapse:collapse;font-size:14px;min-width:700px}
+.ltable th{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--text3);text-align:left;padding:0 7px 9px;border-bottom:0.5px solid var(--border2);white-space:nowrap}
+.ltable td{padding:6px 7px;border-top:0.5px solid rgba(255,255,255,.04);color:var(--text1);font-size:14px;vertical-align:middle}
 .ltable tr:hover td{background:rgba(255,255,255,.025)}
 .ltable th:nth-child(n+5),.ltable td:nth-child(n+5){text-align:right}
-.mono{font-family:var(--mono);color:var(--text3);font-size:11px}
-.plan-chip{display:inline-block;border-radius:3px;padding:2px 6px;font-size:9px;font-weight:700;font-family:var(--mono)}
-.p-pc70r{background:rgba(100,116,139,.2);color:#94a3b8}
+.mono{font-family:var(--mono);color:var(--text3);font-size:13px}
+.plan-chip{display:inline-block;border-radius:3px;padding:2px 6px;font-size:11px;font-weight:700;font-family:var(--mono)}
+.p-pc70r{background:rgba(100,116,139,.3);color:#f1f5f9}
 .p-cc11r,.p-cc12r{background:rgba(59,130,246,.18);color:#93c5fd}
 .p-pc92r{background:rgba(20,184,166,.15);color:#5eead4}
 .p-pc93r{background:rgba(168,85,247,.15);color:#c084fc}
 .p-pc94c{background:rgba(239,68,68,.15);color:#fca5a5}
 .p-pc94r{background:rgba(245,158,11,.15);color:#fcd34d}
-.extra-badge{background:rgba(245,158,11,.15);color:#fbbf24;border-radius:3px;padding:1px 5px;font-size:9px;font-weight:700}
+.extra-badge{background:rgba(245,158,11,.15);color:#fbbf24;border-radius:3px;padding:1px 5px;font-size:11px;font-weight:700}
 .total-row td{font-weight:700;color:var(--teal);background:rgba(20,184,166,.05)!important;border-top:0.5px solid rgba(20,184,166,.2)!important}
-.no-results{text-align:center;color:var(--text3);padding:30px;font-size:13px}
+.no-results{text-align:center;color:var(--text3);padding:30px;font-size:15px}
 
 /* ── Stats ── */
 .stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px;margin-bottom:14px}
 .stat-mini{background:var(--bg3);border-radius:var(--radius-sm);padding:11px 13px}
-.stat-mini-lbl{font-size:9px;color:var(--text3);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
+.stat-mini-lbl{font-size:11px;color:var(--text3);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
 .stat-mini-val{font-size:17px;font-weight:700}
-.stat-mini-sub{font-size:10px;color:var(--text2);margin-top:2px}
+.stat-mini-sub{font-size:12px;color:var(--text2);margin-top:2px}
 
 /* ── Alert ── */
-.alert{background:rgba(245,158,11,.1);border:0.5px solid rgba(245,158,11,.3);border-radius:var(--radius-sm);padding:10px 14px;font-size:12px;color:#fcd34d;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.alert{background:rgba(245,158,11,.1);border:0.5px solid rgba(245,158,11,.3);border-radius:var(--radius-sm);padding:10px 14px;font-size:14px;color:#fcd34d;margin-bottom:14px;display:flex;align-items:center;gap:8px}
 
 /* ══ CONCILIACIÓN ══ */
 .conc-kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:16px}
@@ -231,14 +231,14 @@ input[type=range]{flex:1;min-width:120px;accent-color:var(--blue);height:4px;cur
 .conc-kpi.ck-amber::before{background:var(--amber)}
 .conc-kpi.ck-red::before{background:var(--red)}
 .conc-kpi.ck-teal::before{background:var(--teal)}
-.conc-kpi-lbl{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:6px}
+.conc-kpi-lbl{font-size:12px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:6px}
 .conc-kpi-val{font-size:20px;font-weight:700;line-height:1}
-.conc-kpi-sub{font-size:11px;margin-top:4px;color:var(--text2)}
+.conc-kpi-sub{font-size:13px;margin-top:4px;color:var(--text2)}
 /* Tabla cobros */
 .conc-table-wrap{background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:14px}
-.conc-tbl-head{padding:12px 16px;border-bottom:0.5px solid var(--border);font-size:13px;font-weight:600}
+.conc-tbl-head{padding:12px 16px;border-bottom:0.5px solid var(--border);font-size:15px;font-weight:600}
 .conc-tbl{width:100%;border-collapse:collapse}
-.conc-tbl th{background:var(--bg3);padding:9px 14px;text-align:left;font-size:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--text3);white-space:nowrap}
+.conc-tbl th{background:var(--bg3);padding:9px 14px;text-align:left;font-size:12px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--text3);white-space:nowrap}
 .conc-tbl td{padding:0;border-top:0.5px solid var(--border);vertical-align:middle}
 .conc-cell{padding:11px 14px;display:block}
 .conc-tbl tr:hover td{background:rgba(255,255,255,0.02)}
@@ -246,31 +246,31 @@ input[type=range]{flex:1;min-width:120px;accent-color:var(--blue);height:4px;cur
 .cobro-card{background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:8px}
 .cobro-header{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:10px}
 .cobro-nombre{font-size:14px;font-weight:700;color:var(--text1)}
-.cobro-fecha{font-size:11px;color:var(--text3);margin-top:2px}
+.cobro-fecha{font-size:13px;color:var(--text3);margin-top:2px}
 .cobro-monto{font-size:16px;font-weight:700;font-family:var(--mono);color:var(--teal)}
 /* Toggle cobro */
 .cobro-toggle-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px}
-.cobro-toggle-row select{background:var(--bg3);border:0.5px solid var(--border2);border-radius:var(--radius-sm);color:var(--text1);font-size:12px;font-weight:600;padding:5px 10px;cursor:pointer;font-family:var(--font);flex:1;min-width:120px}
+.cobro-toggle-row select{background:var(--bg3);border:0.5px solid var(--border2);border-radius:var(--radius-sm);color:var(--text1);font-size:14px;font-weight:600;padding:5px 10px;cursor:pointer;font-family:var(--font);flex:1;min-width:120px}
 .cobro-toggle-row select:focus{outline:none;border-color:var(--teal)}
-.cobro-check-lbl{display:inline-flex;align-items:center;gap:7px;cursor:pointer;background:var(--bg3);border:0.5px solid var(--border2);border-radius:var(--radius-sm);padding:6px 12px;font-size:12px;font-weight:600;color:var(--text2);transition:.15s;user-select:none;flex:1;min-width:140px;justify-content:center}
+.cobro-check-lbl{display:inline-flex;align-items:center;gap:7px;cursor:pointer;background:var(--bg3);border:0.5px solid var(--border2);border-radius:var(--radius-sm);padding:6px 12px;font-size:14px;font-weight:600;color:var(--text2);transition:.15s;user-select:none;flex:1;min-width:140px;justify-content:center}
 .cobro-check-lbl input{width:16px;height:16px;cursor:pointer;accent-color:var(--teal);flex-shrink:0}
 .cobro-check-lbl.cobrado{background:rgba(20,184,166,.12);border-color:rgba(20,184,166,.4);color:var(--teal)}
-.cobro-nota{background:var(--bg3);border:0.5px solid var(--border);border-radius:var(--radius-sm);color:var(--text1);font-size:12px;padding:5px 10px;flex:2;min-width:140px;font-family:var(--font)}
+.cobro-nota{background:var(--bg3);border:0.5px solid var(--border);border-radius:var(--radius-sm);color:var(--text1);font-size:14px;padding:5px 10px;flex:2;min-width:140px;font-family:var(--font)}
 .cobro-nota:focus{outline:none;border-color:var(--teal)}
 /* Badges conciliacion */
-.cbadge{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:600}
+.cbadge{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:20px;font-size:12px;font-weight:600}
 .cb-ok{background:rgba(20,184,166,.15);color:#2dd4bf;border:0.5px solid rgba(20,184,166,.3)}
 .cb-cash{background:rgba(249,115,22,.15);color:#fb923c;border:0.5px solid rgba(249,115,22,.3)}
 .cb-pend{background:rgba(239,68,68,.15);color:#fca5a5;border:0.5px solid rgba(239,68,68,.3)}
-.cb-nr{background:rgba(71,85,105,.18);color:#64748b;border:0.5px solid rgba(71,85,105,.3)}
+.cb-nr{background:rgba(71,85,105,.18);color:#e2e8f0;border:0.5px solid rgba(71,85,105,.3)}
 .cb-partial{background:rgba(168,85,247,.15);color:#c084fc;border:0.5px solid rgba(168,85,247,.3)}
 /* total filas */
 .conc-total-row td{background:var(--bg3)!important;font-weight:700;color:var(--text1)!important;border-top:0.5px solid var(--border2)!important}
 .conc-diff-row td{background:var(--bg4)!important;font-weight:700;border-top:0.5px solid var(--border2)!important}
 /* nota al pie */
-.conc-note{font-size:11px;color:var(--text3);padding:8px 12px;background:var(--bg2);border-left:3px solid var(--teal);border-radius:0 4px 4px 0;margin-bottom:14px;line-height:1.6}
+.conc-note{font-size:13px;color:var(--text3);padding:8px 12px;background:var(--bg2);border-left:3px solid var(--teal);border-radius:0 4px 4px 0;margin-bottom:14px;line-height:1.6}
 .conc-mob-totales{background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius);padding:4px 0;margin-top:8px}
-.cmt-row{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;font-size:13px;border-bottom:0.5px solid var(--border)}
+.cmt-row{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;font-size:15px;border-bottom:0.5px solid var(--border)}
 .cmt-row:last-child{border-bottom:none}
 .cmt-row span:last-child{font-family:var(--mono);font-weight:600}
 .cmt-subtotal{font-weight:700;background:var(--bg3)}
@@ -561,7 +561,7 @@ input[type=range]{flex:1;min-width:120px;accent-color:var(--blue);height:4px;cur
 
   <div id="loading" class="spinner-wrap">
     <div class="spinner"></div>
-    <span style="color:var(--text2);font-size:13px">Buscando facturas en Drive…</span>
+    <span style="color:var(--text2);font-size:15px">Buscando facturas en Drive…</span>
   </div>
 
   <div class="alert" id="demo-alert" style="display:none">
@@ -604,7 +604,7 @@ input[type=range]{flex:1;min-width:120px;accent-color:var(--blue);height:4px;cur
         <div class="fstat"><div class="fstat-lbl">Factura Claro</div><div class="fstat-val" id="f2-total">—</div></div>
         <div class="fstat"><div class="fstat-lbl">Tu ganancia</div><div class="fstat-val" id="f2-ganancia" style="color:var(--green)">—</div></div>
         <div class="fstat"><div class="fstat-lbl">Cubre familia</div><div class="fstat-val" id="f2-familia" style="color:var(--amber)">—</div></div>
-        <div class="fstat"><div class="fstat-lbl">Diferencia</div><div class="fstat-val" id="f2-diff" style="font-size:11px">—</div></div>
+        <div class="fstat"><div class="fstat-lbl">Diferencia</div><div class="fstat-val" id="f2-diff" style="font-size:13px">—</div></div>
       </div>
     </div>
 
@@ -743,7 +743,7 @@ input[type=range]{flex:1;min-width:120px;accent-color:var(--blue);height:4px;cur
         <tbody id="imp-body"></tbody>
       </table>
     </div>
-    <div style="font-size:11px;color:var(--text3);padding:8px 0">
+    <div style="font-size:13px;color:var(--text3);padding:8px 0">
       * IVA 21% aplica a servicios de datos. IVA 27% aplica a telefonía. Percepciones RG212 y IIBB según jurisdicción Entre Ríos.
       Los importes por línea son estimados proporcionales al total sin impuestos.
     </div>
@@ -761,125 +761,125 @@ input[type=range]{flex:1;min-width:120px;accent-color:var(--blue);height:4px;cur
    totalExtras, imp:{iva21,iva27,p3,ib}, extras:[{nom,quien,v}], lineas:[{linea,usuario,plan,base,extra}] */
 
 const FACTURAS = [
-,//──HISTORIAL(solototales,sindetalledelíneas)──{mesLabel:'Junio 2021',nroFact:'1281-00168071',fechaStr:'08/06/2021',fechaISO:'2021-06-08',anio:'2021',total:12481.07,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
-,,,,{mesLabel:'Julio 2021',nroFact:'1281-00270527',fechaStr:'08/07/2021',fechaISO:'2021-07-08',anio:'2021',total:12481.07,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
-,,,,{mesLabel:'Agosto 2021',nroFact:'1281-00384332',fechaStr:'08/08/2021',fechaISO:'2021-08-08',anio:'2021',total:13083.10,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
-,,,,{mesLabel:'Marzo 2022',nroFact:'1281-01255235',fechaStr:'08/03/2022',fechaISO:'2022-03-08',anio:'2022',total:14619.38,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
-,,,,{mesLabel:'Abril 2022',nroFact:'1281-01395285',fechaStr:'08/04/2022',fechaISO:'2022-04-08',anio:'2022',total:15215.59,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
-,,,,{mesLabel:'Junio 2022',nroFact:'1281-01651379',fechaStr:'08/06/2022',fechaISO:'2022-06-08',anio:'2022',total:16100.65,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
-,,,,{mesLabel:'Septiembre 2022',nroFact:'1305-00043149',fechaStr:'08/09/2022',fechaISO:'2022-09-08',anio:'2022',total:19147.23,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
-,,,,{mesLabel:'Octubre 2022',nroFact:'1305-00184454',fechaStr:'08/10/2022',fechaISO:'2022-10-08',anio:'2022',total:19147.23,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
-,,,,{mesLabel:'Enero 2023',nroFact:'1305-00631020',fechaStr:'08/01/2023',fechaISO:'2023-01-08',anio:'2023',total:19147.23,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
-,,,,{mesLabel:'Febrero 2023',nroFact:'1305-00761535',fechaStr:'08/02/2023',fechaISO:'2023-02-08',anio:'2023',total:19147.23,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
-,,,,{mesLabel:'Marzo 2023',nroFact:'1305-00897715',fechaStr:'08/03/2023',fechaISO:'2023-03-08',anio:'2023',total:19443.36,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
-,,,,{mesLabel:'Abril 2023',nroFact:'1305-01046156',fechaStr:'08/04/2023',fechaISO:'2023-04-08',anio:'2023',total:19443.36,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
-,,,,{mesLabel:'Mayo 2023',nroFact:'1305-01192262',fechaStr:'08/05/2023',fechaISO:'2023-05-08',anio:'2023',total:19841.05,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
-,,,,{mesLabel:'Junio 2023',nroFact:'1305-01342270',fechaStr:'08/06/2023',fechaISO:'2023-06-08',anio:'2023',total:21237.43,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
-,,,,{mesLabel:'Julio 2023',nroFact:'1305-01490204',fechaStr:'08/07/2023',fechaISO:'2023-07-08',anio:'2023',total:22543.85,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
-,,,,{mesLabel:'Agosto 2023',nroFact:'1305-01640044',fechaStr:'08/08/2023',fechaISO:'2023-08-08',anio:'2023',total:22543.85,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
-,,,,{mesLabel:'Octubre 2023',nroFact:'1305-01942655',fechaStr:'08/10/2023',fechaISO:'2023-10-08',anio:'2023',total:34281.25,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
-,,,,{mesLabel:'Noviembre 2023',nroFact:'1305-02093024',fechaStr:'08/11/2023',fechaISO:'2023-11-08',anio:'2023',total:39415.29,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
-,,,,{mesLabel:'Enero 2024',nroFact:'1326-00247883',fechaStr:'08/01/2024',fechaISO:'2024-01-08',anio:'2024',total:56894.73,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
-,,,,{mesLabel:'Agosto 2024',nroFact:'1326-01385789',fechaStr:'08/08/2024',fechaISO:'2024-08-08',anio:'2024',total:177628.80,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
-,,,,{mesLabel:'Octubre 2024',nroFact:'1326-01709070',fechaStr:'08/10/2024',fechaISO:'2024-10-08',anio:'2024',total:189275.19,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
-,,,,{mesLabel:'Noviembre 2024',nroFact:'1326-01870460',fechaStr:'08/11/2024',fechaISO:'2024-11-08',anio:'2024',total:172301.10,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
-,,,,{mesLabel:'Enero 2025',nroFact:'1326-02190164',fechaStr:'08/01/2025',fechaISO:'2025-01-08',anio:'2025',total:193564.52,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
-,,,,{mesLabel:'Febrero 2025',nroFact:'1326-02360385',fechaStr:'08/02/2025',fechaISO:'2025-02-08',anio:'2025',total:194619.00,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
-,,,,{mesLabel:'Junio 2025',nroFact:'1331-00626110',fechaStr:'08/06/2025',fechaISO:'2025-06-08',anio:'2025',total:230490.59,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
-,,,,{mesLabel:'Agosto 2025',nroFact:'1331-00970183',fechaStr:'08/08/2025',fechaISO:'2025-08-08',anio:'2025',total:227471.20,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
-,,,,{
+//──HISTORIAL(solototales,sindetalledelíneas)──{mesLabel:'Junio 2021',nroFact:'1281-00168071',fechaStr:'08/06/2021',fechaISO:'2021-06-08',anio:'2021',total:12481.07,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
+{mesLabel:'Julio 2021',nroFact:'1281-00270527',fechaStr:'08/07/2021',fechaISO:'2021-07-08',anio:'2021',total:12481.07,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
+{mesLabel:'Agosto 2021',nroFact:'1281-00384332',fechaStr:'08/08/2021',fechaISO:'2021-08-08',anio:'2021',total:13083.10,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
+{mesLabel:'Marzo 2022',nroFact:'1281-01255235',fechaStr:'08/03/2022',fechaISO:'2022-03-08',anio:'2022',total:14619.38,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
+{mesLabel:'Abril 2022',nroFact:'1281-01395285',fechaStr:'08/04/2022',fechaISO:'2022-04-08',anio:'2022',total:15215.59,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
+{mesLabel:'Junio 2022',nroFact:'1281-01651379',fechaStr:'08/06/2022',fechaISO:'2022-06-08',anio:'2022',total:16100.65,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
+{mesLabel:'Septiembre 2022',nroFact:'1305-00043149',fechaStr:'08/09/2022',fechaISO:'2022-09-08',anio:'2022',total:19147.23,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
+{mesLabel:'Octubre 2022',nroFact:'1305-00184454',fechaStr:'08/10/2022',fechaISO:'2022-10-08',anio:'2022',total:19147.23,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
+{mesLabel:'Enero 2023',nroFact:'1305-00631020',fechaStr:'08/01/2023',fechaISO:'2023-01-08',anio:'2023',total:19147.23,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
+{mesLabel:'Febrero 2023',nroFact:'1305-00761535',fechaStr:'08/02/2023',fechaISO:'2023-02-08',anio:'2023',total:19147.23,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
+{mesLabel:'Marzo 2023',nroFact:'1305-00897715',fechaStr:'08/03/2023',fechaISO:'2023-03-08',anio:'2023',total:19443.36,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
+{mesLabel:'Abril 2023',nroFact:'1305-01046156',fechaStr:'08/04/2023',fechaISO:'2023-04-08',anio:'2023',total:19443.36,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
+{mesLabel:'Mayo 2023',nroFact:'1305-01192262',fechaStr:'08/05/2023',fechaISO:'2023-05-08',anio:'2023',total:19841.05,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
+{mesLabel:'Junio 2023',nroFact:'1305-01342270',fechaStr:'08/06/2023',fechaISO:'2023-06-08',anio:'2023',total:21237.43,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
+{mesLabel:'Julio 2023',nroFact:'1305-01490204',fechaStr:'08/07/2023',fechaISO:'2023-07-08',anio:'2023',total:22543.85,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
+{mesLabel:'Agosto 2023',nroFact:'1305-01640044',fechaStr:'08/08/2023',fechaISO:'2023-08-08',anio:'2023',total:22543.85,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
+{mesLabel:'Octubre 2023',nroFact:'1305-01942655',fechaStr:'08/10/2023',fechaISO:'2023-10-08',anio:'2023',total:34281.25,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
+{mesLabel:'Noviembre 2023',nroFact:'1305-02093024',fechaStr:'08/11/2023',fechaISO:'2023-11-08',anio:'2023',total:39415.29,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
+{mesLabel:'Enero 2024',nroFact:'1326-00247883',fechaStr:'08/01/2024',fechaISO:'2024-01-08',anio:'2024',total:56894.73,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
+{mesLabel:'Agosto 2024',nroFact:'1326-01385789',fechaStr:'08/08/2024',fechaISO:'2024-08-08',anio:'2024',total:177628.80,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
+{mesLabel:'Octubre 2024',nroFact:'1326-01709070',fechaStr:'08/10/2024',fechaISO:'2024-10-08',anio:'2024',total:189275.19,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
+{mesLabel:'Noviembre 2024',nroFact:'1326-01870460',fechaStr:'08/11/2024',fechaISO:'2024-11-08',anio:'2024',total:172301.10,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
+{mesLabel:'Enero 2025',nroFact:'1326-02190164',fechaStr:'08/01/2025',fechaISO:'2025-01-08',anio:'2025',total:193564.52,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
+{mesLabel:'Febrero 2025',nroFact:'1326-02360385',fechaStr:'08/02/2025',fechaISO:'2025-02-08',anio:'2025',total:194619.00,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
+{mesLabel:'Junio 2025',nroFact:'1331-00626110',fechaStr:'08/06/2025',fechaISO:'2025-06-08',anio:'2025',total:230490.59,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
+{mesLabel:'Agosto 2025',nroFact:'1331-00970183',fechaStr:'08/08/2025',fechaISO:'2025-08-08',anio:'2025',total:227471.20,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
+{
    mesLabel:'Enero 2026',nroFact:'1331-01791427',fechaStr:'08/01/2026',fechaISO:'2026-01-08',anio:'2026',
    total:347976.13,f2:1.112334,sumaConRec:164735.41,
    venc:'02/02/2026',proxVenc:'02/03/2026',periodo:'09/12/2025 al 08/01/2026',
    totalExtras:3888.69,
    imp:{iva21:16676.7,iva27:48257.89,p3:7744.37,ib:7744.37},
    extras:[{nom:'House of Comics mensual',quien:'',v:1552.31},
-    {nom:'Teatrix mensual',quien:'',v:2336.38}],
+{nom:'Teatrix mensual',quien:'',v:2336.38}],
    lineas:[
     {linea:'1126560003',usuario:'VIEYRA, EDUARDO',plan:'PC70R',base:4620,extra:0},
-    {linea:'3446201000',usuario:'DE LUCA, JUAN',plan:'CC11R',base:7652.5,extra:0},
-    {linea:'3446202222',usuario:'VIEYRA, EDUARDO',plan:'CC12R',base:8342,extra:0},
-    {linea:'3446205301',usuario:'VIEYRA, SOFIA',plan:'PC92R',base:6122,extra:0},
-    {linea:'3446348811',usuario:'TALLER, MECANICO',plan:'PC70R',base:4620,extra:0},
-    {linea:'3446401889',usuario:'PICOLI, SILVIA',plan:'PC70R',base:4620,extra:0},
-    {linea:'3446524590',usuario:'FIORINI, CRISTINA',plan:'PC93R',base:8342,extra:0},
-    {linea:'3446526402',usuario:'FIORINI, LARA',plan:'PC92R',base:6122,extra:0},
-    {linea:'3446543762',usuario:'CABRERA, CAROLINA',plan:'PC93R',base:8342,extra:0},
-    {linea:'3446549228',usuario:'VIEYRA, RICO',plan:'PC92R',base:8458.38,extra:0},
-    {linea:'3446559334',usuario:'DE LUCAS, ELIAS',plan:'PC93R',base:8342,extra:0},
-    {linea:'3446560921',usuario:'BOARI, MATIAS',plan:'PC93R',base:8342,extra:0},
-    {linea:'3446572368',usuario:'FIORINI, IRIS',plan:'PC92R',base:6122,extra:0},
-    {linea:'3446572391',usuario:'FIORINI, PEPE',plan:'PC70R',base:4620,extra:0},
-    {linea:'3446572392',usuario:'FIORINI, CLAUDIA',plan:'PC92R',base:6122,extra:0},
-    {linea:'3446572393',usuario:'REVERDITO, JOAQUIN',plan:'PC93R',base:8342,extra:0},
-    {linea:'3446572404',usuario:'FIORINI, JOSE',plan:'PC93R',base:8342,extra:0},
-    {linea:'3446572422',usuario:'BOARI, PILO',plan:'PC93R',base:8342,extra:0},
-    {linea:'3446572450',usuario:'VIEYRA, EDUARDO VALENTIN',plan:'PC94C',base:12014,extra:0},
-    {linea:'3446572474',usuario:'VIEYRA, HORACIO',plan:'PC92R',base:6122,extra:0},
-    {linea:'3446572496',usuario:'VIEYRA, FERNANDO',plan:'PC94C',base:12014,extra:0},
-    {linea:'3446572498',usuario:'CABALLERO, FABIOLA',plan:'PC92R',base:6122,extra:0},
-    {linea:'3446572527',usuario:'VIEYRA, LUCILA',plan:'PC94R',base:12014,extra:0},
-    {linea:'3446574855',usuario:'FIORINI, EVANGELINA',plan:'PC70R',base:6172.31,extra:0},
-    {linea:'3446577183',usuario:'FIORINI, JUAN CRUZ',plan:'PC93R',base:8342,extra:0},
-    {linea:'3446577408',usuario:'VES HNOS, GUALEGUAYCHU',plan:'PC70R',base:4620,extra:0},
-    {linea:'3446577642',usuario:'DE LUCAS, MELINA',plan:'CC12R',base:8342,extra:0},
-    {linea:'3446583971',usuario:'CABRERA, PAPA',plan:'PC70R',base:4620,extra:0},
-    {linea:'3446588111',usuario:'BOARI, ANI',plan:'PC93R',base:11610.6,extra:0},
-    {linea:'3446588996',usuario:'DELCAUSSE, MARIO',plan:'PC94C',base:12014,extra:0},
-    {linea:'3446589001',usuario:'HORNUS, SILVIA',plan:'PC92R',base:6122,extra:0},
-    {linea:'3446610504',usuario:'DE LUCAS, JUAN',plan:'PC70R',base:4620,extra:0},
-    {linea:'3446612475',usuario:'DE LUCA, FRANCO',plan:'PC70R',base:4620,extra:0},
-    {linea:'3446613480',usuario:'BOARI, CARLITOS',plan:'PC70R',base:4620,extra:0},
-    {linea:'3446613837',usuario:'VIEYRA, BELEN',plan:'PC93R',base:8342,extra:0},
+{linea:'3446201000',usuario:'DE LUCA, JUAN',plan:'CC11R',base:7652.5,extra:0},
+{linea:'3446202222',usuario:'VIEYRA, EDUARDO',plan:'CC12R',base:8342,extra:0},
+{linea:'3446205301',usuario:'VIEYRA, SOFIA',plan:'PC92R',base:6122,extra:0},
+{linea:'3446348811',usuario:'TALLER, MECANICO',plan:'PC70R',base:4620,extra:0},
+{linea:'3446401889',usuario:'PICOLI, SILVIA',plan:'PC70R',base:4620,extra:0},
+{linea:'3446524590',usuario:'FIORINI, CRISTINA',plan:'PC93R',base:8342,extra:0},
+{linea:'3446526402',usuario:'FIORINI, LARA',plan:'PC92R',base:6122,extra:0},
+{linea:'3446543762',usuario:'CABRERA, CAROLINA',plan:'PC93R',base:8342,extra:0},
+{linea:'3446549228',usuario:'VIEYRA, RICO',plan:'PC92R',base:8458.38,extra:0},
+{linea:'3446559334',usuario:'DE LUCAS, ELIAS',plan:'PC93R',base:8342,extra:0},
+{linea:'3446560921',usuario:'BOARI, MATIAS',plan:'PC93R',base:8342,extra:0},
+{linea:'3446572368',usuario:'FIORINI, IRIS',plan:'PC92R',base:6122,extra:0},
+{linea:'3446572391',usuario:'FIORINI, PEPE',plan:'PC70R',base:4620,extra:0},
+{linea:'3446572392',usuario:'FIORINI, CLAUDIA',plan:'PC92R',base:6122,extra:0},
+{linea:'3446572393',usuario:'REVERDITO, JOAQUIN',plan:'PC93R',base:8342,extra:0},
+{linea:'3446572404',usuario:'FIORINI, JOSE',plan:'PC93R',base:8342,extra:0},
+{linea:'3446572422',usuario:'BOARI, PILO',plan:'PC93R',base:8342,extra:0},
+{linea:'3446572450',usuario:'VIEYRA, EDUARDO VALENTIN',plan:'PC94C',base:12014,extra:0},
+{linea:'3446572474',usuario:'VIEYRA, HORACIO',plan:'PC92R',base:6122,extra:0},
+{linea:'3446572496',usuario:'VIEYRA, FERNANDO',plan:'PC94C',base:12014,extra:0},
+{linea:'3446572498',usuario:'CABALLERO, FABIOLA',plan:'PC92R',base:6122,extra:0},
+{linea:'3446572527',usuario:'VIEYRA, LUCILA',plan:'PC94R',base:12014,extra:0},
+{linea:'3446574855',usuario:'FIORINI, EVANGELINA',plan:'PC70R',base:6172.31,extra:0},
+{linea:'3446577183',usuario:'FIORINI, JUAN CRUZ',plan:'PC93R',base:8342,extra:0},
+{linea:'3446577408',usuario:'VES HNOS, GUALEGUAYCHU',plan:'PC70R',base:4620,extra:0},
+{linea:'3446577642',usuario:'DE LUCAS, MELINA',plan:'CC12R',base:8342,extra:0},
+{linea:'3446583971',usuario:'CABRERA, PAPA',plan:'PC70R',base:4620,extra:0},
+{linea:'3446588111',usuario:'BOARI, ANI',plan:'PC93R',base:11610.6,extra:0},
+{linea:'3446588996',usuario:'DELCAUSSE, MARIO',plan:'PC94C',base:12014,extra:0},
+{linea:'3446589001',usuario:'HORNUS, SILVIA',plan:'PC92R',base:6122,extra:0},
+{linea:'3446610504',usuario:'DE LUCAS, JUAN',plan:'PC70R',base:4620,extra:0},
+{linea:'3446612475',usuario:'DE LUCA, FRANCO',plan:'PC70R',base:4620,extra:0},
+{linea:'3446613480',usuario:'BOARI, CARLITOS',plan:'PC70R',base:4620,extra:0},
+{linea:'3446613837',usuario:'VIEYRA, BELEN',plan:'PC93R',base:8342,extra:0},
    ],
   },
-,,,,{
+{
    mesLabel:'Febrero 2026',nroFact:'1331-01951755',fechaStr:'08/02/2026',fechaISO:'2026-02-08',anio:'2026',
    total:378685.76,f2:1.129499,sumaConRec:177828.53,
    venc:'02/03/2026',proxVenc:'01/04/2026',periodo:'09/01/2026 al 08/02/2026',
    totalExtras:3888.69,
    imp:{iva21:19102.59,iva27:49776.98,p3:8259.72,ib:8259.72},
    extras:[{nom:'House of Comics mensual',quien:'',v:1552.31},
-    {nom:'Teatrix mensual',quien:'',v:2336.38}],
+{nom:'Teatrix mensual',quien:'',v:2336.38}],
    lineas:[
     {linea:'1126560003',usuario:'VIEYRA, EDUARDO',plan:'PC70R',base:4827,extra:0},
-    {linea:'3446201000',usuario:'DE LUCA, JUAN',plan:'CC11R',base:7995,extra:0},
-    {linea:'3446202222',usuario:'VIEYRA, EDUARDO',plan:'CC12R',base:8716,extra:0},
-    {linea:'3446205301',usuario:'VIEYRA, SOFIA',plan:'PC92R',base:6396,extra:0},
-    {linea:'3446348811',usuario:'TALLER, MECANICO',plan:'PC70R',base:4827,extra:0},
-    {linea:'3446401889',usuario:'PICOLI, SILVIA',plan:'PC70R',base:4827,extra:0},
-    {linea:'3446524590',usuario:'FIORINI, CRISTINA',plan:'PC93R',base:8716,extra:0},
-    {linea:'3446526402',usuario:'FIORINI, LARA',plan:'PC92R',base:6396,extra:0},
-    {linea:'3446543762',usuario:'CABRERA, CAROLINA',plan:'PC93R',base:8716,extra:0},
-    {linea:'3446549228',usuario:'VIEYRA, RICO',plan:'PC92R',base:8732.38,extra:0},
-    {linea:'3446559334',usuario:'DE LUCAS, ELIAS',plan:'PC93R',base:8716,extra:0},
-    {linea:'3446560921',usuario:'BOARI, MATIAS',plan:'PC93R',base:12509.39,extra:0},
-    {linea:'3446572368',usuario:'FIORINI, IRIS',plan:'PC92R',base:6396,extra:0},
-    {linea:'3446572391',usuario:'FIORINI, PEPE',plan:'PC70R',base:4827,extra:0},
-    {linea:'3446572392',usuario:'FIORINI, CLAUDIA',plan:'PC92R',base:6396,extra:0},
-    {linea:'3446572393',usuario:'REVERDITO, JOAQUIN',plan:'PC93R',base:8716,extra:0},
-    {linea:'3446572404',usuario:'FIORINI, JOSE',plan:'PC93R',base:11984.6,extra:0},
-    {linea:'3446572422',usuario:'BOARI, PILO',plan:'PC93R',base:8716,extra:0},
-    {linea:'3446572450',usuario:'VIEYRA, EDUARDO VALENTIN',plan:'PC94C',base:12554,extra:0},
-    {linea:'3446572474',usuario:'VIEYRA, HORACIO',plan:'PC92R',base:6396,extra:0},
-    {linea:'3446572496',usuario:'VIEYRA, FERNANDO',plan:'PC94C',base:12554,extra:0},
-    {linea:'3446572498',usuario:'CABALLERO, FABIOLA',plan:'PC92R',base:6396,extra:0},
-    {linea:'3446572527',usuario:'VIEYRA, LUCILA',plan:'PC94R',base:12554,extra:0},
-    {linea:'3446574855',usuario:'FIORINI, EVANGELINA',plan:'PC70R',base:6379.31,extra:0},
-    {linea:'3446577183',usuario:'FIORINI, JUAN CRUZ',plan:'PC93R',base:10848.23,extra:0},
-    {linea:'3446577408',usuario:'VES HNOS, GUALEGUAYCHU',plan:'PC70R',base:4827,extra:0},
-    {linea:'3446577642',usuario:'DE LUCAS, MELINA',plan:'CC12R',base:8716,extra:0},
-    {linea:'3446583971',usuario:'CABRERA, PAPA',plan:'PC70R',base:4827,extra:0},
-    {linea:'3446588111',usuario:'BOARI, ANI',plan:'PC93R',base:8716,extra:0},
-    {linea:'3446588996',usuario:'DELCAUSSE, MARIO',plan:'PC94C',base:12554,extra:0},
-    {linea:'3446589001',usuario:'HORNUS, SILVIA',plan:'PC92R',base:6396,extra:0},
-    {linea:'3446610504',usuario:'DE LUCAS, JUAN',plan:'PC70R',base:4827,extra:0},
-    {linea:'3446612475',usuario:'DE LUCA, FRANCO',plan:'PC70R',base:4827,extra:0},
-    {linea:'3446613480',usuario:'BOARI, CARLITOS',plan:'PC70R',base:4827,extra:0},
-    {linea:'3446613837',usuario:'VIEYRA, BELEN',plan:'PC93R',base:8716,extra:0},
+{linea:'3446201000',usuario:'DE LUCA, JUAN',plan:'CC11R',base:7995,extra:0},
+{linea:'3446202222',usuario:'VIEYRA, EDUARDO',plan:'CC12R',base:8716,extra:0},
+{linea:'3446205301',usuario:'VIEYRA, SOFIA',plan:'PC92R',base:6396,extra:0},
+{linea:'3446348811',usuario:'TALLER, MECANICO',plan:'PC70R',base:4827,extra:0},
+{linea:'3446401889',usuario:'PICOLI, SILVIA',plan:'PC70R',base:4827,extra:0},
+{linea:'3446524590',usuario:'FIORINI, CRISTINA',plan:'PC93R',base:8716,extra:0},
+{linea:'3446526402',usuario:'FIORINI, LARA',plan:'PC92R',base:6396,extra:0},
+{linea:'3446543762',usuario:'CABRERA, CAROLINA',plan:'PC93R',base:8716,extra:0},
+{linea:'3446549228',usuario:'VIEYRA, RICO',plan:'PC92R',base:8732.38,extra:0},
+{linea:'3446559334',usuario:'DE LUCAS, ELIAS',plan:'PC93R',base:8716,extra:0},
+{linea:'3446560921',usuario:'BOARI, MATIAS',plan:'PC93R',base:12509.39,extra:0},
+{linea:'3446572368',usuario:'FIORINI, IRIS',plan:'PC92R',base:6396,extra:0},
+{linea:'3446572391',usuario:'FIORINI, PEPE',plan:'PC70R',base:4827,extra:0},
+{linea:'3446572392',usuario:'FIORINI, CLAUDIA',plan:'PC92R',base:6396,extra:0},
+{linea:'3446572393',usuario:'REVERDITO, JOAQUIN',plan:'PC93R',base:8716,extra:0},
+{linea:'3446572404',usuario:'FIORINI, JOSE',plan:'PC93R',base:11984.6,extra:0},
+{linea:'3446572422',usuario:'BOARI, PILO',plan:'PC93R',base:8716,extra:0},
+{linea:'3446572450',usuario:'VIEYRA, EDUARDO VALENTIN',plan:'PC94C',base:12554,extra:0},
+{linea:'3446572474',usuario:'VIEYRA, HORACIO',plan:'PC92R',base:6396,extra:0},
+{linea:'3446572496',usuario:'VIEYRA, FERNANDO',plan:'PC94C',base:12554,extra:0},
+{linea:'3446572498',usuario:'CABALLERO, FABIOLA',plan:'PC92R',base:6396,extra:0},
+{linea:'3446572527',usuario:'VIEYRA, LUCILA',plan:'PC94R',base:12554,extra:0},
+{linea:'3446574855',usuario:'FIORINI, EVANGELINA',plan:'PC70R',base:6379.31,extra:0},
+{linea:'3446577183',usuario:'FIORINI, JUAN CRUZ',plan:'PC93R',base:10848.23,extra:0},
+{linea:'3446577408',usuario:'VES HNOS, GUALEGUAYCHU',plan:'PC70R',base:4827,extra:0},
+{linea:'3446577642',usuario:'DE LUCAS, MELINA',plan:'CC12R',base:8716,extra:0},
+{linea:'3446583971',usuario:'CABRERA, PAPA',plan:'PC70R',base:4827,extra:0},
+{linea:'3446588111',usuario:'BOARI, ANI',plan:'PC93R',base:8716,extra:0},
+{linea:'3446588996',usuario:'DELCAUSSE, MARIO',plan:'PC94C',base:12554,extra:0},
+{linea:'3446589001',usuario:'HORNUS, SILVIA',plan:'PC92R',base:6396,extra:0},
+{linea:'3446610504',usuario:'DE LUCAS, JUAN',plan:'PC70R',base:4827,extra:0},
+{linea:'3446612475',usuario:'DE LUCA, FRANCO',plan:'PC70R',base:4827,extra:0},
+{linea:'3446613480',usuario:'BOARI, CARLITOS',plan:'PC70R',base:4827,extra:0},
+{linea:'3446613837',usuario:'VIEYRA, BELEN',plan:'PC93R',base:8716,extra:0},
    ],
   },
-,,,{
+{
    mesLabel:'Marzo 2026',nroFact:'1331-02116440',fechaStr:'08/03/2026',fechaISO:'2026-03-08',anio:'2026',
    total:382537.14,f2:1.201605,sumaConRec:173753.75,
    venc:'01/04/2026',proxVenc:'04/05/2026',periodo:'09/02 al 08/03/2026',
@@ -887,207 +887,221 @@ const FACTURAS = [
    extras:[],
    lineas:[
     {linea:'1126560003',usuario:'VIEYRA, EDUARDO',plan:'PC70R',base:5020,extra:0},
-    {linea:'3446201000',usuario:'DE LUCA, JUAN',plan:'CC11R',base:8313.75,extra:0},
-    {linea:'3446202222',usuario:'VIEYRA, EDUARDO',plan:'CC12R',base:9064,extra:0},
-    {linea:'3446205301',usuario:'VIEYRA, SOFIA',plan:'PC92R',base:6651,extra:0},
-    {linea:'3446348811',usuario:'TALLER, MECANICO',plan:'PC70R',base:5020,extra:0},
-    {linea:'3446401889',usuario:'PICOLI, SILVIA',plan:'PC70R',base:5020,extra:0},
-    {linea:'3446524590',usuario:'FIORINI, CRISTINA',plan:'PC93R',base:9064,extra:0},
-    {linea:'3446526402',usuario:'FIORINI, LARA',plan:'PC92R',base:6651,extra:0},
-    {linea:'3446543762',usuario:'CABRERA, CAROLINA',plan:'PC93R',base:9064,extra:0},
-    {linea:'3446549228',usuario:'VIEYRA, RICO',plan:'PC92R',base:6651,extra:0},
-    {linea:'3446559334',usuario:'DE LUCAS, ELIAS',plan:'PC93R',base:9064,extra:0},
-    {linea:'3446560921',usuario:'BOARI, MATIAS',plan:'PC93R',base:9064,extra:0},
-    {linea:'3446572368',usuario:'FIORINI, IRIS',plan:'PC92R',base:6651,extra:0},
-    {linea:'3446572391',usuario:'FIORINI, PEPE',plan:'PC70R',base:5020,extra:0},
-    {linea:'3446572392',usuario:'FIORINI, CLAUDIA',plan:'PC92R',base:6651,extra:0},
-    {linea:'3446572393',usuario:'REVERDITO, JOAQUIN',plan:'PC93R',base:9064,extra:0},
-    {linea:'3446572404',usuario:'FIORINI, JOSE',plan:'PC93R',base:9064,extra:0},
-    {linea:'3446572422',usuario:'BOARI, PILO',plan:'PC93R',base:9064,extra:0},
-    {linea:'3446572450',usuario:'VIEYRA, EDUARDO VALENTIN',plan:'PC94C',base:13056,extra:0},
-    {linea:'3446572474',usuario:'VIEYRA, HORACIO',plan:'PC92R',base:6651,extra:0},
-    {linea:'3446572496',usuario:'VIEYRA, FERNANDO',plan:'PC94C',base:13056,extra:0},
-    {linea:'3446572498',usuario:'CABALLERO, FABIOLA',plan:'PC92R',base:6651,extra:0},
-    {linea:'3446572527',usuario:'VIEYRA, LUCILA',plan:'PC94R',base:13056,extra:0},
-    {linea:'3446574855',usuario:'FIORINI, EVANGELINA',plan:'PC70R',base:5020,extra:0},
-    {linea:'3446577183',usuario:'FIORINI, JUAN CRUZ',plan:'PC93R',base:9064,extra:0},
-    {linea:'3446577408',usuario:'VES HNOS, GUALEGUAYCHU',plan:'PC70R',base:5020,extra:0},
-    {linea:'3446577642',usuario:'DE LUCAS, MELINA',plan:'CC12R',base:9064,extra:0},
-    {linea:'3446583971',usuario:'CABRERA, PAPA',plan:'PC70R',base:5020,extra:0},
-    {linea:'3446588111',usuario:'BOARI, ANI',plan:'PC93R',base:9064,extra:0},
-    {linea:'3446588996',usuario:'DELCAUSSE, MARIO',plan:'PC94C',base:13056,extra:0},
-    {linea:'3446589001',usuario:'HORNUS, SILVIA',plan:'PC92R',base:6651,extra:0},
-    {linea:'3446610504',usuario:'DE LUCAS, JUAN',plan:'PC70R',base:5020,extra:0},
-    {linea:'3446612475',usuario:'DE LUCA, FRANCO',plan:'PC70R',base:5020,extra:0},
-    {linea:'3446613480',usuario:'BOARI, CARLITOS',plan:'PC70R',base:5020,extra:0},
-    {linea:'3446613837',usuario:'VIEYRA, BELEN',plan:'PC93R',base:9064,extra:0},
+{linea:'3446201000',usuario:'DE LUCA, JUAN',plan:'CC11R',base:8313.75,extra:0},
+{linea:'3446202222',usuario:'VIEYRA, EDUARDO',plan:'CC12R',base:9064,extra:0},
+{linea:'3446205301',usuario:'VIEYRA, SOFIA',plan:'PC92R',base:6651,extra:0},
+{linea:'3446348811',usuario:'TALLER, MECANICO',plan:'PC70R',base:5020,extra:0},
+{linea:'3446401889',usuario:'PICOLI, SILVIA',plan:'PC70R',base:5020,extra:0},
+{linea:'3446524590',usuario:'FIORINI, CRISTINA',plan:'PC93R',base:9064,extra:0},
+{linea:'3446526402',usuario:'FIORINI, LARA',plan:'PC92R',base:6651,extra:0},
+{linea:'3446543762',usuario:'CABRERA, CAROLINA',plan:'PC93R',base:9064,extra:0},
+{linea:'3446549228',usuario:'VIEYRA, RICO',plan:'PC92R',base:6651,extra:0},
+{linea:'3446559334',usuario:'DE LUCAS, ELIAS',plan:'PC93R',base:9064,extra:0},
+{linea:'3446560921',usuario:'BOARI, MATIAS',plan:'PC93R',base:9064,extra:0},
+{linea:'3446572368',usuario:'FIORINI, IRIS',plan:'PC92R',base:6651,extra:0},
+{linea:'3446572391',usuario:'FIORINI, PEPE',plan:'PC70R',base:5020,extra:0},
+{linea:'3446572392',usuario:'FIORINI, CLAUDIA',plan:'PC92R',base:6651,extra:0},
+{linea:'3446572393',usuario:'REVERDITO, JOAQUIN',plan:'PC93R',base:9064,extra:0},
+{linea:'3446572404',usuario:'FIORINI, JOSE',plan:'PC93R',base:9064,extra:0},
+{linea:'3446572422',usuario:'BOARI, PILO',plan:'PC93R',base:9064,extra:0},
+{linea:'3446572450',usuario:'VIEYRA, EDUARDO VALENTIN',plan:'PC94C',base:13056,extra:0},
+{linea:'3446572474',usuario:'VIEYRA, HORACIO',plan:'PC92R',base:6651,extra:0},
+{linea:'3446572496',usuario:'VIEYRA, FERNANDO',plan:'PC94C',base:13056,extra:0},
+{linea:'3446572498',usuario:'CABALLERO, FABIOLA',plan:'PC92R',base:6651,extra:0},
+{linea:'3446572527',usuario:'VIEYRA, LUCILA',plan:'PC94R',base:13056,extra:0},
+{linea:'3446574855',usuario:'FIORINI, EVANGELINA',plan:'PC70R',base:5020,extra:0},
+{linea:'3446577183',usuario:'FIORINI, JUAN CRUZ',plan:'PC93R',base:9064,extra:0},
+{linea:'3446577408',usuario:'VES HNOS, GUALEGUAYCHU',plan:'PC70R',base:5020,extra:0},
+{linea:'3446577642',usuario:'DE LUCAS, MELINA',plan:'CC12R',base:9064,extra:0},
+{linea:'3446583971',usuario:'CABRERA, PAPA',plan:'PC70R',base:5020,extra:0},
+{linea:'3446588111',usuario:'BOARI, ANI',plan:'PC93R',base:9064,extra:0},
+{linea:'3446588996',usuario:'DELCAUSSE, MARIO',plan:'PC94C',base:13056,extra:0},
+{linea:'3446589001',usuario:'HORNUS, SILVIA',plan:'PC92R',base:6651,extra:0},
+{linea:'3446610504',usuario:'DE LUCAS, JUAN',plan:'PC70R',base:5020,extra:0},
+{linea:'3446612475',usuario:'DE LUCA, FRANCO',plan:'PC70R',base:5020,extra:0},
+{linea:'3446613480',usuario:'BOARI, CARLITOS',plan:'PC70R',base:5020,extra:0},
+{linea:'3446613837',usuario:'VIEYRA, BELEN',plan:'PC93R',base:9064,extra:0},
    ],
   },
-,,,{mesLabel:'Abril 2026',nroFact:'1331-02286475',fechaStr:'08/04/2026',fechaISO:'2026-04-08',anio:'2026',
+{mesLabel:'Abril 2026',nroFact:'1331-02286475',fechaStr:'08/04/2026',fechaISO:'2026-04-08',anio:'2026',
    total:386064.99,f2:1.054597,venc:'04/05/2026',proxVenc:'01/06/2026',periodo:'09/03 al 08/04/2026',totalExtras:9874.57,
    imp:{iva21:20590.28,iva27:53095.16,p3:8840.93,ib:8840.93},
-   extras:[{nom:'House of Comics',quien:'Fiorini Evangelina',v:1663.19},{nom:'Teatrix',quien:'Vieyra Rico',v:2455.18},{nom:'Datos internet',quien:'Fiorini Juan Cruz',v:4524.79},{nom:'Datos internet',quien:'Fiorini Lara',v:1231.41}],
+   extras:[{nom:'House of Comics',quien:'Fiorini Evangelina',v:1663.19},
+{nom:'Teatrix',quien:'Vieyra Rico',v:2455.18},
+{nom:'Datos internet',quien:'Fiorini Juan Cruz',v:4524.79},
+{nom:'Datos internet',quien:'Fiorini Lara',v:1231.41}],
    lineas:[
     {linea:'1126560003',usuario:'VIEYRA, EDUARDO',plan:'PC70R',base:5212,extra:0},
-    {linea:'3446201000',usuario:'DE LUCA, JUAN',plan:'CC11R',base:8637.5,extra:0},
-    {linea:'3446202222',usuario:'VIEYRA, EDUARDO',plan:'CC12R',base:9416,extra:0},
-    {linea:'3446205301',usuario:'VIEYRA, SOFIA',plan:'PC92R',base:6910,extra:0},
-    {linea:'3446348811',usuario:'TALLER, MECANICO',plan:'PC70R',base:5212,extra:0},
-    {linea:'3446401889',usuario:'PICOLI, SILVIA',plan:'PC70R',base:5212,extra:0},
-    {linea:'3446524590',usuario:'FIORINI, CRISTINA',plan:'PC93R',base:9416,extra:0},
-    {linea:'3446526402',usuario:'FIORINI, LARA',plan:'PC92R',base:6910,extra:1231.41},
-    {linea:'3446543762',usuario:'CABRERA, CAROLINA',plan:'PC93R',base:9416,extra:0},
-    {linea:'3446549228',usuario:'VIEYRA, RICO',plan:'PC92R',base:6910,extra:2455.18},
-    {linea:'3446559334',usuario:'DE LUCAS, ELIAS',plan:'PC93R',base:9416,extra:0},
-    {linea:'3446560921',usuario:'BOARI, MATIAS',plan:'PC93R',base:9416,extra:0},
-    {linea:'3446572368',usuario:'FIORINI, IRIS',plan:'PC92R',base:6910,extra:0},
-    {linea:'3446572391',usuario:'FIORINI, PEPE',plan:'PC70R',base:5212,extra:0},
-    {linea:'3446572392',usuario:'FIORINI, CLAUDIA',plan:'PC92R',base:6910,extra:0},
-    {linea:'3446572393',usuario:'REVERDITO, JOAQUIN',plan:'PC93R',base:9416,extra:0},
-    {linea:'3446572404',usuario:'FIORINI, JOSE',plan:'PC93R',base:9416,extra:0},
-    {linea:'3446572422',usuario:'BOARI, PILO',plan:'PC93R',base:9416,extra:0},
-    {linea:'3446572450',usuario:'VIEYRA, EDUARDO VALENTIN',plan:'PC94C',base:13564,extra:0},
-    {linea:'3446572474',usuario:'VIEYRA, HORACIO',plan:'PC92R',base:6910,extra:0},
-    {linea:'3446572496',usuario:'VIEYRA, FERNANDO',plan:'PC94C',base:13564,extra:0},
-    {linea:'3446572498',usuario:'CABALLERO, FABIOLA',plan:'PC92R',base:6910,extra:0},
-    {linea:'3446572527',usuario:'VIEYRA, LUCILA',plan:'PC94R',base:13564,extra:0},
-    {linea:'3446574855',usuario:'FIORINI, EVANGELINA',plan:'PC70R',base:5212,extra:1663.19},
-    {linea:'3446577183',usuario:'FIORINI, JUAN CRUZ',plan:'PC93R',base:9416,extra:4524.79},
-    {linea:'3446577408',usuario:'VES HNOS, GUALEGUAYCHU',plan:'PC70R',base:5212,extra:0},
-    {linea:'3446577642',usuario:'DE LUCAS, MELINA',plan:'CC12R',base:9416,extra:0},
-    {linea:'3446583971',usuario:'CABRERA, PAPA',plan:'PC70R',base:5212,extra:0},
-    {linea:'3446588111',usuario:'BOARI, ANI',plan:'PC93R',base:9416,extra:0},
-    {linea:'3446588996',usuario:'DELCAUSSE, MARIO',plan:'PC94C',base:13564,extra:0},
-    {linea:'3446589001',usuario:'HORNUS, SILVIA',plan:'PC92R',base:6910,extra:0},
-    {linea:'3446610504',usuario:'DE LUCAS, JUAN',plan:'PC70R',base:5212,extra:0},
-    {linea:'3446612475',usuario:'DE LUCA, FRANCO',plan:'PC70R',base:5212,extra:0},
-    {linea:'3446613480',usuario:'BOARI, CARLITOS',plan:'PC70R',base:5212,extra:0},
-    {linea:'3446613837',usuario:'VIEYRA, BELEN',plan:'PC93R',base:9416,extra:0},
+{linea:'3446201000',usuario:'DE LUCA, JUAN',plan:'CC11R',base:8637.5,extra:0},
+{linea:'3446202222',usuario:'VIEYRA, EDUARDO',plan:'CC12R',base:9416,extra:0},
+{linea:'3446205301',usuario:'VIEYRA, SOFIA',plan:'PC92R',base:6910,extra:0},
+{linea:'3446348811',usuario:'TALLER, MECANICO',plan:'PC70R',base:5212,extra:0},
+{linea:'3446401889',usuario:'PICOLI, SILVIA',plan:'PC70R',base:5212,extra:0},
+{linea:'3446524590',usuario:'FIORINI, CRISTINA',plan:'PC93R',base:9416,extra:0},
+{linea:'3446526402',usuario:'FIORINI, LARA',plan:'PC92R',base:6910,extra:1231.41},
+{linea:'3446543762',usuario:'CABRERA, CAROLINA',plan:'PC93R',base:9416,extra:0},
+{linea:'3446549228',usuario:'VIEYRA, RICO',plan:'PC92R',base:6910,extra:2455.18},
+{linea:'3446559334',usuario:'DE LUCAS, ELIAS',plan:'PC93R',base:9416,extra:0},
+{linea:'3446560921',usuario:'BOARI, MATIAS',plan:'PC93R',base:9416,extra:0},
+{linea:'3446572368',usuario:'FIORINI, IRIS',plan:'PC92R',base:6910,extra:0},
+{linea:'3446572391',usuario:'FIORINI, PEPE',plan:'PC70R',base:5212,extra:0},
+{linea:'3446572392',usuario:'FIORINI, CLAUDIA',plan:'PC92R',base:6910,extra:0},
+{linea:'3446572393',usuario:'REVERDITO, JOAQUIN',plan:'PC93R',base:9416,extra:0},
+{linea:'3446572404',usuario:'FIORINI, JOSE',plan:'PC93R',base:9416,extra:0},
+{linea:'3446572422',usuario:'BOARI, PILO',plan:'PC93R',base:9416,extra:0},
+{linea:'3446572450',usuario:'VIEYRA, EDUARDO VALENTIN',plan:'PC94C',base:13564,extra:0},
+{linea:'3446572474',usuario:'VIEYRA, HORACIO',plan:'PC92R',base:6910,extra:0},
+{linea:'3446572496',usuario:'VIEYRA, FERNANDO',plan:'PC94C',base:13564,extra:0},
+{linea:'3446572498',usuario:'CABALLERO, FABIOLA',plan:'PC92R',base:6910,extra:0},
+{linea:'3446572527',usuario:'VIEYRA, LUCILA',plan:'PC94R',base:13564,extra:0},
+{linea:'3446574855',usuario:'FIORINI, EVANGELINA',plan:'PC70R',base:5212,extra:1663.19},
+{linea:'3446577183',usuario:'FIORINI, JUAN CRUZ',plan:'PC93R',base:9416,extra:4524.79},
+{linea:'3446577408',usuario:'VES HNOS, GUALEGUAYCHU',plan:'PC70R',base:5212,extra:0},
+{linea:'3446577642',usuario:'DE LUCAS, MELINA',plan:'CC12R',base:9416,extra:0},
+{linea:'3446583971',usuario:'CABRERA, PAPA',plan:'PC70R',base:5212,extra:0},
+{linea:'3446588111',usuario:'BOARI, ANI',plan:'PC93R',base:9416,extra:0},
+{linea:'3446588996',usuario:'DELCAUSSE, MARIO',plan:'PC94C',base:13564,extra:0},
+{linea:'3446589001',usuario:'HORNUS, SILVIA',plan:'PC92R',base:6910,extra:0},
+{linea:'3446610504',usuario:'DE LUCAS, JUAN',plan:'PC70R',base:5212,extra:0},
+{linea:'3446612475',usuario:'DE LUCA, FRANCO',plan:'PC70R',base:5212,extra:0},
+{linea:'3446613480',usuario:'BOARI, CARLITOS',plan:'PC70R',base:5212,extra:0},
+{linea:'3446613837',usuario:'VIEYRA, BELEN',plan:'PC93R',base:9416,extra:0},
    ]},
-,,,,{mesLabel:'Mayo 2026',nroFact:'1331-94457659',fechaStr:'08/05/2026',fechaISO:'2026-05-08',anio:'2026',
+{mesLabel:'Mayo 2026',nroFact:'1331-94457659',fechaStr:'08/05/2026',fechaISO:'2026-05-08',anio:'2026',
    total:461228.57,f2:0.826314,venc:'01/06/2026',proxVenc:'01/07/2026',periodo:'09/04 al 08/05/2026',totalExtras:28300.33,
    imp:{iva21:14955.64,iva27:34541.49,p3:13433.84,ib:13433.84},
-   extras:[{nom:'House of Comics',quien:'Fiorini Evangelina',v:2112.25},{nom:'Teatrix',quien:'Vieyra Rico',v:3118.08},{nom:'Datos internet',quien:'Fiorini Juan Cruz',v:7400},{nom:'Datos internet',quien:'Vieyra Lucila',v:8425},{nom:'Datos internet',quien:'Boari Matías',v:5410},{nom:'Datos internet',quien:'Boari Ani',v:1835}],
+   extras:[{nom:'House of Comics',quien:'Fiorini Evangelina',v:2112.25},
+{nom:'Teatrix',quien:'Vieyra Rico',v:3118.08},
+{nom:'Datos internet',quien:'Fiorini Juan Cruz',v:7400},
+{nom:'Datos internet',quien:'Vieyra Lucila',v:8425},
+{nom:'Datos internet',quien:'Boari Matías',v:5410},
+{nom:'Datos internet',quien:'Boari Ani',v:1835}],
    lineas:[
     {linea:'1126560003',usuario:'VIEYRA, EDUARDO',plan:'PC70R',base:6837.04,extra:0},
-    {linea:'3446201000',usuario:'DE LUCA, JUAN',plan:'CC11R',base:11295.99,extra:0},
-    {linea:'3446202222',usuario:'VIEYRA, EDUARDO',plan:'CC12R',base:12283.12,extra:0},
-    {linea:'3446205301',usuario:'VIEYRA, SOFIA',plan:'PC92R',base:9036.8,extra:0},
-    {linea:'3446348811',usuario:'TALLER, MECANICO',plan:'PC70R',base:6837.04,extra:0},
-    {linea:'3446401889',usuario:'PICOLI, SILVIA',plan:'PC70R',base:6837.04,extra:0},
-    {linea:'3446524590',usuario:'FIORINI, CRISTINA',plan:'PC93R',base:12283.12,extra:0},
-    {linea:'3446526402',usuario:'FIORINI, LARA',plan:'PC92R',base:9036.8,extra:0},
-    {linea:'3446543762',usuario:'CABRERA, CAROLINA',plan:'PC93R',base:12283.12,extra:0},
-    {linea:'3446549228',usuario:'VIEYRA, RICO',plan:'PC92R',base:9036.8,extra:3118.08},
-    {linea:'3446559334',usuario:'DE LUCAS, ELIAS',plan:'PC93R',base:12283.12,extra:0},
-    {linea:'3446560921',usuario:'BOARI, MATIAS',plan:'PC93R',base:12283.12,extra:5410},
-    {linea:'3446572368',usuario:'FIORINI, IRIS',plan:'PC92R',base:9036.8,extra:0},
-    {linea:'3446572391',usuario:'FIORINI, PEPE',plan:'PC70R',base:6837.04,extra:0},
-    {linea:'3446572392',usuario:'FIORINI, CLAUDIA',plan:'PC92R',base:9036.8,extra:0},
-    {linea:'3446572393',usuario:'REVERDITO, JOAQUIN',plan:'PC93R',base:12283.12,extra:0},
-    {linea:'3446572404',usuario:'FIORINI, JOSE',plan:'PC93R',base:12283.12,extra:0},
-    {linea:'3446572422',usuario:'BOARI, PILO',plan:'PC93R',base:12283.12,extra:0},
-    {linea:'3446572450',usuario:'VIEYRA, EDUARDO VALENTIN',plan:'PC94C',base:17659.76,extra:0},
-    {linea:'3446572474',usuario:'VIEYRA, HORACIO',plan:'PC92R',base:9036.8,extra:0},
-    {linea:'3446572496',usuario:'VIEYRA, FERNANDO',plan:'PC94C',base:17659.76,extra:0},
-    {linea:'3446572498',usuario:'CABALLERO, FABIOLA',plan:'PC92R',base:9036.8,extra:0},
-    {linea:'3446572527',usuario:'VIEYRA, LUCILA',plan:'PC94R',base:17659.76,extra:8425},
-    {linea:'3446574855',usuario:'FIORINI, EVANGELINA',plan:'PC70R',base:6837.04,extra:2112.25},
-    {linea:'3446577183',usuario:'FIORINI, JUAN CRUZ',plan:'PC93R',base:12283.12,extra:7400},
-    {linea:'3446577408',usuario:'VES HNOS, GUALEGUAYCHU',plan:'PC70R',base:6837.04,extra:0},
-    {linea:'3446577642',usuario:'DE LUCAS, MELINA',plan:'CC12R',base:12283.12,extra:0},
-    {linea:'3446583971',usuario:'CABRERA, PAPA',plan:'PC70R',base:6837.04,extra:0},
-    {linea:'3446588111',usuario:'BOARI, ANI',plan:'PC93R',base:12283.12,extra:1835},
-    {linea:'3446588996',usuario:'DELCAUSSE, MARIO',plan:'PC94C',base:17659.76,extra:0},
-    {linea:'3446589001',usuario:'HORNUS, SILVIA',plan:'PC92R',base:9036.8,extra:0},
-    {linea:'3446610504',usuario:'DE LUCAS, JUAN',plan:'PC70R',base:6837.04,extra:0},
-    {linea:'3446612475',usuario:'DE LUCA, FRANCO',plan:'PC70R',base:6837.04,extra:0},
-    {linea:'3446613480',usuario:'BOARI, CARLITOS',plan:'PC70R',base:6837.04,extra:0},
-    {linea:'3446613837',usuario:'VIEYRA, BELEN',plan:'PC93R',base:12283.12,extra:0},
+{linea:'3446201000',usuario:'DE LUCA, JUAN',plan:'CC11R',base:11295.99,extra:0},
+{linea:'3446202222',usuario:'VIEYRA, EDUARDO',plan:'CC12R',base:12283.12,extra:0},
+{linea:'3446205301',usuario:'VIEYRA, SOFIA',plan:'PC92R',base:9036.8,extra:0},
+{linea:'3446348811',usuario:'TALLER, MECANICO',plan:'PC70R',base:6837.04,extra:0},
+{linea:'3446401889',usuario:'PICOLI, SILVIA',plan:'PC70R',base:6837.04,extra:0},
+{linea:'3446524590',usuario:'FIORINI, CRISTINA',plan:'PC93R',base:12283.12,extra:0},
+{linea:'3446526402',usuario:'FIORINI, LARA',plan:'PC92R',base:9036.8,extra:0},
+{linea:'3446543762',usuario:'CABRERA, CAROLINA',plan:'PC93R',base:12283.12,extra:0},
+{linea:'3446549228',usuario:'VIEYRA, RICO',plan:'PC92R',base:9036.8,extra:3118.08},
+{linea:'3446559334',usuario:'DE LUCAS, ELIAS',plan:'PC93R',base:12283.12,extra:0},
+{linea:'3446560921',usuario:'BOARI, MATIAS',plan:'PC93R',base:12283.12,extra:5410},
+{linea:'3446572368',usuario:'FIORINI, IRIS',plan:'PC92R',base:9036.8,extra:0},
+{linea:'3446572391',usuario:'FIORINI, PEPE',plan:'PC70R',base:6837.04,extra:0},
+{linea:'3446572392',usuario:'FIORINI, CLAUDIA',plan:'PC92R',base:9036.8,extra:0},
+{linea:'3446572393',usuario:'REVERDITO, JOAQUIN',plan:'PC93R',base:12283.12,extra:0},
+{linea:'3446572404',usuario:'FIORINI, JOSE',plan:'PC93R',base:12283.12,extra:0},
+{linea:'3446572422',usuario:'BOARI, PILO',plan:'PC93R',base:12283.12,extra:0},
+{linea:'3446572450',usuario:'VIEYRA, EDUARDO VALENTIN',plan:'PC94C',base:17659.76,extra:0},
+{linea:'3446572474',usuario:'VIEYRA, HORACIO',plan:'PC92R',base:9036.8,extra:0},
+{linea:'3446572496',usuario:'VIEYRA, FERNANDO',plan:'PC94C',base:17659.76,extra:0},
+{linea:'3446572498',usuario:'CABALLERO, FABIOLA',plan:'PC92R',base:9036.8,extra:0},
+{linea:'3446572527',usuario:'VIEYRA, LUCILA',plan:'PC94R',base:17659.76,extra:8425},
+{linea:'3446574855',usuario:'FIORINI, EVANGELINA',plan:'PC70R',base:6837.04,extra:2112.25},
+{linea:'3446577183',usuario:'FIORINI, JUAN CRUZ',plan:'PC93R',base:12283.12,extra:7400},
+{linea:'3446577408',usuario:'VES HNOS, GUALEGUAYCHU',plan:'PC70R',base:6837.04,extra:0},
+{linea:'3446577642',usuario:'DE LUCAS, MELINA',plan:'CC12R',base:12283.12,extra:0},
+{linea:'3446583971',usuario:'CABRERA, PAPA',plan:'PC70R',base:6837.04,extra:0},
+{linea:'3446588111',usuario:'BOARI, ANI',plan:'PC93R',base:12283.12,extra:1835},
+{linea:'3446588996',usuario:'DELCAUSSE, MARIO',plan:'PC94C',base:17659.76,extra:0},
+{linea:'3446589001',usuario:'HORNUS, SILVIA',plan:'PC92R',base:9036.8,extra:0},
+{linea:'3446610504',usuario:'DE LUCAS, JUAN',plan:'PC70R',base:6837.04,extra:0},
+{linea:'3446612475',usuario:'DE LUCA, FRANCO',plan:'PC70R',base:6837.04,extra:0},
+{linea:'3446613480',usuario:'BOARI, CARLITOS',plan:'PC70R',base:6837.04,extra:0},
+{linea:'3446613837',usuario:'VIEYRA, BELEN',plan:'PC93R',base:12283.12,extra:0},
    ]},
-,,,,{mesLabel:'Junio 2026',nroFact:'1340-00086184',fechaStr:'08/06/2026',fechaISO:'2026-06-08',anio:'2026',
+{mesLabel:'Junio 2026',nroFact:'1340-00086184',fechaStr:'08/06/2026',fechaISO:'2026-06-08',anio:'2026',
    total:438299.76,f2:1.213577,venc:'01/07/2026',proxVenc:'03/08/2026',periodo:'09/05 al 08/06/2026',totalExtras:18169.43,
    imp:{iva21:26084.3,iva27:56954.14,p3:10054.57,ib:10054.57},
-   extras:[{nom:'Datos 2GB×7d (×2)',quien:'Varias',v:5066.12},{nom:'10GB×30d (×2)',quien:'Varias',v:13103.31}],
+   extras:[{nom:'Datos 2GB×7d (×2)',quien:'Varias',v:5066.12},
+{nom:'10GB×30d (×2)',quien:'Varias',v:13103.31}],
    lineas:[
     {linea:'1126560003',usuario:'VIEYRA, EDUARDO',plan:'PC70R',base:5718,extra:0},
-    {linea:'3446201000',usuario:'DE LUCA, JUAN',plan:'CC11R',base:9475,extra:0},
-    {linea:'3446202222',usuario:'VIEYRA, EDUARDO',plan:'CC12R',base:10330,extra:0},
-    {linea:'3446205301',usuario:'VIEYRA, SOFIA',plan:'PC92R',base:7580,extra:0},
-    {linea:'3446348811',usuario:'TALLER, MECANICO',plan:'PC70R',base:5718,extra:0},
-    {linea:'3446401889',usuario:'PICOLI, SILVIA',plan:'PC70R',base:5718,extra:0},
-    {linea:'3446524590',usuario:'FIORINI, CRISTINA',plan:'PC93R',base:10330,extra:0},
-    {linea:'3446526402',usuario:'FIORINI, LARA',plan:'PC92R',base:7580,extra:0},
-    {linea:'3446543762',usuario:'CABRERA, CAROLINA',plan:'PC93R',base:10330,extra:0},
-    {linea:'3446549228',usuario:'VIEYRA, RICO',plan:'PC92R',base:7580,extra:0},
-    {linea:'3446559334',usuario:'DE LUCAS, ELIAS',plan:'PC93R',base:10330,extra:0},
-    {linea:'3446560921',usuario:'BOARI, MATIAS',plan:'PC93R',base:10330,extra:0},
-    {linea:'3446572368',usuario:'FIORINI, IRIS',plan:'PC92R',base:7580,extra:0},
-    {linea:'3446572391',usuario:'FIORINI, PEPE',plan:'PC70R',base:5718,extra:0},
-    {linea:'3446572392',usuario:'FIORINI, CLAUDIA',plan:'PC92R',base:7580,extra:0},
-    {linea:'3446572393',usuario:'REVERDITO, JOAQUIN',plan:'PC93R',base:10330,extra:0},
-    {linea:'3446572404',usuario:'FIORINI, JOSE',plan:'PC93R',base:10330,extra:0},
-    {linea:'3446572422',usuario:'BOARI, PILO',plan:'PC93R',base:10330,extra:0},
-    {linea:'3446572450',usuario:'VIEYRA, EDUARDO VALENTIN',plan:'PC94C',base:14882,extra:0},
-    {linea:'3446572474',usuario:'VIEYRA, HORACIO',plan:'PC92R',base:7580,extra:0},
-    {linea:'3446572496',usuario:'VIEYRA, FERNANDO',plan:'PC94C',base:14882,extra:0},
-    {linea:'3446572498',usuario:'CABALLERO, FABIOLA',plan:'PC92R',base:7580,extra:0},
-    {linea:'3446572527',usuario:'VIEYRA, LUCILA',plan:'PC94R',base:14882,extra:0},
-    {linea:'3446574855',usuario:'FIORINI, EVANGELINA',plan:'PC70R',base:5718,extra:0},
-    {linea:'3446577183',usuario:'FIORINI, JUAN CRUZ',plan:'PC93R',base:10330,extra:0},
-    {linea:'3446577408',usuario:'VES HNOS, GUALEGUAYCHU',plan:'PC70R',base:5718,extra:0},
-    {linea:'3446577642',usuario:'DE LUCAS, MELINA',plan:'CC12R',base:10330,extra:0},
-    {linea:'3446583971',usuario:'CABRERA, PAPA',plan:'PC70R',base:5718,extra:0},
-    {linea:'3446588111',usuario:'BOARI, ANI',plan:'PC93R',base:10330,extra:0},
-    {linea:'3446588996',usuario:'DELCAUSSE, MARIO',plan:'PC94C',base:14882,extra:0},
-    {linea:'3446589001',usuario:'HORNUS, SILVIA',plan:'PC92R',base:7580,extra:0},
-    {linea:'3446610504',usuario:'DE LUCAS, JUAN',plan:'PC70R',base:5718,extra:0},
-    {linea:'3446612475',usuario:'DE LUCA, FRANCO',plan:'PC70R',base:5718,extra:0},
-    {linea:'3446613480',usuario:'BOARI, CARLITOS',plan:'PC70R',base:5718,extra:0},
-    {linea:'3446613837',usuario:'VIEYRA, BELEN',plan:'PC93R',base:10330,extra:0},
+{linea:'3446201000',usuario:'DE LUCA, JUAN',plan:'CC11R',base:9475,extra:0},
+{linea:'3446202222',usuario:'VIEYRA, EDUARDO',plan:'CC12R',base:10330,extra:0},
+{linea:'3446205301',usuario:'VIEYRA, SOFIA',plan:'PC92R',base:7580,extra:0},
+{linea:'3446348811',usuario:'TALLER, MECANICO',plan:'PC70R',base:5718,extra:0},
+{linea:'3446401889',usuario:'PICOLI, SILVIA',plan:'PC70R',base:5718,extra:0},
+{linea:'3446524590',usuario:'FIORINI, CRISTINA',plan:'PC93R',base:10330,extra:0},
+{linea:'3446526402',usuario:'FIORINI, LARA',plan:'PC92R',base:7580,extra:0},
+{linea:'3446543762',usuario:'CABRERA, CAROLINA',plan:'PC93R',base:10330,extra:0},
+{linea:'3446549228',usuario:'VIEYRA, RICO',plan:'PC92R',base:7580,extra:0},
+{linea:'3446559334',usuario:'DE LUCAS, ELIAS',plan:'PC93R',base:10330,extra:0},
+{linea:'3446560921',usuario:'BOARI, MATIAS',plan:'PC93R',base:10330,extra:0},
+{linea:'3446572368',usuario:'FIORINI, IRIS',plan:'PC92R',base:7580,extra:0},
+{linea:'3446572391',usuario:'FIORINI, PEPE',plan:'PC70R',base:5718,extra:0},
+{linea:'3446572392',usuario:'FIORINI, CLAUDIA',plan:'PC92R',base:7580,extra:0},
+{linea:'3446572393',usuario:'REVERDITO, JOAQUIN',plan:'PC93R',base:10330,extra:0},
+{linea:'3446572404',usuario:'FIORINI, JOSE',plan:'PC93R',base:10330,extra:0},
+{linea:'3446572422',usuario:'BOARI, PILO',plan:'PC93R',base:10330,extra:0},
+{linea:'3446572450',usuario:'VIEYRA, EDUARDO VALENTIN',plan:'PC94C',base:14882,extra:0},
+{linea:'3446572474',usuario:'VIEYRA, HORACIO',plan:'PC92R',base:7580,extra:0},
+{linea:'3446572496',usuario:'VIEYRA, FERNANDO',plan:'PC94C',base:14882,extra:0},
+{linea:'3446572498',usuario:'CABALLERO, FABIOLA',plan:'PC92R',base:7580,extra:0},
+{linea:'3446572527',usuario:'VIEYRA, LUCILA',plan:'PC94R',base:14882,extra:0},
+{linea:'3446574855',usuario:'FIORINI, EVANGELINA',plan:'PC70R',base:5718,extra:0},
+{linea:'3446577183',usuario:'FIORINI, JUAN CRUZ',plan:'PC93R',base:10330,extra:0},
+{linea:'3446577408',usuario:'VES HNOS, GUALEGUAYCHU',plan:'PC70R',base:5718,extra:0},
+{linea:'3446577642',usuario:'DE LUCAS, MELINA',plan:'CC12R',base:10330,extra:0},
+{linea:'3446583971',usuario:'CABRERA, PAPA',plan:'PC70R',base:5718,extra:0},
+{linea:'3446588111',usuario:'BOARI, ANI',plan:'PC93R',base:10330,extra:0},
+{linea:'3446588996',usuario:'DELCAUSSE, MARIO',plan:'PC94C',base:14882,extra:0},
+{linea:'3446589001',usuario:'HORNUS, SILVIA',plan:'PC92R',base:7580,extra:0},
+{linea:'3446610504',usuario:'DE LUCAS, JUAN',plan:'PC70R',base:5718,extra:0},
+{linea:'3446612475',usuario:'DE LUCA, FRANCO',plan:'PC70R',base:5718,extra:0},
+{linea:'3446613480',usuario:'BOARI, CARLITOS',plan:'PC70R',base:5718,extra:0},
+{linea:'3446613837',usuario:'VIEYRA, BELEN',plan:'PC93R',base:10330,extra:0},
    ]},
-,,,,{mesLabel:'Julio 2026',nroFact:'1340-00236433',fechaStr:'08/07/2026',fechaISO:'2026-07-08',anio:'2026',
+{mesLabel:'Julio 2026',nroFact:'1340-00236433',fechaStr:'08/07/2026',fechaISO:'2026-07-08',anio:'2026',
    total:450741.77,f2:0.874974,sumaConRec:240399,venc:'03/08/2026',proxVenc:'01/09/2026',periodo:'09/06 al 08/07/2026',totalExtras:18338.84,
    imp:{iva21:26775.54,iva27:58631.31,p3:10339.67,ib:10339.67},
-   extras:[{nom:'Datos internet',quien:'Boari Matías',v:4933.88},{nom:'Roaming América',quien:'Boari Ani',v:4545.45},{nom:'Datos internet',quien:'Reverdito Joaquín',v:1553.72},{nom:'Teatrix',quien:'Vieyra Rico',v:2768.6},{nom:'Datos internet',quien:'Fiorini Juan Cruz',v:2661.16},{nom:'House of Comics',quien:'Fiorini Evangelina',v:1876.03}],
+   extras:[{nom:'Datos internet',quien:'Boari Matías',v:4933.88},
+{nom:'Roaming América',quien:'Boari Ani',v:4545.45},
+{nom:'Datos internet',quien:'Reverdito Joaquín',v:1553.72},
+{nom:'Teatrix',quien:'Vieyra Rico',v:2768.6},
+{nom:'Datos internet',quien:'Fiorini Juan Cruz',v:2661.16},
+{nom:'House of Comics',quien:'Fiorini Evangelina',v:1876.03}],
    lineas:[
     {linea:'1126560003',usuario:'VIEYRA, EDUARDO',         plan:'PC70R',base:6639,   extra:0},
-    {linea:'3446201000',usuario:'DE LUCA, JUAN',           plan:'CC11R',base:10997,  extra:0},
-    {linea:'3446202222',usuario:'VIEYRA, EDUARDO',         plan:'CC12R',base:11990,  extra:0},
-    {linea:'3446205301',usuario:'VIEYRA, SOFIA',           plan:'PC92R',base:8797,   extra:0},
-    {linea:'3446348811',usuario:'TALLER, MECANICO',        plan:'PC70R',base:6639,   extra:0},
-    {linea:'3446401889',usuario:'PICOLI, SILVIA',          plan:'PC70R',base:6639,   extra:0},
-    {linea:'3446524590',usuario:'FIORINI, CRISTINA',       plan:'PC93R',base:11990,  extra:0},
-    {linea:'3446526402',usuario:'FIORINI, LARA',           plan:'PC92R',base:8797,   extra:1568},
-    {linea:'3446543762',usuario:'CABRERA, CAROLINA',       plan:'PC93R',base:11990,  extra:0},
-    {linea:'3446549228',usuario:'VIEYRA, RICO',            plan:'PC92R',base:8797,   extra:3126},
-    {linea:'3446559334',usuario:'DE LUCAS, ELIAS',         plan:'PC93R',base:11990,  extra:0},
-    {linea:'3446560921',usuario:'BOARI, MATIAS',           plan:'PC93R',base:11990,  extra:0},
-    {linea:'3446572368',usuario:'FIORINI, IRIS',           plan:'PC92R',base:8797,   extra:0},
-    {linea:'3446572391',usuario:'FIORINI, PEPE',           plan:'PC70R',base:6639,   extra:0},
-    {linea:'3446572392',usuario:'FIORINI, CLAUDIA',        plan:'PC92R',base:8797,   extra:0},
-    {linea:'3446572393',usuario:'REVERDITO, JOAQUIN',      plan:'PC93R',base:11990,  extra:0},
-    {linea:'3446572404',usuario:'FIORINI, JOSE',           plan:'PC93R',base:11990,  extra:0},
-    {linea:'3446572422',usuario:'BOARI, PILO',             plan:'PC93R',base:11990,  extra:0},
-    {linea:'3446572450',usuario:'VIEYRA, EDUARDO VALENTIN',plan:'PC94C',base:17272,  extra:0},
-    {linea:'3446572474',usuario:'VIEYRA, HORACIO',         plan:'PC92R',base:8797,   extra:0},
-    {linea:'3446572496',usuario:'VIEYRA, FERNANDO',        plan:'PC94C',base:17272,  extra:0},
-    {linea:'3446572498',usuario:'CABALLERO, FABIOLA',      plan:'PC92R',base:8797,   extra:0},
-    {linea:'3446572527',usuario:'VIEYRA, LUCILA',          plan:'PC94R',base:17272,  extra:0},
-    {linea:'3446574855',usuario:'FIORINI, EVANGELINA',     plan:'PC70R',base:6639,   extra:2119},
-    {linea:'3446577183',usuario:'FIORINI, JUAN CRUZ',      plan:'PC93R',base:11990,  extra:5762},
-    {linea:'3446577408',usuario:'VES HNOS, GUALEGUAYCHU',  plan:'PC70R',base:6639,   extra:0},
-    {linea:'3446577642',usuario:'DE LUCAS, MELINA',        plan:'CC12R',base:11990,  extra:0},
-    {linea:'3446583971',usuario:'CABRERA, PAPA',           plan:'PC70R',base:6639,   extra:0},
-    {linea:'3446588111',usuario:'BOARI, ANI',              plan:'PC93R',base:11990,  extra:0},
-    {linea:'3446588996',usuario:'DELCAUSSE, MARIO',        plan:'PC94C',base:17272,  extra:1958},
-    {linea:'3446589001',usuario:'HORNUS, SILVIA',          plan:'PC92R',base:8797,   extra:0},
-    {linea:'3446610504',usuario:'DE LUCAS, JUAN',          plan:'PC70R',base:6639,   extra:0},
-    {linea:'3446612475',usuario:'DE LUCA, FRANCO',         plan:'PC70R',base:6639,   extra:0},
-    {linea:'3446613480',usuario:'BOARI, CARLITOS',         plan:'PC70R',base:6639,   extra:0},
-    {linea:'3446613837',usuario:'VIEYRA, BELEN',           plan:'PC93R',base:11990,  extra:0},
+{linea:'3446201000',usuario:'DE LUCA, JUAN',           plan:'CC11R',base:10997,  extra:0},
+{linea:'3446202222',usuario:'VIEYRA, EDUARDO',         plan:'CC12R',base:11990,  extra:0},
+{linea:'3446205301',usuario:'VIEYRA, SOFIA',           plan:'PC92R',base:8797,   extra:0},
+{linea:'3446348811',usuario:'TALLER, MECANICO',        plan:'PC70R',base:6639,   extra:0},
+{linea:'3446401889',usuario:'PICOLI, SILVIA',          plan:'PC70R',base:6639,   extra:0},
+{linea:'3446524590',usuario:'FIORINI, CRISTINA',       plan:'PC93R',base:11990,  extra:0},
+{linea:'3446526402',usuario:'FIORINI, LARA',           plan:'PC92R',base:8797,   extra:1568},
+{linea:'3446543762',usuario:'CABRERA, CAROLINA',       plan:'PC93R',base:11990,  extra:0},
+{linea:'3446549228',usuario:'VIEYRA, RICO',            plan:'PC92R',base:8797,   extra:3126},
+{linea:'3446559334',usuario:'DE LUCAS, ELIAS',         plan:'PC93R',base:11990,  extra:0},
+{linea:'3446560921',usuario:'BOARI, MATIAS',           plan:'PC93R',base:11990,  extra:0},
+{linea:'3446572368',usuario:'FIORINI, IRIS',           plan:'PC92R',base:8797,   extra:0},
+{linea:'3446572391',usuario:'FIORINI, PEPE',           plan:'PC70R',base:6639,   extra:0},
+{linea:'3446572392',usuario:'FIORINI, CLAUDIA',        plan:'PC92R',base:8797,   extra:0},
+{linea:'3446572393',usuario:'REVERDITO, JOAQUIN',      plan:'PC93R',base:11990,  extra:0},
+{linea:'3446572404',usuario:'FIORINI, JOSE',           plan:'PC93R',base:11990,  extra:0},
+{linea:'3446572422',usuario:'BOARI, PILO',             plan:'PC93R',base:11990,  extra:0},
+{linea:'3446572450',usuario:'VIEYRA, EDUARDO VALENTIN',plan:'PC94C',base:17272,  extra:0},
+{linea:'3446572474',usuario:'VIEYRA, HORACIO',         plan:'PC92R',base:8797,   extra:0},
+{linea:'3446572496',usuario:'VIEYRA, FERNANDO',        plan:'PC94C',base:17272,  extra:0},
+{linea:'3446572498',usuario:'CABALLERO, FABIOLA',      plan:'PC92R',base:8797,   extra:0},
+{linea:'3446572527',usuario:'VIEYRA, LUCILA',          plan:'PC94R',base:17272,  extra:0},
+{linea:'3446574855',usuario:'FIORINI, EVANGELINA',     plan:'PC70R',base:6639,   extra:2119},
+{linea:'3446577183',usuario:'FIORINI, JUAN CRUZ',      plan:'PC93R',base:11990,  extra:5762},
+{linea:'3446577408',usuario:'VES HNOS, GUALEGUAYCHU',  plan:'PC70R',base:6639,   extra:0},
+{linea:'3446577642',usuario:'DE LUCAS, MELINA',        plan:'CC12R',base:11990,  extra:0},
+{linea:'3446583971',usuario:'CABRERA, PAPA',           plan:'PC70R',base:6639,   extra:0},
+{linea:'3446588111',usuario:'BOARI, ANI',              plan:'PC93R',base:11990,  extra:0},
+{linea:'3446588996',usuario:'DELCAUSSE, MARIO',        plan:'PC94C',base:17272,  extra:1958},
+{linea:'3446589001',usuario:'HORNUS, SILVIA',          plan:'PC92R',base:8797,   extra:0},
+{linea:'3446610504',usuario:'DE LUCAS, JUAN',          plan:'PC70R',base:6639,   extra:0},
+{linea:'3446612475',usuario:'DE LUCA, FRANCO',         plan:'PC70R',base:6639,   extra:0},
+{linea:'3446613480',usuario:'BOARI, CARLITOS',         plan:'PC70R',base:6639,   extra:0},
+{linea:'3446613837',usuario:'VIEYRA, BELEN',           plan:'PC93R',base:11990,  extra:0},
    ]},
-,,,,{
+{
    mesLabel:'Agosto 2026',nroFact:'1340-00417469',fechaStr:'08/08/2026',fechaISO:'2026-08-08',anio:'2026',
    total:490899.19,f2:0.874974,sumaConRec:240399,
    venc:'01/09/2026',proxVenc:'01/10/2026',periodo:'09/07 al 08/08/2026',
@@ -1095,48 +1109,48 @@ const FACTURAS = [
    imp:{iva21:31667.84,iva27:60777.24,p3:11277.00,ib:11277.00},
    extras:[
      {nom:'Datos internet',quien:'Boari Matías',v:3347.11},
-     {nom:'Datos internet',quien:'Fiorini Lara',v:2661.16},
-     {nom:'Datos internet',quien:'Fiorini Juan Cruz',v:2785.12},
+{nom:'Datos internet',quien:'Fiorini Lara',v:2661.16},
+{nom:'Datos internet',quien:'Fiorini Juan Cruz',v:2785.12},
    ],
    lineas:[
     {linea:'1126560003',usuario:'VIEYRA, EDUARDO',          plan:'PC70R',base:6294,   extra:0},
-    {linea:'3446201000',usuario:'DE LUCA, JUAN',            plan:'CC11R',base:10432.5,extra:0},
-    {linea:'3446202222',usuario:'VIEYRA, EDUARDO',          plan:'CC12R',base:11376,  extra:0},
-    {linea:'3446205301',usuario:'VIEYRA, SOFIA',            plan:'PC92R',base:8346,   extra:0},
-    {linea:'3446348811',usuario:'TALLER, MECANICO',         plan:'PC70R',base:6294,   extra:0},
-    {linea:'3446401889',usuario:'PICOLI, SILVIA',           plan:'PC70R',base:6294,   extra:0},
-    {linea:'3446524590',usuario:'FIORINI, CRISTINA',        plan:'PC93R',base:11376,  extra:0},
-    {linea:'3446526402',usuario:'FIORINI, LARA',            plan:'PC92R',base:8346,   extra:2661.16},
-    {linea:'3446543762',usuario:'CABRERA, CAROLINA',        plan:'PC93R',base:11376,  extra:0},
-    {linea:'3446549228',usuario:'VIEYRA, RICO',             plan:'PC92R',base:8346,   extra:0},
-    {linea:'3446559334',usuario:'DE LUCAS, ELIAS',          plan:'PC93R',base:11376,  extra:0},
-    {linea:'3446560921',usuario:'BOARI, MATIAS',            plan:'PC93R',base:11376,  extra:3347.11},
-    {linea:'3446572368',usuario:'FIORINI, IRIS',            plan:'PC92R',base:8346,   extra:0},
-    {linea:'3446572391',usuario:'FIORINI, PEPE',            plan:'PC70R',base:6294,   extra:0},
-    {linea:'3446572392',usuario:'FIORINI, CLAUDIA',         plan:'PC92R',base:8346,   extra:0},
-    {linea:'3446572393',usuario:'REVERDITO, JOAQUIN',       plan:'PC93R',base:11376,  extra:0},
-    {linea:'3446572404',usuario:'FIORINI, JOSE',            plan:'PC93R',base:11376,  extra:0},
-    {linea:'3446572422',usuario:'BOARI, PILO',              plan:'PC93R',base:11376,  extra:0},
-    {linea:'3446572450',usuario:'VIEYRA, EDUARDO VALENTIN', plan:'PC94C',base:16390,  extra:0},
-    {linea:'3446572474',usuario:'VIEYRA, HORACIO',          plan:'PC92R',base:8346,   extra:0},
-    {linea:'3446572496',usuario:'VIEYRA, FERNANDO',         plan:'PC94C',base:16390,  extra:0},
-    {linea:'3446572498',usuario:'CABALLERO, FABIOLA',       plan:'PC92R',base:8346,   extra:0},
-    {linea:'3446572527',usuario:'VIEYRA, LUCILA',           plan:'PC94R',base:16390,  extra:0},
-    {linea:'3446574855',usuario:'FIORINI, EVANGELINA',      plan:'PC70R',base:6294,   extra:0},
-    {linea:'3446577183',usuario:'FIORINI, JUAN CRUZ',       plan:'PC93R',base:11376,  extra:2785.12},
-    {linea:'3446577408',usuario:'VES HNOS, GUALEGUAYCHU',   plan:'PC70R',base:6294,   extra:0},
-    {linea:'3446577642',usuario:'DE LUCAS, MELINA',         plan:'CC12R',base:11376,  extra:0},
-    {linea:'3446583971',usuario:'CABRERA, PAPA',            plan:'PC70R',base:6294,   extra:0},
-    {linea:'3446588111',usuario:'BOARI, ANI',               plan:'PC93R',base:11376,  extra:0},
-    {linea:'3446588996',usuario:'DELCAUSSE, MARIO',         plan:'PC94C',base:16390,  extra:0},
-    {linea:'3446589001',usuario:'HORNUS, SILVIA',           plan:'PC92R',base:8346,   extra:0},
-    {linea:'3446610504',usuario:'DE LUCAS, JUAN',           plan:'PC70R',base:6294,   extra:0},
-    {linea:'3446612475',usuario:'DE LUCA, FRANCO',          plan:'PC70R',base:6294,   extra:0},
-    {linea:'3446613480',usuario:'BOARI, CARLITOS',          plan:'PC70R',base:6294,   extra:0},
-    {linea:'3446613837',usuario:'VIEYRA, BELEN',            plan:'PC93R',base:11376,  extra:0},
+{linea:'3446201000',usuario:'DE LUCA, JUAN',            plan:'CC11R',base:10432.5,extra:0},
+{linea:'3446202222',usuario:'VIEYRA, EDUARDO',          plan:'CC12R',base:11376,  extra:0},
+{linea:'3446205301',usuario:'VIEYRA, SOFIA',            plan:'PC92R',base:8346,   extra:0},
+{linea:'3446348811',usuario:'TALLER, MECANICO',         plan:'PC70R',base:6294,   extra:0},
+{linea:'3446401889',usuario:'PICOLI, SILVIA',           plan:'PC70R',base:6294,   extra:0},
+{linea:'3446524590',usuario:'FIORINI, CRISTINA',        plan:'PC93R',base:11376,  extra:0},
+{linea:'3446526402',usuario:'FIORINI, LARA',            plan:'PC92R',base:8346,   extra:2661.16},
+{linea:'3446543762',usuario:'CABRERA, CAROLINA',        plan:'PC93R',base:11376,  extra:0},
+{linea:'3446549228',usuario:'VIEYRA, RICO',             plan:'PC92R',base:8346,   extra:0},
+{linea:'3446559334',usuario:'DE LUCAS, ELIAS',          plan:'PC93R',base:11376,  extra:0},
+{linea:'3446560921',usuario:'BOARI, MATIAS',            plan:'PC93R',base:11376,  extra:3347.11},
+{linea:'3446572368',usuario:'FIORINI, IRIS',            plan:'PC92R',base:8346,   extra:0},
+{linea:'3446572391',usuario:'FIORINI, PEPE',            plan:'PC70R',base:6294,   extra:0},
+{linea:'3446572392',usuario:'FIORINI, CLAUDIA',         plan:'PC92R',base:8346,   extra:0},
+{linea:'3446572393',usuario:'REVERDITO, JOAQUIN',       plan:'PC93R',base:11376,  extra:0},
+{linea:'3446572404',usuario:'FIORINI, JOSE',            plan:'PC93R',base:11376,  extra:0},
+{linea:'3446572422',usuario:'BOARI, PILO',              plan:'PC93R',base:11376,  extra:0},
+{linea:'3446572450',usuario:'VIEYRA, EDUARDO VALENTIN', plan:'PC94C',base:16390,  extra:0},
+{linea:'3446572474',usuario:'VIEYRA, HORACIO',          plan:'PC92R',base:8346,   extra:0},
+{linea:'3446572496',usuario:'VIEYRA, FERNANDO',         plan:'PC94C',base:16390,  extra:0},
+{linea:'3446572498',usuario:'CABALLERO, FABIOLA',       plan:'PC92R',base:8346,   extra:0},
+{linea:'3446572527',usuario:'VIEYRA, LUCILA',           plan:'PC94R',base:16390,  extra:0},
+{linea:'3446574855',usuario:'FIORINI, EVANGELINA',      plan:'PC70R',base:6294,   extra:0},
+{linea:'3446577183',usuario:'FIORINI, JUAN CRUZ',       plan:'PC93R',base:11376,  extra:2785.12},
+{linea:'3446577408',usuario:'VES HNOS, GUALEGUAYCHU',   plan:'PC70R',base:6294,   extra:0},
+{linea:'3446577642',usuario:'DE LUCAS, MELINA',         plan:'CC12R',base:11376,  extra:0},
+{linea:'3446583971',usuario:'CABRERA, PAPA',            plan:'PC70R',base:6294,   extra:0},
+{linea:'3446588111',usuario:'BOARI, ANI',               plan:'PC93R',base:11376,  extra:0},
+{linea:'3446588996',usuario:'DELCAUSSE, MARIO',         plan:'PC94C',base:16390,  extra:0},
+{linea:'3446589001',usuario:'HORNUS, SILVIA',           plan:'PC92R',base:8346,   extra:0},
+{linea:'3446610504',usuario:'DE LUCAS, JUAN',           plan:'PC70R',base:6294,   extra:0},
+{linea:'3446612475',usuario:'DE LUCA, FRANCO',          plan:'PC70R',base:6294,   extra:0},
+{linea:'3446613480',usuario:'BOARI, CARLITOS',          plan:'PC70R',base:6294,   extra:0},
+{linea:'3446613837',usuario:'VIEYRA, BELEN',            plan:'PC93R',base:11376,  extra:0},
   ],
   },
-,{
+{
    mesLabel:'Septiembre 2026',nroFact:'1340-00582623',fechaStr:'08/09/2026',fechaISO:'2026-09-08',anio:'2026',
    total:494772.78,f2:1.057109,sumaConRec:240518.55,
    venc:'01/10/2026',proxVenc:'02/11/2026',periodo:'09/08 al 08/09/2026',
@@ -1144,46 +1158,46 @@ const FACTURAS = [
    imp:{iva21:31629.85,iva27:61610.25,p3:11364.13,ib:11364.13},
    extras:[
      {nom:'Datos internet',quien:'Fiorini Cristina',v:5173.55},
-     {nom:'Teatrix mensual',quien:'Rico Vieyra',v:2768.60},
-     {nom:'Datos internet',quien:'Vieyra Lucila',v:7727.27},
-     {nom:'Datos internet',quien:'Fiorini Juan Cruz',v:11000.00},
+{nom:'Teatrix mensual',quien:'Rico Vieyra',v:2768.60},
+{nom:'Datos internet',quien:'Vieyra Lucila',v:7727.27},
+{nom:'Datos internet',quien:'Fiorini Juan Cruz',v:11000.00},
    ],
    lineas:[
     {linea:'1126560003',usuario:'VIEYRA, EDUARDO',plan:'PC70R',base:6476.0,extra:0},
-    {linea:'3446201000',usuario:'DE LUCA, JUAN',plan:'CC11R',base:10735.0,extra:0},
-    {linea:'3446202222',usuario:'VIEYRA, EDUARDO',plan:'CC12R',base:11706.0,extra:0},
-    {linea:'3446205301',usuario:'VIEYRA, SOFIA',plan:'PC92R',base:8588.0,extra:0},
-    {linea:'3446348811',usuario:'TALLER, MECANICO',plan:'PC70R',base:6476.0,extra:0},
-    {linea:'3446401889',usuario:'PICOLI, SILVIA',plan:'PC70R',base:6476.0,extra:0},
-    {linea:'3446524590',usuario:'FIORINI, CRISTINA',plan:'PC93R',base:16879.55,extra:0},
-    {linea:'3446526402',usuario:'FIORINI, LARA',plan:'PC92R',base:8588.0,extra:0},
-    {linea:'3446543762',usuario:'CABRERA, CAROLINA',plan:'PC93R',base:11706.0,extra:0},
-    {linea:'3446549228',usuario:'VIEYRA, RICO',plan:'PC92R',base:11356.6,extra:0},
-    {linea:'3446559334',usuario:'DE LUCAS, ELIAS',plan:'PC93R',base:11706.0,extra:0},
-    {linea:'3446560921',usuario:'BOARI, MATIAS',plan:'PC93R',base:11706.0,extra:0},
-    {linea:'3446572368',usuario:'FIORINI, IRIS',plan:'PC92R',base:8588.0,extra:0},
-    {linea:'3446572391',usuario:'FIORINI, PEPE',plan:'PC70R',base:6476.0,extra:0},
-    {linea:'3446572392',usuario:'FIORINI, CLAUDIA',plan:'PC92R',base:8588.0,extra:0},
-    {linea:'3446572393',usuario:'REVERDITO, JOAQUIN',plan:'PC93R',base:11706.0,extra:0},
-    {linea:'3446572404',usuario:'FIORINI, JOSE',plan:'PC93R',base:11706.0,extra:0},
-    {linea:'3446572422',usuario:'BOARI, PILO',plan:'PC93R',base:11706.0,extra:0},
-    {linea:'3446572450',usuario:'VIEYRA, EDUARDO VALENTIN',plan:'PC94C',base:16866.0,extra:0},
-    {linea:'3446572474',usuario:'VIEYRA, HORACIO',plan:'PC92R',base:8588.0,extra:0},
-    {linea:'3446572496',usuario:'VIEYRA, FERNANDO',plan:'PC94C',base:16866.0,extra:0},
-    {linea:'3446572498',usuario:'CABALLERO, FABIOLA',plan:'PC92R',base:8588.0,extra:0},
-    {linea:'3446572527',usuario:'VIEYRA, LUCILA',plan:'PC94R',base:24593.27,extra:0},
-    {linea:'3446574855',usuario:'FIORINI, EVANGELINA',plan:'PC70R',base:6476.0,extra:0},
-    {linea:'3446577183',usuario:'FIORINI, JUAN CRUZ',plan:'PC93R',base:22706.0,extra:0},
-    {linea:'3446577408',usuario:'VES HNOS, GUALEGUAYCHU',plan:'PC70R',base:6476.0,extra:0},
-    {linea:'3446577642',usuario:'DE LUCAS, MELINA',plan:'CC12R',base:11706.0,extra:0},
-    {linea:'3446583971',usuario:'CABRERA, PAPA',plan:'PC70R',base:6476.0,extra:0},
-    {linea:'3446588111',usuario:'BOARI, ANI',plan:'PC93R',base:11706.0,extra:0},
-    {linea:'3446588996',usuario:'DELCAUSSE, MARIO',plan:'PC94C',base:16866.0,extra:0},
-    {linea:'3446589001',usuario:'HORNUS, SILVIA',plan:'PC92R',base:8588.0,extra:0},
-    {linea:'3446610504',usuario:'DE LUCAS, JUAN',plan:'PC70R',base:6476.0,extra:0},
-    {linea:'3446612475',usuario:'DE LUCA, FRANCO',plan:'PC70R',base:6476.0,extra:0},
-    {linea:'3446613480',usuario:'BOARI, CARLITOS',plan:'PC70R',base:6476.0,extra:0},
-    {linea:'3446613837',usuario:'VIEYRA, BELEN',plan:'PC93R',base:11706.0,extra:0},
+{linea:'3446201000',usuario:'DE LUCA, JUAN',plan:'CC11R',base:10735.0,extra:0},
+{linea:'3446202222',usuario:'VIEYRA, EDUARDO',plan:'CC12R',base:11706.0,extra:0},
+{linea:'3446205301',usuario:'VIEYRA, SOFIA',plan:'PC92R',base:8588.0,extra:0},
+{linea:'3446348811',usuario:'TALLER, MECANICO',plan:'PC70R',base:6476.0,extra:0},
+{linea:'3446401889',usuario:'PICOLI, SILVIA',plan:'PC70R',base:6476.0,extra:0},
+{linea:'3446524590',usuario:'FIORINI, CRISTINA',plan:'PC93R',base:16879.55,extra:0},
+{linea:'3446526402',usuario:'FIORINI, LARA',plan:'PC92R',base:8588.0,extra:0},
+{linea:'3446543762',usuario:'CABRERA, CAROLINA',plan:'PC93R',base:11706.0,extra:0},
+{linea:'3446549228',usuario:'VIEYRA, RICO',plan:'PC92R',base:11356.6,extra:0},
+{linea:'3446559334',usuario:'DE LUCAS, ELIAS',plan:'PC93R',base:11706.0,extra:0},
+{linea:'3446560921',usuario:'BOARI, MATIAS',plan:'PC93R',base:11706.0,extra:0},
+{linea:'3446572368',usuario:'FIORINI, IRIS',plan:'PC92R',base:8588.0,extra:0},
+{linea:'3446572391',usuario:'FIORINI, PEPE',plan:'PC70R',base:6476.0,extra:0},
+{linea:'3446572392',usuario:'FIORINI, CLAUDIA',plan:'PC92R',base:8588.0,extra:0},
+{linea:'3446572393',usuario:'REVERDITO, JOAQUIN',plan:'PC93R',base:11706.0,extra:0},
+{linea:'3446572404',usuario:'FIORINI, JOSE',plan:'PC93R',base:11706.0,extra:0},
+{linea:'3446572422',usuario:'BOARI, PILO',plan:'PC93R',base:11706.0,extra:0},
+{linea:'3446572450',usuario:'VIEYRA, EDUARDO VALENTIN',plan:'PC94C',base:16866.0,extra:0},
+{linea:'3446572474',usuario:'VIEYRA, HORACIO',plan:'PC92R',base:8588.0,extra:0},
+{linea:'3446572496',usuario:'VIEYRA, FERNANDO',plan:'PC94C',base:16866.0,extra:0},
+{linea:'3446572498',usuario:'CABALLERO, FABIOLA',plan:'PC92R',base:8588.0,extra:0},
+{linea:'3446572527',usuario:'VIEYRA, LUCILA',plan:'PC94R',base:24593.27,extra:0},
+{linea:'3446574855',usuario:'FIORINI, EVANGELINA',plan:'PC70R',base:6476.0,extra:0},
+{linea:'3446577183',usuario:'FIORINI, JUAN CRUZ',plan:'PC93R',base:22706.0,extra:0},
+{linea:'3446577408',usuario:'VES HNOS, GUALEGUAYCHU',plan:'PC70R',base:6476.0,extra:0},
+{linea:'3446577642',usuario:'DE LUCAS, MELINA',plan:'CC12R',base:11706.0,extra:0},
+{linea:'3446583971',usuario:'CABRERA, PAPA',plan:'PC70R',base:6476.0,extra:0},
+{linea:'3446588111',usuario:'BOARI, ANI',plan:'PC93R',base:11706.0,extra:0},
+{linea:'3446588996',usuario:'DELCAUSSE, MARIO',plan:'PC94C',base:16866.0,extra:0},
+{linea:'3446589001',usuario:'HORNUS, SILVIA',plan:'PC92R',base:8588.0,extra:0},
+{linea:'3446610504',usuario:'DE LUCAS, JUAN',plan:'PC70R',base:6476.0,extra:0},
+{linea:'3446612475',usuario:'DE LUCA, FRANCO',plan:'PC70R',base:6476.0,extra:0},
+{linea:'3446613480',usuario:'BOARI, CARLITOS',plan:'PC70R',base:6476.0,extra:0},
+{linea:'3446613837',usuario:'VIEYRA, BELEN',plan:'PC93R',base:11706.0,extra:0},
    ],
   }
 ];
@@ -1502,17 +1516,17 @@ function renderHistorial() {
 /* ─── EXTRAS RESUMEN ─── */
 function renderExtrasResumen(f) {
   if (!f.extras.length) {
-    $('extras-resumen').innerHTML='<p style="color:var(--text3);font-size:11px">Sin extras este mes</p>';
+    $('extras-resumen').innerHTML='<p style="color:var(--text3);font-size:13px">Sin extras este mes</p>';
     return;
   }
   const cols = {datos:'#93c5fd',roaming:'#5eead4',otro:'#c4b5fd'};
   const tipo = n => n.toLowerCase().includes('dato')?'datos':n.toLowerCase().includes('roam')?'roaming':'otro';
-  $('extras-resumen').innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:11px">
-    <thead><tr>${['Concepto','Usuario','Importe'].map(h=>`<th style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text3);text-align:left;padding:0 0 7px">${h}</th>`).join('')}</tr></thead>
+  $('extras-resumen').innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:13px">
+    <thead><tr>${['Concepto','Usuario','Importe'].map(h=>`<th style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text3);text-align:left;padding:0 0 7px">${h}</th>`).join('')}</tr></thead>
     <tbody>
       ${f.extras.map(e=>{const t=tipo(e.nom);return `<tr>
-        <td style="padding:5px 0;border-top:.5px solid var(--border)"><span style="background:${cols[t]}22;color:${cols[t]};border-radius:3px;padding:1px 5px;font-size:9px;font-weight:700">${t}</span> ${e.nom}</td>
-        <td style="padding:5px 0;border-top:.5px solid var(--border);color:var(--text2);font-size:10px">${e.quien||''}</td>
+        <td style="padding:5px 0;border-top:.5px solid var(--border)"><span style="background:${cols[t]}22;color:${cols[t]};border-radius:3px;padding:1px 5px;font-size:11px;font-weight:700">${t}</span> ${e.nom}</td>
+        <td style="padding:5px 0;border-top:.5px solid var(--border);color:var(--text2);font-size:12px">${e.quien||''}</td>
         <td style="padding:5px 0;border-top:.5px solid var(--border);text-align:right;font-weight:600;color:#fbbf24;font-family:var(--mono)">${AR(e.v)}</td>
       </tr>`;}).join('')}
       <tr><td colspan="2" style="padding-top:9px;font-weight:600;color:var(--text2)">Total extras</td>
@@ -1554,7 +1568,7 @@ function renderImpuestos(f) {
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px">
       ${[['IVA 21%',i.iva21,'#93c5fd'],['IVA 27%',i.iva27,'#c4b5fd'],['Perc. 3%',i.p3,'#6ee7b7'],['IIBB 3%',i.ib,'#fcd34d'],['Total imp.',subtImp,'#fca5a5']].map(([l,v,c])=>`
       <div style="background:var(--bg3);border-radius:6px;padding:9px 11px">
-        <div style="font-size:9px;font-weight:700;text-transform:uppercase;color:var(--text3);margin-bottom:3px">${l}</div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;color:var(--text3);margin-bottom:3px">${l}</div>
         <div style="font-size:14px;font-weight:700;color:${c};font-family:var(--mono)">${AR(v||0)}</div>
       </div>`).join('')}
     </div>`;
@@ -1589,12 +1603,12 @@ function renderExtrasAll() {
     const exs = q ? fact.extras.filter(e=>e.nom.toLowerCase().includes(q)||(e.quien||'').toLowerCase().includes(q)) : fact.extras;
     return `<div class="card" style="margin-bottom:12px${cur?';border:.5px solid rgba(59,130,246,.5)':''}">
       <div class="card-title">
-        ${cur?`<span style="background:rgba(59,130,246,.2);color:#93c5fd;border-radius:3px;padding:1px 6px;font-size:9px;font-weight:700;margin-right:6px">Mes actual</span>`:''}
+        ${cur?`<span style="background:rgba(59,130,246,.2);color:#93c5fd;border-radius:3px;padding:1px 6px;font-size:11px;font-weight:700;margin-right:6px">Mes actual</span>`:''}
         ${fact.mesLabel} — <span style="color:var(--amber)">${AR(exs.reduce((s,e)=>s+e.v,0))}</span>
       </div>
-      ${!exs.length ? '<p style="font-size:11px;color:var(--text3)">Sin extras</p>' : `
-      <table style="width:100%;border-collapse:collapse;font-size:11px">
-        <thead><tr>${['Concepto','Usuario','Importe'].map(h=>`<th style="font-size:9px;font-weight:700;text-transform:uppercase;color:var(--text3);padding:0 0 6px;text-align:left">${h}</th>`).join('')}</tr></thead>
+      ${!exs.length ? '<p style="font-size:13px;color:var(--text3)">Sin extras</p>' : `
+      <table style="width:100%;border-collapse:collapse;font-size:13px">
+        <thead><tr>${['Concepto','Usuario','Importe'].map(h=>`<th style="font-size:11px;font-weight:700;text-transform:uppercase;color:var(--text3);padding:0 0 6px;text-align:left">${h}</th>`).join('')}</tr></thead>
         <tbody>${exs.map(e=>`<tr>
           <td style="padding:5px 0;border-top:.5px solid var(--border)">${e.nom}</td>
           <td style="padding:5px 0;border-top:.5px solid var(--border);color:var(--text2)">${e.quien||''}</td>
@@ -1611,7 +1625,7 @@ let CHARTS = {};
 function mkChart(id, cfg) { if(CHARTS[id]) CHARTS[id].destroy(); CHARTS[id]=new Chart($(id),cfg); }
 const gOpts = {
   grid:  { color:'rgba(255,255,255,.06)' },
-  tick:  { color:'#4a6080', font:{size:10} },
+  tick:  { color:'#e2e8f0', font:{size:10} },
   tFmt:  v => '$'+Math.round(v/1000)+'K',
 };
 
@@ -1698,7 +1712,7 @@ function renderDonutChart() {
   mkChart('donutChart', { type:'doughnut', data:{labels:plans,datasets:[{data:counts,backgroundColor:cols.slice(0,plans.length),borderWidth:0,hoverOffset:4}]},
     options:{responsive:true,maintainAspectRatio:false,cutout:'65%',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.label}: ${c.parsed} líneas`}}}}});
   $('donut-legend').innerHTML = plans.map((p,i)=>
-    `<span style="display:flex;align-items:center;gap:4px;font-size:10px;color:var(--text2)"><span style="width:8px;height:8px;border-radius:2px;background:${cols[i]}"></span>${p} (${pc[p]})</span>`
+    `<span style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text2)"><span style="width:8px;height:8px;border-radius:2px;background:${cols[i]}"></span>${p} (${pc[p]})</span>`
   ).join('');
 }
 
@@ -1740,12 +1754,12 @@ function renderGruposPage() {
       lineasConRec[lineasConRec.length-1].linTot  = Math.round((lineasConRec[lineasConRec.length-1].linTot + diff)*100)/100;
     }
 
-    const thS = 'text-align:right;padding:6px 8px;font-size:10px;text-transform:uppercase;letter-spacing:.4px;color:var(--text3)';
+    const thS = 'text-align:right;padding:6px 8px;font-size:12px;text-transform:uppercase;letter-spacing:.4px;color:var(--text3)';
     const lineasHTML = lineasConRec.map(l => `
       <tr style="border-bottom:0.5px solid var(--border)">
-        <td style="font-family:monospace;font-size:11px;color:var(--text3);padding:7px 8px">${l.linea}</td>
-        <td style="padding:7px 8px">${nom(l)}${l.extra>0?`<div style="font-size:10px;color:#fbbf24;margin-top:2px">+ ${l.extraNom||'Extra'} ${AR(l.extra)}</div>`:''}</td>
-        <td style="padding:7px 8px"><span style="font-family:monospace;font-size:10px;background:var(--bg3);color:var(--blue);padding:1px 5px;border-radius:3px">${l.plan}</span></td>
+        <td style="font-family:monospace;font-size:13px;color:var(--text3);padding:7px 8px">${l.linea}</td>
+        <td style="padding:7px 8px">${nom(l)}${l.extra>0?`<div style="font-size:12px;color:#fbbf24;margin-top:2px">+ ${l.extraNom||'Extra'} ${AR(l.extra)}</div>`:''}</td>
+        <td style="padding:7px 8px"><span style="font-family:monospace;font-size:12px;background:var(--bg3);color:var(--blue);padding:1px 5px;border-radius:3px">${l.plan}</span></td>
         <td style="text-align:right;padding:7px 8px;font-variant-numeric:tabular-nums">${AR(l.linSub)}</td>
         <td style="text-align:right;padding:7px 8px;font-variant-numeric:tabular-nums;color:${g.rec?'#92400e':'var(--text3)'}">${g.rec?AR(l.linRec):'—'}</td>
         <td style="text-align:right;padding:7px 8px;font-weight:700;font-variant-numeric:tabular-nums;color:${g.col}">${AR(l.linTot)}</td>
@@ -1755,24 +1769,24 @@ function renderGruposPage() {
     <div style="background:var(--bg2);border:0.5px solid var(--border);border-radius:10px;margin-bottom:14px;overflow:hidden">
       <div style="background:${g.col};color:#fff;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
         <div style="display:flex;align-items:center;gap:10px">
-          <span style="background:rgba(255,255,255,.2);border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">${g.id}</span>
+          <span style="background:rgba(255,255,255,.2);border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0">${g.id}</span>
           <div>
             <div style="font-weight:700;font-size:15px">${g.n}</div>
-            <div style="font-size:11px;opacity:.8">${c.ls.length} línea${c.ls.length!==1?'s':''} · ${g.rec?`Con recargo ${(f2*100).toFixed(2)}%`:'Sin recargo'}</div>
+            <div style="font-size:13px;opacity:.8">${c.ls.length} línea${c.ls.length!==1?'s':''} · ${g.rec?`Con recargo ${(f2*100).toFixed(2)}%`:'Sin recargo'}</div>
           </div>
         </div>
         <div style="text-align:right">
-          <div style="font-size:11px;opacity:.75">TOTAL A COBRAR</div>
+          <div style="font-size:13px;opacity:.75">TOTAL A COBRAR</div>
           <div style="font-size:22px;font-weight:700">${AR(c.total)}</div>
         </div>
       </div>
       <div style="overflow-x:auto;padding:0">
-        <table style="width:100%;border-collapse:collapse;font-size:12px;min-width:420px">
+        <table style="width:100%;border-collapse:collapse;font-size:14px;min-width:420px">
           <thead>
             <tr style="border-bottom:0.5px solid var(--border);background:var(--bg3)">
-              <th style="text-align:left;padding:6px 8px;font-size:10px;text-transform:uppercase;letter-spacing:.4px;color:var(--text3)">Línea</th>
-              <th style="text-align:left;padding:6px 8px;font-size:10px;text-transform:uppercase;letter-spacing:.4px;color:var(--text3)">Usuario</th>
-              <th style="text-align:left;padding:6px 8px;font-size:10px;text-transform:uppercase;letter-spacing:.4px;color:var(--text3)">Plan</th>
+              <th style="text-align:left;padding:6px 8px;font-size:12px;text-transform:uppercase;letter-spacing:.4px;color:var(--text3)">Línea</th>
+              <th style="text-align:left;padding:6px 8px;font-size:12px;text-transform:uppercase;letter-spacing:.4px;color:var(--text3)">Usuario</th>
+              <th style="text-align:left;padding:6px 8px;font-size:12px;text-transform:uppercase;letter-spacing:.4px;color:var(--text3)">Plan</th>
               <th style="${thS}">Precio Claro</th>
               <th style="${thS}">Gasto admin</th>
               <th style="${thS}">Total a cobrar</th>
@@ -1780,22 +1794,22 @@ function renderGruposPage() {
           </thead>
           <tbody style="color:var(--text1)">
             ${lineasHTML}
-            <tr style="background:var(--bg3);font-weight:700;font-size:12px">
+            <tr style="background:var(--bg3);font-weight:700;font-size:14px">
               <td colspan="3" style="padding:8px 8px;color:var(--text2)">TOTAL (${c.ls.length} línea${c.ls.length!==1?'s':''})</td>
               <td style="text-align:right;padding:8px 8px;font-variant-numeric:tabular-nums">${AR(c.sub)}</td>
               <td style="text-align:right;padding:8px 8px;font-variant-numeric:tabular-nums;color:${g.rec?'#92400e':'var(--text3)'}">${g.rec?AR(c.rec):'—'}</td>
-              <td style="text-align:right;padding:8px 8px;font-variant-numeric:tabular-nums;color:${g.col};font-size:13px">${AR(c.total)}</td>
+              <td style="text-align:right;padding:8px 8px;font-variant-numeric:tabular-nums;color:${g.col};font-size:15px">${AR(c.total)}</td>
             </tr>
           </tbody>
         </table>
       </div>
       <div style="padding:8px 16px 12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;border-top:0.5px solid var(--border)">
-        <span style="font-size:11px;color:var(--text3)">Precio Claro ${AR(c.sub)}${g.rec?` + Gasto admin ${AR(c.rec)} = <b style="color:var(--text1)">${AR(c.total)}</b>`:''}</span>
+        <span style="font-size:13px;color:var(--text3)">Precio Claro ${AR(c.sub)}${g.rec?` + Gasto admin ${AR(c.rec)} = <b style="color:var(--text1)">${AR(c.total)}</b>`:''}</span>
         <span style="flex:1"></span>
-        <button onclick="doPrint([window._gruposGRUPOS[${g.id-1}]].map(gr=>buildReciboGrupo(gr,window._gruposF)).join(''))" style="font-size:11px;padding:4px 10px;border-radius:5px;border:0.5px solid var(--border);background:var(--bg3);color:var(--text1);cursor:pointer">
+        <button onclick="doPrint([window._gruposGRUPOS[${g.id-1}]].map(gr=>buildReciboGrupo(gr,window._gruposF)).join(''))" style="font-size:13px;padding:4px 10px;border-radius:5px;border:0.5px solid var(--border);background:var(--bg3);color:var(--text1);cursor:pointer">
           🖨 Imprimir recibo
         </button>
-        <button onclick="exportPDFGrupo(${g.id})" style="font-size:11px;padding:4px 10px;border-radius:5px;border:0.5px solid var(--border);background:var(--bg3);color:var(--text1);cursor:pointer">
+        <button onclick="exportPDFGrupo(${g.id})" style="font-size:13px;padding:4px 10px;border-radius:5px;border:0.5px solid var(--border);background:var(--bg3);color:var(--text1);cursor:pointer">
           📄 PDF
         </button>
       </div>
@@ -2346,8 +2360,8 @@ function concRender() {
 
     // acreditaciones
     const acred = g.cobros.length
-      ? g.cobros.map(c=>`<span style="display:block;font-size:11px">${c.f} ${c.q}: <strong>${AR2(c.m)}</strong></span>`).join('')
-      : '<span style="color:var(--text3);font-size:11px">—</span>';
+      ? g.cobros.map(c=>`<span style="display:block;font-size:13px">${c.f} ${c.q}: <strong>${AR2(c.m)}</strong></span>`).join('')
+      : '<span style="color:var(--text3);font-size:13px">—</span>';
 
     // Monto cobrado a mostrar: transferencias bancarias si las hay,
     // o total calculado del grupo si está marcado cobrado sin transf registrada
@@ -2362,10 +2376,10 @@ function concRender() {
     rows += `<tr id="crow-${g.id}">
       <td><span class="conc-cell" style="font-weight:600;color:var(--text1)">${g.n}</span></td>
       <td><span class="conc-cell">${acred}</span></td>
-      <td><span class="conc-cell" style="font-family:var(--mono);color:var(--teal)">${montoCobrado>0?AR2(montoCobrado)+'<span style="font-size:10px;color:var(--text3)">'+montoCobradoSub+'</span>':'<span style="color:var(--text3)">—</span>'}</span></td>
-      <td><span class="conc-cell"><select style="background:var(--bg3);border:0.5px solid var(--border2);border-radius:6px;color:var(--text1);font-size:12px;padding:4px 8px;cursor:pointer;font-family:var(--font)" onchange="concSetForma('${g.id}',this.value)">${formaOpts}</select></span></td>
+      <td><span class="conc-cell" style="font-family:var(--mono);color:var(--teal)">${montoCobrado>0?AR2(montoCobrado)+'<span style="font-size:12px;color:var(--text3)">'+montoCobradoSub+'</span>':'<span style="color:var(--text3)">—</span>'}</span></td>
+      <td><span class="conc-cell"><select style="background:var(--bg3);border:0.5px solid var(--border2);border-radius:6px;color:var(--text1);font-size:14px;padding:4px 8px;cursor:pointer;font-family:var(--font)" onchange="concSetForma('${g.id}',this.value)">${formaOpts}</select></span></td>
       <td><span class="conc-cell">${g.rec
-        ? `<label style="display:inline-flex;align-items:center;gap:6px;cursor:pointer;font-size:12px;font-weight:600"><input type="checkbox" style="width:16px;height:16px;accent-color:var(--teal);cursor:pointer" ${(estado==='cobrado_transf'||estado==='cobrado_efectivo')?'checked':''} onchange="concToggle('${g.id}',this.checked,getConcKey())"> ${concBadge(g,estado)}</label>`
+        ? `<label style="display:inline-flex;align-items:center;gap:6px;cursor:pointer;font-size:14px;font-weight:600"><input type="checkbox" style="width:16px;height:16px;accent-color:var(--teal);cursor:pointer" ${(estado==='cobrado_transf'||estado==='cobrado_efectivo')?'checked':''} onchange="concToggle('${g.id}',this.checked,getConcKey())"> ${concBadge(g,estado)}</label>`
         : concBadge(g,estado)
       }</span></td>
       <td><span class="conc-cell"><input class="cobro-nota" style="width:100%;min-width:100px" placeholder="Nota…" value="${nota.replace(/"/g,'&quot;')}" onchange="concSetNota('${g.id}',this.value)"></span></td>
@@ -2418,7 +2432,7 @@ function concRender() {
       <div class="cobro-header">
         <div>
           <div class="cobro-nombre">${g.n}</div>
-          <div class="cobro-fecha" style="font-size:11px;margin-top:3px">${acred}</div>
+          <div class="cobro-fecha" style="font-size:13px;margin-top:3px">${acred}</div>
         </div>
         <div class="cobro-monto">${transfTotal>0?AR2(transfTotal):'—'}</div>
       </div>
