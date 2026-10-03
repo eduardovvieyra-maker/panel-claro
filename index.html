@@ -1076,11 +1076,11 @@ const FACTURAS = [
 {linea:'3446543762',usuario:'CABRERA, CAROLINA',       plan:'PC93R',base:11990,  extra:0},
 {linea:'3446549228',usuario:'VIEYRA, RICO',            plan:'PC92R',base:8797,   extra:3126},
 {linea:'3446559334',usuario:'DE LUCAS, ELIAS',         plan:'PC93R',base:11990,  extra:0},
-{linea:'3446560921',usuario:'BOARI, MATIAS',           plan:'PC93R',base:11990,  extra:0},
+{linea:'3446560921',usuario:'BOARI, MATIAS',           plan:'PC93R',base:11990,  extra:4933.88},
 {linea:'3446572368',usuario:'FIORINI, IRIS',           plan:'PC92R',base:8797,   extra:0},
 {linea:'3446572391',usuario:'FIORINI, PEPE',           plan:'PC70R',base:6639,   extra:0},
 {linea:'3446572392',usuario:'FIORINI, CLAUDIA',        plan:'PC92R',base:8797,   extra:0},
-{linea:'3446572393',usuario:'REVERDITO, JOAQUIN',      plan:'PC93R',base:11990,  extra:0},
+{linea:'3446572393',usuario:'REVERDITO, JOAQUIN',      plan:'PC93R',base:11990,  extra:1553.72},
 {linea:'3446572404',usuario:'FIORINI, JOSE',           plan:'PC93R',base:11990,  extra:0},
 {linea:'3446572422',usuario:'BOARI, PILO',             plan:'PC93R',base:11990,  extra:0},
 {linea:'3446572450',usuario:'VIEYRA, EDUARDO VALENTIN',plan:'PC94C',base:17272,  extra:0},
@@ -1093,7 +1093,7 @@ const FACTURAS = [
 {linea:'3446577408',usuario:'VES HNOS, GUALEGUAYCHU',  plan:'PC70R',base:6639,   extra:0},
 {linea:'3446577642',usuario:'DE LUCAS, MELINA',        plan:'CC12R',base:11990,  extra:0},
 {linea:'3446583971',usuario:'CABRERA, PAPA',           plan:'PC70R',base:6639,   extra:0},
-{linea:'3446588111',usuario:'BOARI, ANI',              plan:'PC93R',base:11990,  extra:0},
+{linea:'3446588111',usuario:'BOARI, ANI',              plan:'PC93R',base:11990,  extra:4545.45},
 {linea:'3446588996',usuario:'DELCAUSSE, MARIO',        plan:'PC94C',base:17272,  extra:1958},
 {linea:'3446589001',usuario:'HORNUS, SILVIA',          plan:'PC92R',base:8797,   extra:0},
 {linea:'3446610504',usuario:'DE LUCAS, JUAN',          plan:'PC70R',base:6639,   extra:0},
@@ -1263,11 +1263,15 @@ function getMes() { return normExtras(S.facturas[S.midx]); }
 /* F2 = (total_factura / suma_líneas_con_recargo) - 1
    Así: suma_con_rec * (1+F2) = total_factura */
 function calcF2(f) {
-  // Prioridad 1: f2 precalculado (verificado contra el Excel de Eduardo)
+  // Prioridad 1: calcular de las líneas reales (así lo cobrado siempre cierra con la factura)
+  if (!f.soloHistorial && f.lineas && f.lineas.length) {
+    const lsR = new Set(GRUPOS.filter(g=>g.rec).flatMap(g=>g.ls));
+    const sc = f.lineas.filter(l=>lsR.has(l.linea)).reduce((s,l)=>s+l.base+(l.extra||0),0);
+    if (sc > 0) return (f.total / sc) - 1;
+  }
+  // Prioridad 2: valores guardados (solo meses sin detalle de líneas)
   if (f.f2 && f.f2 > 0) return f.f2;
-  // Prioridad 2: sumaConRec exacta del Excel
   if (f.sumaConRec && f.sumaConRec > 0) return (f.total / f.sumaConRec) - 1;
-  // Prioridad 3: calcular dinámicamente de las líneas
   if (f.soloHistorial || !f.lineas || f.lineas.length === 0) return 0;
   const lsRec = new Set(GRUPOS.filter(g=>g.rec).flatMap(g=>g.ls));
   const sumaCon = f.lineas.filter(l=>lsRec.has(l.linea)).reduce((s,l)=>s+l.base+(l.extra||0),0);
@@ -1452,8 +1456,7 @@ function onFactorChanged() {
   const f = getMes();
   // Usar sumaConRec del Excel si está disponible, sino calcular de líneas
   const lsRec = new Set(GRUPOS.filter(g=>g.rec).flatMap(g=>g.ls));
-  const sumaCon = f.sumaConRec ||
-    f.lineas.filter(l=> lsRec.has(l.linea)).reduce((s,l)=>s+l.base+(l.extra||0), 0);
+  const sumaCon = f.lineas.filter(l=> lsRec.has(l.linea)).reduce((s,l)=>s+l.base+(l.extra||0), 0) || f.sumaConRec;
   const sumaSin = f.lineas.filter(l=>!lsRec.has(l.linea)).reduce((s,l)=>s+l.base+(l.extra||0), 0);
   const cobradoCon = sumaCon * (1 + S.F2);
   const total    = cobradoCon + sumaSin;
