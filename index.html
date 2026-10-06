@@ -738,7 +738,7 @@ input[type=range]{flex:1;min-width:120px;accent-color:var(--blue);height:4px;cur
         <thead><tr>
           <th>Usuario</th><th>Plan</th>
           <th>Neto base</th><th>IVA 21%</th><th>IVA 27%</th>
-          <th>Perc. 3%</th><th>IIBB 3%</th><th>Total c/imp</th>
+          <th>Perc. 3%</th><th>IIBB + Imp. int.</th><th>Total c/imp</th>
         </tr></thead>
         <tbody id="imp-body"></tbody>
       </table>
@@ -787,6 +787,8 @@ const FACTURAS = [
 {mesLabel:'Febrero 2025',nroFact:'1326-02360385',fechaStr:'08/02/2025',fechaISO:'2025-02-08',anio:'2025',total:194619.00,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
 {mesLabel:'Junio 2025',nroFact:'1331-00626110',fechaStr:'08/06/2025',fechaISO:'2025-06-08',anio:'2025',total:230490.59,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
 {mesLabel:'Agosto 2025',nroFact:'1331-00970183',fechaStr:'08/08/2025',fechaISO:'2025-08-08',anio:'2025',total:227471.20,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
+{mesLabel:'Octubre 2025',nroFact:'1331-01298076',fechaStr:'08/10/2025',fechaISO:'2025-10-08',anio:'2025',total:342176.69,venc:'03/11/2025',proxVenc:'01/12/2025',periodo:'',totalExtras:0,imp:{iva21:19520.34,iva27:43767.10,p3:7651.63,ib:7651.63,ii:8531.61},extras:[],lineas:[],soloHistorial:true},
+{mesLabel:'Diciembre 2025',nroFact:'',fechaStr:'08/12/2025',fechaISO:'2025-12-08',anio:'2025',total:353949.23,venc:'',proxVenc:'',periodo:'',totalExtras:0,imp:{iva21:0,iva27:0,p3:0,ib:0},extras:[],lineas:[],soloHistorial:true},
 {
    mesLabel:'Enero 2026',nroFact:'1331-01791427',fechaStr:'08/01/2026',fechaISO:'2026-01-08',anio:'2026',
    total:347976.13,f2:1.112334,sumaConRec:164735.41,
@@ -1584,9 +1586,10 @@ function renderImpuestos(f) {
     </div>`;
   const sumaL = f.lineas.reduce((s,l)=>s+l.base+l.extra,0)||1;
   let tN=0,t21=0,t27=0,tP=0,tI=0,tT=0;
+  const oi=f.imp||{};
   $('imp-body').innerHTML = f.lineas.map(l=>{
-    const n=l.base+l.extra;
-    const v27=n*.6*.27, v21=n*.4*.21, vp=n*.03, vi=n*.03, vt=n+v27+v21+vp+vi;
+    const n=l.base+l.extra, k=n/sumaL;
+    const v21=(oi.iva21||0)*k, v27=(oi.iva27||0)*k, vp=(oi.p3||0)*k, vi=((oi.ib||0)+(oi.ii||0))*k, vt=n+v27+v21+vp+vi;
     tN+=n;t27+=v27;t21+=v21;tP+=vp;tI+=vi;tT+=vt;
     return `<tr>
       <td>${nomCorto(l.usuario)}</td><td><span class="chip ${planChip(l.plan)}">${l.plan}</span></td>
