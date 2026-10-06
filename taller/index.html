@@ -44,7 +44,7 @@
             display: flex;
             gap: 1.5rem;
             overflow-x: auto;
-            padding-bottom: 1rem;
+            padding: 0 1.5rem 1rem 0;
             background: white;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
@@ -222,6 +222,7 @@
                 </div>
                 <div class="column-body" data-estado="entregado"></div>
             </div>
+            <div style="flex: 0 0 2rem;"></div>
         </div>
     </div>
 
@@ -333,8 +334,11 @@
                         },
                         animation: 150,
                         ghostClass: 'ghost',
-                        scrollSensitivity: 30,
-                        scrollSpeed: 10,
+                        fallbackOnBody: true,
+                        delay: 0,
+                        delayOnTouchOnly: true,
+                        scrollSensitivity: 50,
+                        scrollSpeed: 15,
 
                         onStart: function(evt) {
                             console.log('🟡 Drag iniciado:', evt.item.getAttribute('data-id'));
