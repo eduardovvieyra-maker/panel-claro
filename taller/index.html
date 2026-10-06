@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Taller · Ves Hnos</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        header {
+            background: white;
+            border-bottom: 1px solid #ddd;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 100%;
+            padding: 2rem;
+        }
+
+        .info-banner {
+            background: #e3f2fd;
+            border-left: 4px solid #2196F3;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+
+        .board-wrapper {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            padding-bottom: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .column {
+            flex: 0 0 300px;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .column-header {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-bottom: 2px solid #e0e0e0;
+            font-weight: 600;
+            color: #666;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .column-count {
+            background: #2196F3;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .column-body {
+            flex: 1;
+            padding: 1rem 0.75rem;
+            min-height: 200px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            cursor: grab;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateY(-2px);
+        }
+
+        .card.ghost {
+            opacity: 0.5;
+            background: #e3f2fd;
+            border-style: dashed;
+        }
+
+        .card-plate {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #2196F3;
+            margin-bottom: 0.25rem;
+        }
+
+        .card-vehicle {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-customer {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-meta {
+            font-size: 0.8rem;
+            color: #999;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .sortable-dragging-active {
+            cursor: grabbing;
+        }
+
+        .status-message {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            display: none;
+        }
+
+        .status-message.show {
+            display: block;
+        }
+
+        .status-message.success {
+            border-left: 4px solid #4CAF50;
+            color: #2e7d32;
+        }
+
+        .status-message.error {
+            border-left: 4px solid #f44336;
+            color: #c62828;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🔧 Panel de Taller v21</h1>
+        <p style="color: #888; margin-top: 0.5rem;">Tablero Kanban - Arrastra fichas para cambiar estado</p>
+    </header>
+
+    <div class="container">
+        <div class="info-banner">
+            ℹ️ <strong>Instrucciones:</strong> Arrastra las fichas de vehículos entre columnas para actualizar su estado. Los cambios se guardan automáticamente.
+        </div>
+
+        <div class="board-wrapper">
+            <div class="column" data-estado="ingresado">
+                <div class="column-header">
+                    <span>📋 Ingresado</span>
+                    <span class="column-count">0</span>
+                </div>
+                <div class="column-body" data-estado="ingresado"></div>
+            </div>
+
+            <div class="column" data-estado="diagnostico">
+                <div class="column-header">
+                    <span>🔍 En Diagnóstico</span>
+                    <span class="column-count">0</span>
+                </div>
+                <div class="column-body" data-estado="diagnostico"></div>
+            </div>
+
+            <div class="column" data-estado="presupuestado">
+                <div class="column-header">
+                    <span>📊 Presupuestado</span>
+                    <span class="column-count">0</span>
+                </div>
+                <div class="column-body" data-estado="presupuestado"></div>
+            </div>
+
+            <div class="column" data-estado="aprobado">
+                <div class="column-header">
+                    <span>✅ Aprobado</span>
+                    <span class="column-count">0</span>
+                </div>
+                <div class="column-body" data-estado="aprobado"></div>
+            </div>
+
+            <div class="column" data-estado="reparacion">
+                <div class="column-header">
+                    <span>🔧 En Reparación</span>
+                    <span class="column-count">0</span>
+                </div>
+                <div class="column-body" data-estado="reparacion"></div>
+            </div>
+
+            <div class="column" data-estado="entregado">
+                <div class="column-header">
+                    <span>🎉 Entregado</span>
+                    <span class="column-count">0</span>
+                </div>
+                <div class="column-body" data-estado="entregado"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="statusMessage" class="status-message"></div>
+
+    <script>
+        // ============================================================
+        // CONFIGURACIÓN Y VARIABLES GLOBALES
+        // ============================================================
+
+        const ESTADOS = [
+            { id: 'ingresado', label: 'Ingresado' },
+            { id: 'diagnostico', label: 'En Diagnóstico' },
+            { id: 'presupuestado', label: 'Presupuestado' },
+            { id: 'aprobado', label: 'Aprobado' },
+            { id: 'reparacion', label: 'En Reparación' },
+            { id: 'entregado', label: 'Entregado' }
+        ];
+
+        let sortableInstances = [];
+        let vehiculos = [];
+
+        // ============================================================
+        // FUNCIONES DE UTILIDAD
+        // ============================================================
+
+        function mostrarMensaje(texto, tipo = 'success') {
+            const msg = document.getElementById('statusMessage');
+            msg.textContent = texto;
+            msg.className = 'status-message show ' + tipo;
+
+            setTimeout(() => {
+                msg.classList.remove('show');
+            }, 3000);
+        }
+
+        function crearCardHTML(vehiculo) {
+            return `
+                <div class="card" data-id="${vehiculo.id}" data-estado="${vehiculo.estado}">
+                    <div class="card-plate">${vehiculo.patente}</div>
+                    <div class="card-vehicle">${vehiculo.vehiculo}</div>
+                    <div class="card-customer">${vehiculo.cliente}</div>
+                    <div class="card-meta">
+                        <div>${vehiculo.diasEnEstado}d en estado</div>
+                        <div>Total ${vehiculo.diasTotal}d</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function cargarVehiculos() {
+            // DATOS DE EJEMPLO - En producción vendrían de una API
+            vehiculos = [
+                { id: '1', patente: 'AF529GY', vehiculo: 'Citroen Cactus THP', cliente: 'Carranza Facundo', estado: 'ingresado', diasEnEstado: 3, diasTotal: 4 },
+                { id: '2', patente: 'AF519MG', vehiculo: 'Citroen C4 Cactus THP', cliente: 'Hormaiztegui Javier', estado: 'ingresado', diasEnEstado: 4, diasTotal: 4 },
+                { id: '3', patente: 'AH075NT', vehiculo: 'CITROEN C3 VTI', cliente: 'GRECCO DELFINA', estado: 'ingresado', diasEnEstado: 4, diasTotal: 4 },
+                { id: '4', patente: 'AH621SL', vehiculo: 'CITROEN C3 AIRCROSS', cliente: 'PATRIARCA SERGIO', estado: 'ingresado', diasEnEstado: 5, diasTotal: 5 },
+                { id: '5', patente: 'HDI115', vehiculo: 'Citroen C4 LOUNGE', cliente: 'LUJAN MARIA', estado: 'ingresado', diasEnEstado: 6, diasTotal: 6 },
+                { id: '6', patente: 'AH498WY', vehiculo: 'CITROEN BASALT VTI', cliente: 'ROMERO CLAUDIA', estado: 'ingresado', diasEnEstado: 10, diasTotal: 10 },
+                { id: '7', patente: 'IWW966', vehiculo: 'PEUGEOT 3008 PREMIUM', cliente: 'BRELLI SILVINA', estado: 'entregado', diasEnEstado: 3, diasTotal: 13 }
+            ];
+
+            renderizarTablero();
+        }
+
+        function renderizarTablero() {
+            // Limpiar instancias de Sortable anteriores
+            sortableInstances.forEach(instance => {
+                if (instance && typeof instance.destroy === 'function') {
+                    instance.destroy();
+                }
+            });
+            sortableInstances = [];
+
+            // Limpiar columnas
+            document.querySelectorAll('.column-body').forEach(col => {
+                col.innerHTML = '';
+            });
+
+            // Actualizar conteos y agregar tarjetas
+            ESTADOS.forEach(estado => {
+                const vehiculosDelEstado = vehiculos.filter(v => v.estado === estado.id);
+                const columnaBody = document.querySelector(`.column-body[data-estado="${estado.id}"]`);
+                const conteo = columnaBody.parentElement.querySelector('.column-count');
+
+                if (columnaBody) {
+                    columnaBody.innerHTML = vehiculosDelEstado.map(v => crearCardHTML(v)).join('');
+                    conteo.textContent = vehiculosDelEstado.length;
+                }
+            });
+
+            // ✅ INICIALIZAR SORTABLE EN TODAS LAS COLUMNAS
+            inicializarSortable();
+        }
+
+        function inicializarSortable() {
+            console.log('🟢 Inicializando Sortable en columnas...');
+
+            const colBodies = document.querySelectorAll('.column-body');
+            console.log(`📦 Encontradas ${colBodies.length} columnas`);
+
+            colBodies.forEach((colBody, index) => {
+                try {
+                    const sortable = new Sortable(colBody, {
+                        group: {
+                            name: 'vehiculos',
+                            pull: true,
+                            put: true
+                        },
+                        animation: 150,
+                        ghostClass: 'ghost',
+                        scrollSensitivity: 30,
+                        scrollSpeed: 10,
+
+                        onStart: function(evt) {
+                            console.log('🟡 Drag iniciado:', evt.item.getAttribute('data-id'));
+                            document.body.classList.add('sortable-dragging-active');
+                        },
+
+                        onEnd: function(evt) {
+                            console.log('🔴 Drag terminado');
+                            document.body.classList.remove('sortable-dragging-active');
+                        },
+
+                        onAdd: async function(evt) {
+                            const ficha = evt.item;
+                            const fichaId = ficha.getAttribute('data-id');
+                            const nuevoEstado = evt.to.getAttribute('data-estado');
+
+                            console.log(`✨ Ficha ${fichaId} movida a estado ${nuevoEstado}`);
+
+                            // Actualizar en memoria
+                            const vehiculo = vehiculos.find(v => v.id === fichaId);
+                            if (vehiculo) {
+                                vehiculo.estado = nuevoEstado;
+                                mostrarMensaje(`✅ Vehículo ${vehiculo.patente} movido a ${nuevoEstado}`);
+
+                                // En producción, hacer POST a API
+                                console.log('Enviando cambio a servidor...', { id: fichaId, estado: nuevoEstado });
+                                // await fetch('/api/vehiculo/' + fichaId, {
+                                //     method: 'PATCH',
+                                //     headers: { 'Content-Type': 'application/json' },
+                                //     body: JSON.stringify({ estado: nuevoEstado })
+                                // });
+                            }
+                        }
+                    });
+
+                    sortableInstances.push(sortable);
+                    console.log(`✅ Sortable inicializado en columna ${index + 1}`);
+
+                } catch (error) {
+                    console.error(`❌ Error inicializando Sortable en columna ${index + 1}:`, error);
+                }
+            });
+
+            console.log(`✅ Inicialización completada - ${sortableInstances.length} instancias de Sortable activas`);
+        }
+
+        // ============================================================
+        // INICIALIZACIÓN DE LA PÁGINA
+        // ============================================================
+
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('📄 Página cargada - Iniciando aplicación...');
+            cargarVehiculos();
+            console.log('✨ Tablero listo - Prueba arrastrando fichas');
+        });
+
+        // Reintentar inicialización si Sortable no estaba disponible inmediatamente
+        if (typeof Sortable === 'undefined') {
+            console.warn('⚠️ Sortable no disponible al cargar - esperando...');
+            const checkInterval = setInterval(() => {
+                if (typeof Sortable !== 'undefined') {
+                    console.log('✅ Sortable disponible - inicializando');
+                    inicializarSortable();
+                    clearInterval(checkInterval);
+                }
+            }, 100);
+
+            setTimeout(() => clearInterval(checkInterval), 5000);
+        }
+    </script>
+</body>
+</html>
