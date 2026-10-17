@@ -495,7 +495,7 @@ input[type=range]{flex:1;min-width:120px;accent-color:var(--blue);height:4px;cur
     </button>
     <button class="sidebar-link" onclick="doRefresh()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
-      Actualizar Drive
+      Actualizar
     </button>
   </div>
 </nav>
@@ -573,7 +573,7 @@ input[type=range]{flex:1;min-width:120px;accent-color:var(--blue);height:4px;cur
     <div style="display:flex;align-items:center;gap:8px;width:100%">
       <div class="year-tabs" id="year-tabs-global"></div>
       <div class="topbar-btns" style="display:flex;gap:6px;margin-left:auto;flex-shrink:0">
-        <button class="btn btn-ghost" onclick="doRefresh()">↺ Drive</button>
+        <button class="btn btn-ghost" onclick="doRefresh()">↻ Actualizar</button>
         <button class="btn btn-ghost" onclick="exportXLSX()">Excel</button>
         <button class="btn btn-ghost" onclick="printResumen()">Imprimir</button>
         <button class="btn btn-primary" onclick="printGrupos()">Recibos</button>
@@ -1470,14 +1470,37 @@ function renderTodo() {
   renderCharts();
 }
 
+/* ─── CONTROL AUTOMÁTICO DE CADA FACTURA ─── */
+function controlFactura(f) {
+  if (!f || f.soloHistorial || !f.lineas || !f.lineas.length) return {ok:null, msg:'Sin detalle de líneas: no se puede controlar'};
+  normExtras(f);
+  const net = f.lineas.reduce((a,l)=>a+l.base+(l.extra||0),0);
+  const imp = Object.values(f.imp||{}).reduce((a,v)=>a+(+v||0),0);
+  const dif = Math.round((f.total - net - imp)*100)/100;
+  const prob = [];
+  if (Math.abs(dif) > 0.05) prob.push('líneas + impuestos no cierran con el total (diferencia $'+dif.toLocaleString('es-AR')+')');
+  const enGrupo = new Set(GRUPOS.flatMap(g=>g.ls));
+  const sin = f.lineas.filter(l=>!enGrupo.has(l.linea));
+  if (sin.length) prob.push('línea sin grupo: '+sin.map(l=>l.linea+' '+nomCorto(l.usuario)).join(', '));
+  const rep = f.lineas.length - new Set(f.lineas.map(l=>l.linea)).size;
+  if (rep) prob.push('hay líneas repetidas');
+  const sx = (f.extras||[]).reduce((a,e)=>a+e.v,0);
+  if (Math.abs(sx-(f.totalExtras||0)) > 0.05) prob.push('extras no suman el total de extras');
+  if (prob.length) return {ok:false, msg:'REVISAR: '+prob.join(' · ')};
+  return {ok:true, msg:'Controlado: '+f.lineas.length+' líneas + impuestos = total de la factura'};
+}
+
 /* ─── HEADER ─── */
 function renderHeader(f) {
   $('pg-title').textContent = f.mesLabel;
   const _t = '$ ' + (f.total||0).toLocaleString('es-AR',{minimumFractionDigits:2,maximumFractionDigits:2});
+  const _c = controlFactura(f);
+  const _cc = _c.ok===true ? '#34d399' : (_c.ok===false ? '#f87171' : 'var(--text2)');
   $('pg-sub').innerHTML = `<span style="display:inline-block;background:var(--bg3);border:1px solid var(--border,#334155);border-radius:8px;padding:6px 10px;color:var(--text1);line-height:1.5">
       <b style="color:#fff;font-size:15px">Factura N° ${f.nroFact||'—'}</b><br>
       Emitida ${f.fechaStr||'—'} · Total <b style="color:#fff">${_t}</b>${f.venc?` · Vence ${f.venc}`:''}<br>
-      <span style="color:var(--text2)">${f.soloHistorial?'Solo historial (sin detalle de líneas)':'Período: '+(f.periodo||'—')}</span></span>`;
+      <span style="color:var(--text2)">${f.soloHistorial?'Solo historial (sin detalle de líneas)':'Período: '+(f.periodo||'—')}</span><br>
+      <span style="color:${_cc};font-weight:600">${_c.ok===true?'✔':(_c.ok===false?'⚠':'ℹ')} ${_c.msg}</span></span>`;
   const ls = $('lineas-sub');
   if (ls) ls.textContent = f.soloHistorial
     ? `${f.mesLabel} — datos de Drive (sin detalle de líneas)`
@@ -2652,23 +2675,18 @@ function init() {
 }
 
 function doRefresh() {
-  const lo=$('loading'); if(lo) lo.style.display='flex';
-  const fallback = () => { init(); };
-  const ok = d => { clearTimeout(t); initFromDrive(d); };
-  const fail = () => { clearTimeout(t); fallback(); };
-  // Timeout 10 seg — si GAS no responde, muestra datos locales
-  var t = setTimeout(fail, 10000);
+  // Si corre dentro de Apps Script, usa Drive; si no (Vercel), recarga la última versión publicada
   try {
     if (typeof google !== 'undefined' && google.script && google.script.run) {
-      google.script.run
-        .withSuccessHandler(ok)
-        .withFailureHandler(fail)
-        .refreshData();
-    } else {
-      clearTimeout(t);
-      fallback();
+      const lo=$('loading'); if(lo) lo.style.display='flex';
+      var t = setTimeout(()=>init(), 10000);
+      google.script.run.withSuccessHandler(d=>{clearTimeout(t);initFromDrive(d);}).withFailureHandler(()=>{clearTimeout(t);init();}).refreshData();
+      return;
     }
-  } catch(e) { clearTimeout(t); fallback(); }
+  } catch(e) {}
+  const lo=$('loading'); if(lo) lo.style.display='flex';
+  const u = new URL(location.href); u.searchParams.set('v', Date.now());
+  location.replace(u.toString());
 }
 </script>
 </body>
