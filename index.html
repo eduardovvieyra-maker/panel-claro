@@ -203,7 +203,7 @@ input[type=range]{flex:1;min-width:120px;accent-color:var(--blue);height:4px;cur
 .mono{font-family:var(--mono);color:var(--text3);font-size:13px}
 .plan-chip{display:inline-block;border-radius:3px;padding:2px 6px;font-size:11px;font-weight:700;font-family:var(--mono)}
 .p-pc70r{background:rgba(100,116,139,.3);color:#f1f5f9}
-.p-cc11r,.p-cc12r{background:rgba(59,130,246,.18);color:#93c5fd}
+.p-cc11r,.p-cc21r,.p-cc12r{background:rgba(59,130,246,.18);color:#93c5fd}
 .p-pc92r{background:rgba(20,184,166,.15);color:#5eead4}
 .p-pc93r{background:rgba(168,85,247,.15);color:#c084fc}
 .p-pc94c{background:rgba(239,68,68,.15);color:#fca5a5}
@@ -1208,6 +1208,57 @@ const FACTURAS = [
 {linea:'3446613480',usuario:'BOARI, CARLITOS',plan:'PC70R',base:6476.0,extra:0},
 {linea:'3446613837',usuario:'VIEYRA, BELEN',plan:'PC93R',base:11706.0,extra:0},
    ],
+  },
+{
+   mesLabel:'Octubre 2026',nroFact:'1340-00749074',fechaStr:'08/10/2026',fechaISO:'2026-10-08',anio:'2026',
+   total:621917.64,
+   venc:'02/11/2026',proxVenc:'01/12/2026',periodo:'09/09 al 08/10/2026',
+   totalExtras:30001.92,
+   imp:{iva21:40008.22,iva27:77135.38,p3:14286.06,ib:14286.06},
+   extras:[
+     {nom:'Datos internet',quien:'Boari Matías',v:5404.96},
+{nom:'Datos internet',quien:'Vieyra Eduardo Valentín',v:7031.00},
+{nom:'Datos internet + llamadas excedentes',quien:'Vieyra Fernando',v:7124.60},
+{nom:'Datos internet',quien:'Fiorini Juan Cruz',v:9198.35},
+{nom:'Roaming',quien:'Delcausse Mario',v:1243.01},
+   ],
+   lineas:[
+{linea:'1126560003',usuario:'VIEYRA, EDUARDO',plan:'PC70R',base:8255,extra:0},
+{linea:'3446201000',usuario:'DE LUCA, JUAN',plan:'CC21R',base:10950,extra:0},
+{linea:'3446202222',usuario:'VIEYRA, EDUARDO',plan:'CC12R',base:14925,extra:0},
+{linea:'3446205301',usuario:'VIEYRA, SOFIA',plan:'PC92R',base:10950,extra:0},
+{linea:'3446348811',usuario:'TALLER, MECANICO',plan:'PC70R',base:8255,extra:0},
+{linea:'3446401889',usuario:'PICOLI, SILVIA',plan:'PC70R',base:8255,extra:0},
+{linea:'3446524590',usuario:'FIORINI, CRISTINA',plan:'PC93R',base:14925,extra:0},
+{linea:'3446526402',usuario:'FIORINI, LARA',plan:'PC92R',base:10950,extra:0},
+{linea:'3446543762',usuario:'CABRERA, CAROLINA',plan:'PC93R',base:14925,extra:0},
+{linea:'3446549228',usuario:'VIEYRA, RICO',plan:'PC92R',base:10950,extra:0},
+{linea:'3446559334',usuario:'DE LUCAS, ELIAS',plan:'PC93R',base:14925,extra:0},
+{linea:'3446560921',usuario:'BOARI, MATIAS',plan:'PC93R',base:14925,extra:5404.96},
+{linea:'3446572368',usuario:'FIORINI, IRIS',plan:'PC92R',base:10950,extra:0},
+{linea:'3446572391',usuario:'FIORINI, PEPE',plan:'PC70R',base:8255,extra:0},
+{linea:'3446572392',usuario:'FIORINI, CLAUDIA',plan:'PC92R',base:10950,extra:0},
+{linea:'3446572393',usuario:'REVERDITO, JOAQUIN',plan:'PC93R',base:14925,extra:0},
+{linea:'3446572404',usuario:'FIORINI, JOSE',plan:'PC93R',base:14925,extra:0},
+{linea:'3446572422',usuario:'BOARI, PILO',plan:'PC93R',base:14925,extra:0},
+{linea:'3446572450',usuario:'VIEYRA, EDUARDO VALENTIN',plan:'PC94C',base:21500,extra:7031.0},
+{linea:'3446572474',usuario:'VIEYRA, HORACIO',plan:'PC92R',base:10950,extra:0},
+{linea:'3446572496',usuario:'VIEYRA, FERNANDO',plan:'PC94C',base:21500,extra:7124.6},
+{linea:'3446572498',usuario:'CABALLERO, FABIOLA',plan:'PC92R',base:10950,extra:0},
+{linea:'3446572527',usuario:'VIEYRA, LUCILA',plan:'PC94R',base:21500,extra:0},
+{linea:'3446574855',usuario:'FIORINI, EVANGELINA',plan:'PC70R',base:8255,extra:0},
+{linea:'3446577183',usuario:'FIORINI, JUAN CRUZ',plan:'PC93R',base:14925,extra:9198.35},
+{linea:'3446577408',usuario:'VES HNOS, GUALEGUAYCHU',plan:'PC70R',base:8255,extra:0},
+{linea:'3446577642',usuario:'DE LUCAS, MELINA',plan:'CC12R',base:14925,extra:0},
+{linea:'3446583971',usuario:'CABRERA, PAPA',plan:'PC70R',base:8255,extra:0},
+{linea:'3446588111',usuario:'BOARI, ANI',plan:'PC93R',base:14925,extra:0},
+{linea:'3446588996',usuario:'DELCAUSSE, MARIO',plan:'PC94C',base:21500,extra:1243.01},
+{linea:'3446589001',usuario:'HORNUS, SILVIA',plan:'PC92R',base:10950,extra:0},
+{linea:'3446610504',usuario:'DE LUCAS, JUAN',plan:'PC70R',base:8255,extra:0},
+{linea:'3446612475',usuario:'DE LUCA, FRANCO',plan:'PC70R',base:8255,extra:0},
+{linea:'3446613480',usuario:'BOARI, CARLITOS',plan:'PC70R',base:8255,extra:0},
+{linea:'3446613837',usuario:'VIEYRA, BELEN',plan:'PC93R',base:14925,extra:0},
+   ],
   }
 ];
 const GRUPOS = [
@@ -1223,7 +1274,7 @@ const GRUPOS = [
   {id:10,n:'Taller/VES Hnos',col:'#475569',rec:false,ls:['3446348811','3446577408']},
 ];
 
-const PLAN_GB = {PC70R:'1 GB',CC11R:'4 GB',CC12R:'7 GB',PC92R:'3 GB',PC93R:'5 GB',PC94C:'8 GB',PC94R:'8 GB'};
+const PLAN_GB = {PC70R:'1 GB',CC11R:'4 GB',CC21R:'4 GB',CC12R:'7 GB',PC92R:'3 GB',PC93R:'5 GB',PC94C:'8 GB',PC94R:'8 GB'};
 
 /* ─── HELPERS ─── */
 const $  = id => document.getElementById(id);
@@ -1422,9 +1473,11 @@ function renderTodo() {
 /* ─── HEADER ─── */
 function renderHeader(f) {
   $('pg-title').textContent = f.mesLabel;
-  $('pg-sub').textContent   = f.soloHistorial
-    ? `Factura N° ${f.nroFact} · Solo historial (sin detalle de líneas)`
-    : `Factura N° ${f.nroFact} · Período: ${f.periodo}`;
+  const _t = '$ ' + (f.total||0).toLocaleString('es-AR',{minimumFractionDigits:2,maximumFractionDigits:2});
+  $('pg-sub').innerHTML = `<span style="display:inline-block;background:var(--bg3);border:1px solid var(--border,#334155);border-radius:8px;padding:6px 10px;color:var(--text1);line-height:1.5">
+      <b style="color:#fff;font-size:15px">Factura N° ${f.nroFact||'—'}</b><br>
+      Emitida ${f.fechaStr||'—'} · Total <b style="color:#fff">${_t}</b>${f.venc?` · Vence ${f.venc}`:''}<br>
+      <span style="color:var(--text2)">${f.soloHistorial?'Solo historial (sin detalle de líneas)':'Período: '+(f.periodo||'—')}</span></span>`;
   const ls = $('lineas-sub');
   if (ls) ls.textContent = f.soloHistorial
     ? `${f.mesLabel} — datos de Drive (sin detalle de líneas)`
