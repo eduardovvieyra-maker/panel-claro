@@ -1,5 +1,5 @@
 {
-  "_nota": "Quién paga qué grupo. 'banco' = como aparece el nombre en 'TRANSFERENCIAS RECIBIDAS' del extracto (se compara el comienzo, sin mayúsculas). Una transferencia de alguien que NO está acá NO se carga al panel: queda 'sin asignar' y se avisa. 'confirmar:true' = asignación heredada que Eduardo todavía no confirmó. MERCADO PAGO y TARJ VIRTUAL CM son pagadores genéricos (pueden ser de cualquiera): no se asignan solos; salen 'sin asignar' hasta que Eduardo diga de quién es cada transferencia.",
+  "_nota": "Quién paga qué grupo. 'banco' = como aparece el nombre en 'TRANSFERENCIAS RECIBIDAS' del extracto (se compara el comienzo, sin mayúsculas). Una transferencia de alguien que NO está acá NO se carga al panel: queda 'sin asignar' y se avisa. 'confirmar:true' = asignación heredada que Eduardo todavía no confirmó. MERCADO PAGO y TARJ VIRTUAL CM son pagadores genéricos (pueden ser de cualquiera): no se asignan solos; salen 'sin asignar' hasta que Eduardo diga de quién es cada transferencia. 'ignorar' = pagadores que Eduardo dijo que no tienen que ver con Claro: se descartan sin avisar.",
   "pagadores": [
     {
       "banco": "BOARI/ JAVIER",
@@ -89,6 +89,12 @@
       "n": "Taller / VES Hnos",
       "rec": false,
       "metodo": "nr"
+    }
+  ],
+  "ignorar": [
+    {
+      "banco": "DOLCHE/LUCAS S",
+      "motivo": "Eduardo: no tiene nada que ver con Claro"
     }
   ]
 }

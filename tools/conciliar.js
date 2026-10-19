@@ -27,6 +27,7 @@ const norm=s=>s.toUpperCase().replace(/\s+/g,' ');
 const grupos=cfg.grupos.map(g=>({id:g.base+'_'+key,n:g.n,rec:g.rec,metodo:g.metodo,cobros:[]}));
 const sinAsignar=[],confirmar=new Set();
 recibidas.forEach(t=>{
+  if((cfg.ignorar||[]).some(i=>norm(t.nombre).startsWith(norm(i.banco)))) return;
   const p=cfg.pagadores.find(p=>norm(t.nombre).startsWith(norm(p.banco)));
   if(!p){sinAsignar.push(t);return}
   if(p.confirmar) confirmar.add(p.banco+' → '+p.grupo);
