@@ -19,9 +19,9 @@ const pagoClaro=pc?{fecha:pc[1].replace(/^(\d)\//,'0$1/')+'/'+anio,monto:num(pc[
 // Transferencias recibidas
 const i0=txt.indexOf('TRANSFERENCIAS RECIBIDAS'); if(i0<0) fail('el extracto no tiene sección TRANSFERENCIAS RECIBIDAS');
 let sec=txt.slice(i0+24); const i1=sec.search(/TRANSFERENCIAS ENVIADAS|TARJETAS DE CREDITO|DETALLE - COMISION/); if(i1>=0) sec=sec.slice(0,i1);
-const re=/(\d{1,2}\/\d{2})\/\d{2} (.+?) VARIOS .*?(\d+,\d{2}) CA \$ 373/g; let r; const recibidas=[];
-while((r=re.exec(sec))) recibidas.push({f:r[1].replace(/^(\d)\//,'0$1/'),nombre:r[2].trim(),m:num(r[3])});
-const nCred=(sec.match(/ CA \$ 373/g)||[]).length;
+const usd=[]; const re=/(\d{1,2}\/\d{2})\/\d{2} (.+?) VARIOS .*?(\d+,\d{2}) CA (\$|USD) 373/g; let r; const recibidas=[];
+while((r=re.exec(sec))) { if(r[4]==='USD') usd.push(r[2].trim()); else recibidas.push({f:r[1].replace(/^(\d)\//,'0$1/'),nombre:r[2].trim(),m:num(r[3])}); }
+const nCred=(sec.match(/ CA \$ 373/g)||[]).length; // las en dólares (USD) no son cobros de Claro: se ignoran
 if(recibidas.length!==nCred) fail('leí '+recibidas.length+' transferencias pero el extracto marca '+nCred+'. No cargo nada.');
 const norm=s=>s.toUpperCase().replace(/\s+/g,' ');
 const grupos=cfg.grupos.map(g=>({id:g.base+'_'+key,n:g.n,rec:g.rec,metodo:g.metodo,cobros:[]}));

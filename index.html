@@ -2305,6 +2305,21 @@ function concSave(obj) {
 // metodo: 'transf'=siempre transfiere, 'efectivo'=siempre efectivo, 'mixto'=puede ser cualquiera
 /*CONC:INICIO*/
 const CONC_MESES = {
+  sep:{
+    label:'Septiembre 2026', pagoClaro:{fecha:'08/09/2026', monto:490899.19},
+    grupos:[
+      {id:'boari_sep', n:'Boari', rec:true, metodo:'transf', cobros:[{f:'08/09',q:'Boari Javier',m:113500}]},
+      {id:'fior_dl_sep', n:'Fiorini / De Lucas', rec:true, metodo:'transf', cobros:[{f:'08/09',q:'Fiorini Evangelina',m:136490}]},
+      {id:'fior_cab_sep', n:'Fiorini / Cabrera', rec:true, metodo:'transf', cobros:[{f:'08/09',q:'Fiorini Claudia',m:42750}]},
+      {id:'rev_sep', n:'Reverdito / Fiorini', rec:true, metodo:'transf', cobros:[]},
+      {id:'horacio_sep', n:'Horacio Vieyra', rec:true, metodo:'transf', cobros:[{f:'16/09',q:'Vieyra E.H.',m:18000}]},
+      {id:'vcab_sep', n:'Vieyra / Caballero', rec:false, metodo:'nr', cobros:[]},
+      {id:'vfam_sep', n:'Vieyra familia', rec:false, metodo:'nr', cobros:[]},
+      {id:'delc_sep', n:'Delcausse / Hornus', rec:true, metodo:'mixto', cobros:[]},
+      {id:'carlitos_sep', n:'Carlitos Boari', rec:true, metodo:'efectivo', cobros:[]},
+      {id:'taller_sep', n:'Taller / VES Hnos', rec:false, metodo:'nr', cobros:[]},
+    ]
+  },
   ago:{
     label:'Agosto 2026', pagoClaro:{fecha:'07/08/2026', monto:450741.77},
     grupos:[
@@ -2315,7 +2330,7 @@ const CONC_MESES = {
       {id:'horacio_ago', n:'Horacio Vieyra', rec:true, metodo:'transf', cobros:[{f:'12/08',q:'Vieyra E.H.',m:16500}]},
       {id:'vcab_ago', n:'Vieyra / Caballero', rec:false, metodo:'nr', cobros:[]},
       {id:'vfam_ago', n:'Vieyra familia', rec:false, metodo:'nr', cobros:[]},
-      {id:'delc_ago', n:'Delcausse / Hornus', rec:true, metodo:'mixto', cobros:[{f:'06/08',q:'Mercado Pago',m:117600}]},
+      {id:'delc_ago', n:'Delcausse / Hornus', rec:true, metodo:'mixto', cobros:[]},
       {id:'carlitos_ago', n:'Carlitos Boari', rec:true, metodo:'efectivo', cobros:[]},
       {id:'taller_ago', n:'Taller / VES Hnos', rec:false, metodo:'nr', cobros:[]},
     ]
@@ -2324,7 +2339,7 @@ const CONC_MESES = {
     label:'Julio 2026', pagoClaro:{fecha:'07/07/2026', monto:438299.76},
     grupos:[
       {id:'boari_jul', n:'Boari', rec:true, metodo:'transf', cobros:[{f:'08/07',q:'Fiorini M. Cristina',m:110000}]},
-      {id:'fior_dl_jul', n:'Fiorini / De Lucas', rec:true, metodo:'transf', cobros:[{f:'07/07',q:'Fiorini Evangelina',m:133490},{f:'07/07',q:'Tarj. virtual CM',m:115000},{f:'23/07',q:'Fiorini Evangelina',m:6000}]},
+      {id:'fior_dl_jul', n:'Fiorini / De Lucas', rec:true, metodo:'transf', cobros:[{f:'07/07',q:'Fiorini Evangelina',m:133490},{f:'23/07',q:'Fiorini Evangelina',m:6000}]},
       {id:'fior_cab_jul', n:'Fiorini / Cabrera', rec:true, metodo:'transf', cobros:[{f:'07/07',q:'Fiorini Claudia',m:39500}]},
       {id:'rev_jul', n:'Reverdito / Fiorini', rec:true, metodo:'transf', cobros:[]},
       {id:'horacio_jul', n:'Horacio Vieyra', rec:true, metodo:'transf', cobros:[]},
