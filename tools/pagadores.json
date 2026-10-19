@@ -1,0 +1,24 @@
+{
+  "_nota": "Quién paga qué grupo. 'banco' = como aparece el nombre en 'TRANSFERENCIAS RECIBIDAS' del extracto (se compara el comienzo, sin mayúsculas). Una transferencia de alguien que NO está acá NO se carga al panel: queda 'sin asignar' y se avisa. 'confirmar:true' = asignación heredada que Eduardo todavía no confirmó.",
+  "pagadores": [
+    {"banco": "BOARI/ JAVIER",   "grupo": "Boari",               "q": "Boari Javier"},
+    {"banco": "FIORINI/MARIA C", "grupo": "Boari",               "q": "Fiorini M. Cristina", "confirmar": true},
+    {"banco": "FIORINI, EVANGE", "grupo": "Fiorini / De Lucas",  "q": "Fiorini Evangelina"},
+    {"banco": "TARJ VIRTUAL CM", "grupo": "Fiorini / De Lucas",  "q": "Tarj. virtual CM",    "confirmar": true},
+    {"banco": "FIORINI/CLAUDIA", "grupo": "Fiorini / Cabrera",   "q": "Fiorini Claudia"},
+    {"banco": "MERCADO PAGO",    "grupo": "Delcausse / Hornus",  "q": "Mercado Pago",        "confirmar": true},
+    {"banco": "VIEYRA/ERNESTO",  "grupo": "Horacio Vieyra",      "q": "Vieyra E.H.",         "confirmar": true}
+  ],
+  "grupos": [
+    {"base": "boari",    "n": "Boari",               "rec": true,  "metodo": "transf"},
+    {"base": "fior_dl",  "n": "Fiorini / De Lucas",  "rec": true,  "metodo": "transf"},
+    {"base": "fior_cab", "n": "Fiorini / Cabrera",   "rec": true,  "metodo": "transf"},
+    {"base": "rev",      "n": "Reverdito / Fiorini", "rec": true,  "metodo": "transf"},
+    {"base": "horacio",  "n": "Horacio Vieyra",      "rec": true,  "metodo": "transf"},
+    {"base": "vcab",     "n": "Vieyra / Caballero",  "rec": false, "metodo": "nr"},
+    {"base": "vfam",     "n": "Vieyra familia",      "rec": false, "metodo": "nr"},
+    {"base": "delc",     "n": "Delcausse / Hornus",  "rec": true,  "metodo": "mixto"},
+    {"base": "carlitos", "n": "Carlitos Boari",      "rec": true,  "metodo": "efectivo"},
+    {"base": "taller",   "n": "Taller / VES Hnos",   "rec": false, "metodo": "nr"}
+  ]
+}

@@ -2303,53 +2303,40 @@ function concSave(obj) {
 
 // Grupos con transferencias conocidas del estado de cuenta
 // metodo: 'transf'=siempre transfiere, 'efectivo'=siempre efectivo, 'mixto'=puede ser cualquiera
+/*CONC:INICIO*/
 const CONC_MESES = {
-  sep:{
-    label:'Septiembre 2026', pagoClaro:{fecha:'08/09/2026', monto:490899.19},
-    grupos:[
-      {id:'boari_sep',       n:'Boari',               rec:true,  metodo:'transf',   cobros:[{f:'08/09',q:'Boari Javier',m:113500}]},
-      {id:'fior_dl_sep',     n:'Fiorini / De Lucas',  rec:true,  metodo:'transf',   cobros:[{f:'09/09',q:'Fiorini Evangelina',m:136490},{f:'21/09',q:'Albino J.R.',m:118000}]},
-      {id:'fior_cab_sep',    n:'Fiorini / Cabrera',   rec:true,  metodo:'transf',   cobros:[{f:'08/09',q:'Fiorini Claudia',m:42750}]},
-      {id:'rev_sep',         n:'Reverdito / Fiorini', rec:true,  metodo:'transf',   cobros:[]},
-      {id:'horacio_sep',     n:'Horacio Vieyra',      rec:true,  metodo:'transf',   cobros:[{f:'16/09',q:'Vieyra E.H.',m:18000}]},
-      {id:'vcab_sep',        n:'Vieyra / Caballero',  rec:false, metodo:'nr',       cobros:[]},
-      {id:'vfam_sep',        n:'Vieyra familia',      rec:false, metodo:'nr',       cobros:[]},
-      {id:'delc_sep',        n:'Delcausse / Hornus',  rec:true,  metodo:'mixto',    cobros:[{f:'15/09',q:'Del Caus Mario',m:62300}]},
-      {id:'carlitos_sep',    n:'Carlitos Boari',      rec:true,  metodo:'efectivo', cobros:[]},
-      {id:'taller_sep',      n:'Taller / VES Hnos',   rec:false, metodo:'nr',       cobros:[]},
-    ]
-  },
   ago:{
     label:'Agosto 2026', pagoClaro:{fecha:'07/08/2026', monto:450741.77},
     grupos:[
-      {id:'boari_ago',       n:'Boari',               rec:true,  metodo:'transf',   cobros:[{f:'06/08',q:'Boari Javier',m:108300}]},
-      {id:'fior_dl_ago',     n:'Fiorini / De Lucas',  rec:true,  metodo:'transf',   cobros:[{f:'07/08',q:'Fiorini Evangelina',m:133490}]},
-      {id:'fior_cab_ago',    n:'Fiorini / Cabrera',   rec:true,  metodo:'transf',   cobros:[{f:'06/08',q:'Fiorini Claudia',m:34200}]},
-      {id:'rev_ago',         n:'Reverdito / Fiorini', rec:true,  metodo:'transf',   cobros:[]},
-      {id:'horacio_ago',     n:'Horacio Vieyra',      rec:true,  metodo:'transf',   cobros:[{f:'12/08',q:'Vieyra E.H.',m:16500}]},
-      {id:'vcab_ago',        n:'Vieyra / Caballero',  rec:false, metodo:'nr',       cobros:[]},
-      {id:'vfam_ago',        n:'Vieyra familia',      rec:false, metodo:'nr',       cobros:[]},
-      {id:'delc_ago',        n:'Delcausse / Hornus',  rec:true,  metodo:'mixto',    cobros:[{f:'06/08',q:'Del Caus Mario',m:117600}]},
-      {id:'carlitos_ago',    n:'Carlitos Boari',      rec:true,  metodo:'efectivo', cobros:[]},
-      {id:'taller_ago',      n:'Taller / VES Hnos',   rec:false, metodo:'nr',       cobros:[]},
+      {id:'boari_ago', n:'Boari', rec:true, metodo:'transf', cobros:[{f:'06/08',q:'Boari Javier',m:108300}]},
+      {id:'fior_dl_ago', n:'Fiorini / De Lucas', rec:true, metodo:'transf', cobros:[{f:'07/08',q:'Fiorini Evangelina',m:133490}]},
+      {id:'fior_cab_ago', n:'Fiorini / Cabrera', rec:true, metodo:'transf', cobros:[{f:'06/08',q:'Fiorini Claudia',m:34200}]},
+      {id:'rev_ago', n:'Reverdito / Fiorini', rec:true, metodo:'transf', cobros:[]},
+      {id:'horacio_ago', n:'Horacio Vieyra', rec:true, metodo:'transf', cobros:[{f:'12/08',q:'Vieyra E.H.',m:16500}]},
+      {id:'vcab_ago', n:'Vieyra / Caballero', rec:false, metodo:'nr', cobros:[]},
+      {id:'vfam_ago', n:'Vieyra familia', rec:false, metodo:'nr', cobros:[]},
+      {id:'delc_ago', n:'Delcausse / Hornus', rec:true, metodo:'mixto', cobros:[{f:'06/08',q:'Mercado Pago',m:117600}]},
+      {id:'carlitos_ago', n:'Carlitos Boari', rec:true, metodo:'efectivo', cobros:[]},
+      {id:'taller_ago', n:'Taller / VES Hnos', rec:false, metodo:'nr', cobros:[]},
     ]
   },
   jul:{
     label:'Julio 2026', pagoClaro:{fecha:'07/07/2026', monto:438299.76},
     grupos:[
-      {id:'boari_jul',       n:'Boari',               rec:true,  metodo:'transf',   cobros:[{f:'08/07',q:'Fiorini M. Cristina',m:110000}]},
-      {id:'fior_dl_jul',     n:'Fiorini / De Lucas',  rec:true,  metodo:'transf',   cobros:[{f:'07/07',q:'Fiorini Evangelina',m:133490},{f:'07/07',q:'Albino / Fiorini',m:115000}]},
-      {id:'fior_cab_jul',    n:'Fiorini / Cabrera',   rec:true,  metodo:'transf',   cobros:[{f:'07/07',q:'Fiorini Claudia',m:39500}]},
-      {id:'rev_jul',         n:'Reverdito / Fiorini', rec:true,  metodo:'transf',   cobros:[]},
-      {id:'horacio_jul',     n:'Horacio Vieyra',      rec:true,  metodo:'transf',   cobros:[]},
-      {id:'vcab_jul',        n:'Vieyra / Caballero',  rec:false, metodo:'nr',       cobros:[]},
-      {id:'vfam_jul',        n:'Vieyra familia',      rec:false, metodo:'nr',       cobros:[]},
-      {id:'delc_jul',        n:'Delcausse / Hornus',  rec:true,  metodo:'mixto',    cobros:[]},
-      {id:'carlitos_jul',    n:'Carlitos Boari',      rec:true,  metodo:'efectivo', cobros:[]},
-      {id:'taller_jul',      n:'Taller / VES Hnos',   rec:false, metodo:'nr',       cobros:[]},
+      {id:'boari_jul', n:'Boari', rec:true, metodo:'transf', cobros:[{f:'08/07',q:'Fiorini M. Cristina',m:110000}]},
+      {id:'fior_dl_jul', n:'Fiorini / De Lucas', rec:true, metodo:'transf', cobros:[{f:'07/07',q:'Fiorini Evangelina',m:133490},{f:'07/07',q:'Tarj. virtual CM',m:115000},{f:'23/07',q:'Fiorini Evangelina',m:6000}]},
+      {id:'fior_cab_jul', n:'Fiorini / Cabrera', rec:true, metodo:'transf', cobros:[{f:'07/07',q:'Fiorini Claudia',m:39500}]},
+      {id:'rev_jul', n:'Reverdito / Fiorini', rec:true, metodo:'transf', cobros:[]},
+      {id:'horacio_jul', n:'Horacio Vieyra', rec:true, metodo:'transf', cobros:[]},
+      {id:'vcab_jul', n:'Vieyra / Caballero', rec:false, metodo:'nr', cobros:[]},
+      {id:'vfam_jul', n:'Vieyra familia', rec:false, metodo:'nr', cobros:[]},
+      {id:'delc_jul', n:'Delcausse / Hornus', rec:true, metodo:'mixto', cobros:[]},
+      {id:'carlitos_jul', n:'Carlitos Boari', rec:true, metodo:'efectivo', cobros:[]},
+      {id:'taller_jul', n:'Taller / VES Hnos', rec:false, metodo:'nr', cobros:[]},
     ]
   }
 };
+/*CONC:FIN*/
 
 // La key de conciliación se deriva del mes global
 function getConcKey() {
@@ -2394,6 +2381,9 @@ function concRender() {
     const kpis = $('conc-kpis'); if(kpis) kpis.innerHTML = '<div style="color:var(--text3);padding:20px;text-align:center">No hay datos de conciliación para este mes.</div>';
     const tbody = $('conc-tbody'); if(tbody) tbody.innerHTML = '';
     const cards = $('cobro-cards'); if(cards) cards.innerHTML = '';
+    const th = $('conc-tbl-head'); if(th) th.textContent = '';
+    const nt = $('conc-note'); if(nt) nt.innerHTML = '';
+    const mt = $('conc-mob-totales'); if(mt) mt.innerHTML = '';
     return;
   }
   const saved = concLoad();
@@ -2423,13 +2413,13 @@ function concRender() {
     else countPend++;
   });
   const totalCobrado = totalTransf + totalTransfExtra + totalEfectivo;
-  const diff = totalCobrado - d.pagoClaro.monto;
+  const diff = d.pagoClaro ? totalCobrado - d.pagoClaro.monto : null;
 
   $('conc-kpis').innerHTML = `
-    <div class="conc-kpi ck-blue"><div class="conc-kpi-lbl">Pago Claro</div><div class="conc-kpi-val">${AR2(d.pagoClaro.monto)}</div><div class="conc-kpi-sub">${d.pagoClaro.fecha}</div></div>
+    ${d.pagoClaro?`<div class="conc-kpi ck-blue"><div class="conc-kpi-lbl">Pago Claro</div><div class="conc-kpi-val">${AR2(d.pagoClaro.monto)}</div><div class="conc-kpi-sub">${d.pagoClaro.fecha}</div></div>`:''}
     <div class="conc-kpi ck-teal"><div class="conc-kpi-lbl">Cobrado (transf.)</div><div class="conc-kpi-val">${AR2(totalTransf+totalTransfExtra)}</div><div class="conc-kpi-sub">acreditaciones bancarias</div></div>
     ${totalEfectivo>0?`<div class="conc-kpi ck-amber"><div class="conc-kpi-lbl">Cobrado (efectivo)</div><div class="conc-kpi-val">${AR2(totalEfectivo)}</div><div class="conc-kpi-sub">confirmado manual</div></div>`:''}
-    <div class="conc-kpi ${diff>=0?'ck-green':'ck-red'}"><div class="conc-kpi-lbl">Diferencia</div><div class="conc-kpi-val" style="color:var(--${diff>=0?'green':'red'})">${fmtDiff(diff)}</div><div class="conc-kpi-sub">${diff>=0?'Superávit':'Falta cobrar'}</div></div>
+    ${diff!==null?`<div class="conc-kpi ${diff>=0?'ck-green':'ck-red'}"><div class="conc-kpi-lbl">Diferencia</div><div class="conc-kpi-val" style="color:var(--${diff>=0?'green':'red'})">${fmtDiff(diff)}</div><div class="conc-kpi-sub">${diff>=0?'Superávit':'Falta cobrar'}</div></div>`:''}
     <div class="conc-kpi ck-amber"><div class="conc-kpi-lbl">Grupos pendientes</div><div class="conc-kpi-val" style="color:var(--amber)">${countPend}</div><div class="conc-kpi-sub">con recibo, sin confirmar</div></div>
     <div class="conc-kpi ck-green"><div class="conc-kpi-lbl">Grupos cobrados</div><div class="conc-kpi-val" style="color:var(--green)">${countCob}</div><div class="conc-kpi-sub">confirmados</div></div>
   `;
@@ -2491,7 +2481,7 @@ function concRender() {
     <td><span class="conc-cell" style="font-family:var(--mono)">${AR2(totalCobrado)}</span></td>
     <td colspan="3"></td>
   </tr>`:''}
-  <tr class="conc-total-row">
+  ${diff!==null?`<tr class="conc-total-row">
     <td colspan="2"><span class="conc-cell">PAGO CLARO</span></td>
     <td><span class="conc-cell" style="font-family:var(--mono)">${AR2(d.pagoClaro.monto)}</span></td>
     <td colspan="3"></td>
@@ -2500,7 +2490,7 @@ function concRender() {
     <td colspan="2"><span class="conc-cell">DIFERENCIA</span></td>
     <td><span class="conc-cell" style="font-family:var(--mono);font-weight:700;color:var(--${diff>=0?'green':'red'})">${fmtDiff(diff)}</span></td>
     <td colspan="3"></td>
-  </tr>`;
+  </tr>`:''}`;
 
   $('conc-tbody').innerHTML = rows;
 
@@ -2547,8 +2537,10 @@ function concRender() {
     totHtml += `<div class="cmt-row"><span>Total efectivo</span><span>${AR2(totalEfectivo)}</span></div>`;
     totHtml += `<div class="cmt-row cmt-subtotal"><span>Total cobrado</span><span>${AR2(totalCobrado)}</span></div>`;
   }
-  totHtml += `<div class="cmt-row"><span>Pago Claro</span><span>${AR2(d.pagoClaro.monto)}</span></div>`;
-  totHtml += `<div class="cmt-row cmt-diff" style="color:var(--${diff>=0?'green':'red'})"><span>Diferencia</span><span>${fmtDiff(diff)}</span></div>`;
+  if(diff!==null) {
+    totHtml += `<div class="cmt-row"><span>Pago Claro</span><span>${AR2(d.pagoClaro.monto)}</span></div>`;
+    totHtml += `<div class="cmt-row cmt-diff" style="color:var(--${diff>=0?'green':'red'})"><span>Diferencia</span><span>${fmtDiff(diff)}</span></div>`;
+  }
   totHtml += `</div>`;
 
   const mobTot = document.getElementById('conc-mob-totales');

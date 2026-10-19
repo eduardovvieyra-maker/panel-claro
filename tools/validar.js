@@ -27,5 +27,13 @@ FACTURAS.forEach(f=>{
   const sc=f.lineas.filter(l=>lsR.has(l.linea)).reduce((s,l)=>s+l.base+(l.extra||0),0);
   const F2=f.total/sc-1; if(!(F2>0&&F2<3)) err('F2 raro: '+F2);
 });
+
+// Conciliación: solo meses respaldados por extracto; fechas dentro del mes, montos > 0, ids únicos
+{const a=html.indexOf('const CONC_MESES'),b=html.indexOf('/*CONC:FIN*/');const c2={};vm.createContext(c2);
+ vm.runInContext(html.slice(a,b)+';this.M=CONC_MESES;',c2);const ids=new Set();
+ Object.entries(c2.M).forEach(([k,d])=>{const mm=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'].indexOf(k.slice(0,3))+1;
+  console.log('Concilia '+d.label+': '+d.grupos.reduce((s,g)=>s+g.cobros.length,0)+' transferencias');
+  d.grupos.forEach(g=>{if(ids.has(g.id))err('id repetido '+g.id);ids.add(g.id);
+   g.cobros.forEach(c=>{if(!(c.m>0))err('monto inválido en '+g.id);if(+c.f.slice(3,5)!==mm)err('fecha fuera del mes en '+g.id+': '+c.f)})})});}
 console.log(bad?('\nFALLÓ: '+bad+' problema(s)'):'\nOK: todas las facturas cierran');
 process.exit(bad?1:0);
