@@ -2279,6 +2279,9 @@ async function concSyncFromCloud() {
   return false;
 }
 
+// Los nombres en Conciliar llevan espacios ('Fiorini / De Lucas') y en GRUPOS no ('Fiorini/De Lucas')
+function concGrupo(g) { const k = x => x.replace(/\s+/g,'').toLowerCase(); return GRUPOS.find(gr => k(gr.n) === k(g.n)); }
+
 function concLoad() { try { return JSON.parse(localStorage.getItem(CONC_LS)||'{}'); } catch { return {}; } }
 function concSave(obj) {
   obj._ts = Date.now();
@@ -2416,7 +2419,7 @@ function concRender() {
     const sd  = saved[g.id];
     const est = concGetEstado(g, sd);
     if(!g.rec) return;
-    const grObj = GRUPOS.find(gr => gr.n === g.n);
+    const grObj = concGrupo(g);
     const cg = grObj ? calcGrupo(grObj, fMes, f2) : null;
     if(est==='cobrado_efectivo') {
       totalEfectivo += cg ? cg.total : 0;
@@ -2463,7 +2466,7 @@ function concRender() {
     let montoCobrado = transfTotal;
     let montoCobradoSub = '';
     if (transfTotal === 0 && (estado==='cobrado_transf'||estado==='cobrado_efectivo')) {
-      const grObj = GRUPOS.find(gr => gr.n === g.n);
+      const grObj = concGrupo(g);
       const cg = grObj ? calcGrupo(grObj, fMes, f2) : null;
       if (cg) { montoCobrado = cg.total; montoCobradoSub = estado==='cobrado_efectivo'?' (efectivo)':' (transf)'; }
     }
