@@ -9,8 +9,7 @@
     {
       "banco": "FIORINI/MARIA C",
       "grupo": "Boari",
-      "q": "Fiorini M. Cristina",
-      "confirmar": true
+      "q": "Fiorini M. Cristina"
     },
     {
       "banco": "FIORINI, EVANGE",
@@ -25,8 +24,7 @@
     {
       "banco": "VIEYRA/ERNESTO",
       "grupo": "Horacio Vieyra",
-      "q": "Vieyra E.H.",
-      "confirmar": true
+      "q": "Vieyra E.H."
     },
     {
       "banco": "MERCADO PAGO",
@@ -129,6 +127,54 @@
   "ignorar": [
     {
       "banco": "DOLCHE/LUCAS S",
+      "motivo": "Eduardo: no tiene nada que ver con Claro"
+    },
+    {
+      "banco": "LAUTARO EZEQUIE",
+      "motivo": "Eduardo: no tiene nada que ver con Claro"
+    },
+    {
+      "banco": "FIORINI/ALBINO",
+      "motivo": "Eduardo: no tiene nada que ver con Claro"
+    },
+    {
+      "banco": "TARJ VIRTUAL BB",
+      "motivo": "Eduardo: no tiene nada que ver con Claro"
+    },
+    {
+      "banco": "TARJ VIRTUAL CM",
+      "monto": 190000,
+      "mes": "ene",
+      "motivo": "Eduardo: no tiene nada que ver con Claro"
+    },
+    {
+      "banco": "TARJ VIRTUAL CM",
+      "monto": 58800,
+      "mes": "ene",
+      "motivo": "Eduardo: no tiene nada que ver con Claro"
+    },
+    {
+      "banco": "TARJ VIRTUAL CM",
+      "monto": 494064,
+      "mes": "feb",
+      "motivo": "Eduardo: no tiene nada que ver con Claro"
+    },
+    {
+      "banco": "TARJ VIRTUAL CM",
+      "monto": 360000,
+      "mes": "feb",
+      "motivo": "Eduardo: no tiene nada que ver con Claro"
+    },
+    {
+      "banco": "TARJ VIRTUAL CM",
+      "monto": 130000,
+      "mes": "feb",
+      "motivo": "Eduardo: no tiene nada que ver con Claro"
+    },
+    {
+      "banco": "TARJ VIRTUAL CM",
+      "monto": 357034,
+      "mes": "feb",
       "motivo": "Eduardo: no tiene nada que ver con Claro"
     }
   ]
