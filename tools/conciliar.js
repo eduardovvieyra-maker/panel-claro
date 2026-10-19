@@ -28,7 +28,7 @@ const grupos=cfg.grupos.map(g=>({id:g.base+'_'+key,n:g.n,rec:g.rec,metodo:g.meto
 const sinAsignar=[],confirmar=new Set();
 recibidas.forEach(t=>{
   if((cfg.ignorar||[]).some(i=>norm(t.nombre).startsWith(norm(i.banco)))) return;
-  const p=cfg.pagadores.find(p=>norm(t.nombre).startsWith(norm(p.banco)));
+  const p=cfg.pagadores.find(p=>norm(t.nombre).startsWith(norm(p.banco))&&(p.monto===undefined||p.monto===t.m)&&(p.mes===undefined||p.mes===key));
   if(!p){sinAsignar.push(t);return}
   if(p.confirmar) confirmar.add(p.banco+' → '+p.grupo);
   grupos.find(g=>g.n===p.grupo).cobros.push({f:t.f,q:p.q,m:t.m});

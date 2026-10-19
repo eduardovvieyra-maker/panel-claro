@@ -1,5 +1,5 @@
 {
-  "_nota": "Quién paga qué grupo. 'banco' = como aparece el nombre en 'TRANSFERENCIAS RECIBIDAS' del extracto (se compara el comienzo, sin mayúsculas). Una transferencia de alguien que NO está acá NO se carga al panel: queda 'sin asignar' y se avisa. 'confirmar:true' = asignación heredada que Eduardo todavía no confirmó. MERCADO PAGO y TARJ VIRTUAL CM son pagadores genéricos (pueden ser de cualquiera): no se asignan solos; salen 'sin asignar' hasta que Eduardo diga de quién es cada transferencia. 'ignorar' = pagadores que Eduardo dijo que no tienen que ver con Claro: se descartan sin avisar.",
+  "_nota": "Quién paga qué grupo. 'banco' = como aparece el nombre en 'TRANSFERENCIAS RECIBIDAS' del extracto (se compara el comienzo, sin mayúsculas). Una transferencia de alguien que NO está acá NO se carga al panel: queda 'sin asignar' y se avisa. 'confirmar:true' = asignación heredada que Eduardo todavía no confirmó. MERCADO PAGO y TARJ VIRTUAL CM son pagadores genéricos (pueden ser de cualquiera): no se asignan solos; salen 'sin asignar' hasta que Eduardo diga de quién es cada transferencia. 'ignorar' = pagadores que Eduardo dijo que no tienen que ver con Claro: se descartan sin avisar. Si una regla trae 'monto' y 'mes', solo vale para esa transferencia exacta de ese mes (para pagadores genéricos, confirmados por Eduardo uno por uno). Grupos: Fiorini / Cabrera = José Fiorini + Carolina Cabrera; Reverdito / Fiorini = Claudia Fiorini + Joaquín Reverdito (separados).",
   "pagadores": [
     {
       "banco": "BOARI/ JAVIER",
@@ -19,7 +19,7 @@
     },
     {
       "banco": "FIORINI/CLAUDIA",
-      "grupo": "Fiorini / Cabrera",
+      "grupo": "Reverdito / Fiorini",
       "q": "Fiorini Claudia"
     },
     {
@@ -27,6 +27,27 @@
       "grupo": "Horacio Vieyra",
       "q": "Vieyra E.H.",
       "confirmar": true
+    },
+    {
+      "banco": "MERCADO PAGO",
+      "monto": 62300,
+      "mes": "sep",
+      "grupo": "Delcausse / Hornus",
+      "q": "Mario Delcausse"
+    },
+    {
+      "banco": "MERCADO PAGO",
+      "monto": 18000,
+      "mes": "sep",
+      "grupo": "Horacio Vieyra",
+      "q": "Horacio Vieyra"
+    },
+    {
+      "banco": "TARJ VIRTUAL CM",
+      "monto": 118000,
+      "mes": "sep",
+      "grupo": "Fiorini / Cabrera",
+      "q": "José Fiorini"
     }
   ],
   "grupos": [
