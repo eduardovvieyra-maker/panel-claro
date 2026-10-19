@@ -48,6 +48,20 @@
       "mes": "sep",
       "grupo": "Fiorini / Cabrera",
       "q": "José Fiorini"
+    },
+    {
+      "banco": "TARJ VIRTUAL CM",
+      "monto": 115000,
+      "mes": "jul",
+      "grupo": "Fiorini / Cabrera",
+      "q": "José Fiorini / Carolina Cabrera"
+    },
+    {
+      "banco": "MERCADO PAGO",
+      "monto": 117600,
+      "mes": "ago",
+      "grupo": "Fiorini / Cabrera",
+      "q": "José Fiorini / Carolina Cabrera"
     }
   ],
   "grupos": [
