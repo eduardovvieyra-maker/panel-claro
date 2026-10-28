@@ -193,6 +193,12 @@
       "banco": "FIORINI/ALBINO",
       "mes": "feb",
       "motivo": "Eduardo: no tiene nada que ver con Claro (ene/feb)"
+    },
+    {
+      "banco": "MARIA CECILIA BARR",
+      "monto": 75000,
+      "mes": "oct",
+      "motivo": "Eduardo 28/10: reserva departamento 4, no es de Claro"
     }
   ]
 }
