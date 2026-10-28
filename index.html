@@ -2321,7 +2321,7 @@ const CONC_MESES = {
       {id:'vcab_oct', n:'Vieyra / Caballero', rec:false, metodo:'nr', cobros:[]},
       {id:'vfam_oct', n:'Vieyra familia', rec:false, metodo:'nr', cobros:[]},
       {id:'delc_oct', n:'Delcausse / Hornus', rec:true, metodo:'mixto', cobros:[{f:'21/10',q:'Mario Delcausse',m:62300}]},
-      {id:'carlitos_oct', n:'Carlitos Boari', rec:true, metodo:'efectivo', cobros:[]},
+      {id:'carlitos_oct', n:'Carlitos Boari', rec:true, metodo:'efectivo', estadoFijo:'cobrado_efectivo', cobros:[]},
       {id:'taller_oct', n:'Taller / VES Hnos', rec:false, metodo:'nr', cobros:[]},
     ]
   },
@@ -2494,6 +2494,7 @@ function concGetEstado(g, savedData) {
   const transfTotal = g.cobros.reduce((s,c)=>s+c.m, 0);
   if(transfTotal > 0 && !savedData) return 'cobrado_transf';
   if(savedData) return savedData.estado || 'pendiente';
+  if(g.estadoFijo) return g.estadoFijo; // confirmado por Eduardo (ej. efectivo)
   if(g.metodo==='efectivo') return 'pendiente'; // requiere confirmación manual
   if(g.metodo==='mixto' && transfTotal > 0) return 'cobrado_transf';
   return 'pendiente';

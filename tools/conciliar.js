@@ -34,7 +34,7 @@ recibidas.forEach(t=>{
   grupos.find(g=>g.n===p.grupo).cobros.push({f:t.f,q:p.q,m:t.m});
 });
 grupos.forEach(g=>g.cobros.sort((a,b)=>a.f.slice(3)+a.f.slice(0,2)<b.f.slice(3)+b.f.slice(0,2)?-1:1));
-const linea=g=>`      {id:'${g.id}', n:'${g.n}', rec:${g.rec}, metodo:'${g.metodo}', cobros:[${g.cobros.map(c=>`{f:'${c.f}',q:'${c.q}',m:${c.m}}`).join(',')}]},`;
+const linea=g=>`      {id:'${g.id}', n:'${g.n}', rec:${g.rec}, metodo:'${g.metodo}',${g.estadoFijo?` estadoFijo:'${g.estadoFijo}',`:''} cobros:[${g.cobros.map(c=>`{f:'${c.f}',q:'${c.q}',m:${c.m}}`).join(',')}]},`;
 const bloque=`  ${key}:{\n    label:'${label}', pagoClaro:${pagoClaro?`{fecha:'${pagoClaro.fecha}', monto:${pagoClaro.monto}}`:'null'},\n    grupos:[\n${grupos.map(linea).join('\n')}\n    ]\n  }`;
 // meter/reemplazar en index.html
 let html=fs.readFileSync(idx,'utf8');
