@@ -2134,16 +2134,29 @@ function pdfPaginaResumen(doc, f) {
   y += 19;
   // Totales por grupo
   const F2 = S.F2;
-  const filasG = GRUPOS.map(g => { const c = calcGrupo(g, f, F2); return [g.id, g.n, c.ls.length, AR(c.sub), g.rec ? AR(c.rec) : '—', AR(c.total)]; });
-  const tot = GRUPOS.reduce((a, g) => { const c = calcGrupo(g, f, F2); a.s += c.sub; a.r += c.rec; a.t += c.total; return a; }, { s: 0, r: 0, t: 0 });
+  const sumG = gs => gs.reduce((a, g) => { const c = calcGrupo(g, f, F2); a.s += c.sub; a.r += c.rec; a.t += c.total; return a; }, { s: 0, r: 0, t: 0 });
+  const filasG = gs => gs.map(g => { const c = calcGrupo(g, f, F2); return [g.id, g.n, c.ls.length, AR(c.sub), g.rec ? AR(c.rec) : '—', AR(c.total)]; });
+  const gCon = GRUPOS.filter(g => g.rec), gSin = GRUPOS.filter(g => !g.rec);
+  const tCon = sumG(gCon), tSin = sumG(gSin);
+  const colsG = { 0: { cellWidth: 8 }, 2: { halign: 'center' }, 3: { halign: 'right' }, 4: { halign: 'right' }, 5: { halign: 'right', fontStyle: 'bold' } };
   doc.setTextColor(...AZUL); doc.setFont('helvetica', 'bold'); doc.setFontSize(9);
-  doc.text(`A COBRAR POR GRUPO — F2 ${(F2 * 100).toFixed(2)}%`, 14, y); y += 2;
+  doc.text(`CON RECARGO (cubren la factura de Claro) — F2 ${(F2 * 100).toFixed(2)}%`, 14, y); y += 2;
   doc.autoTable({
     ...tblBase(), startY: y,
     head: [['#', 'Grupo', 'Líneas', 'Precio Claro', 'Gasto admin', 'Total a cobrar']],
-    body: filasG,
-    foot: [[{ content: 'TOTAL', colSpan: 3 }, AR(tot.s), AR(tot.r), AR(tot.t)]],
-    columnStyles: { 0: { cellWidth: 8 }, 2: { halign: 'center' }, 3: { halign: 'right' }, 4: { halign: 'right' }, 5: { halign: 'right', fontStyle: 'bold' } },
+    body: filasG(gCon),
+    foot: [[{ content: 'SUBTOTAL CON RECARGO', colSpan: 3 }, AR(tCon.s), AR(tCon.r), AR(tCon.t)]],
+    columnStyles: colsG,
+  });
+  y = doc.lastAutoTable.finalY + 6;
+  doc.setTextColor(...AZUL); doc.setFont('helvetica', 'bold'); doc.setFontSize(9);
+  doc.text('SIN RECARGO (precio Claro)', 14, y); y += 2;
+  doc.autoTable({
+    ...tblBase(), startY: y,
+    head: [['#', 'Grupo', 'Líneas', 'Precio Claro', 'Gasto admin', 'Total a cobrar']],
+    body: filasG(gSin),
+    foot: [[{ content: 'SUBTOTAL SIN RECARGO', colSpan: 3 }, AR(tSin.s), '—', AR(tSin.t)]],
+    columnStyles: colsG,
   });
   y = doc.lastAutoTable.finalY + 6;
   // Detalle de líneas
