@@ -2309,6 +2309,22 @@ function concSave(obj) {
 // metodo: 'transf'=siempre transfiere, 'efectivo'=siempre efectivo, 'mixto'=puede ser cualquiera
 /*CONC:INICIO*/
 const CONC_MESES = {
+  oct:{
+    label:'Octubre 2026', pagoClaro:null,
+    nota:'Parcial: movimientos reales del Banco Patagonia hasta el 19/10/2026 (todavía no hay extracto de octubre). La factura 1340-00749074 vence el 02/11 y Claro todavía no figura pagado. Sin asignar (no cargado): Alejos Sofía Víctor $ 51.500 (08/10). Cuando llegue el extracto de octubre este bloque se reemplaza.',
+    grupos:[
+      {id:'boari_oct', n:'Boari', rec:true, metodo:'transf', cobros:[{f:'07/10',q:'Fiorini M. Cristina',m:110500}]},
+      {id:'fior_dl_oct', n:'Fiorini / De Lucas', rec:true, metodo:'transf', cobros:[{f:'05/10',q:'Fiorini Evangelina',m:130853}]},
+      {id:'fior_cab_oct', n:'Fiorini / Cabrera', rec:true, metodo:'transf', cobros:[]},
+      {id:'rev_oct', n:'Reverdito / Fiorini', rec:true, metodo:'transf', cobros:[{f:'06/10',q:'Fiorini Claudia',m:42750}]},
+      {id:'horacio_oct', n:'Horacio Vieyra', rec:true, metodo:'transf', cobros:[{f:'08/10',q:'Vieyra E.H.',m:18000}]},
+      {id:'vcab_oct', n:'Vieyra / Caballero', rec:false, metodo:'nr', cobros:[]},
+      {id:'vfam_oct', n:'Vieyra familia', rec:false, metodo:'nr', cobros:[]},
+      {id:'delc_oct', n:'Delcausse / Hornus', rec:true, metodo:'mixto', cobros:[]},
+      {id:'carlitos_oct', n:'Carlitos Boari', rec:true, metodo:'efectivo', cobros:[]},
+      {id:'taller_oct', n:'Taller / VES Hnos', rec:false, metodo:'nr', cobros:[]},
+    ]
+  },
   sep:{
     label:'Septiembre 2026', pagoClaro:{fecha:'08/09/2026', monto:490899.19},
     grupos:[
@@ -2533,7 +2549,7 @@ function concRender() {
     <div class="conc-kpi ck-green"><div class="conc-kpi-lbl">Grupos cobrados</div><div class="conc-kpi-val" style="color:var(--green)">${countCob}</div><div class="conc-kpi-sub">confirmados</div></div>
   `;
 
-  $('conc-note').innerHTML = '';
+  $('conc-note').innerHTML = d.nota ? `<div style="background:var(--bg3);border-left:3px solid #f59e0b;border-radius:6px;padding:9px 12px;margin:8px 0;font-size:13px;color:var(--text1);line-height:1.45">ℹ ${d.nota}</div>` : '';
 
   // TABLA DESKTOP
   $('conc-tbl-head').textContent = `${d.label} — Cobros por grupo`;

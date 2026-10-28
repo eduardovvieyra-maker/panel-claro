@@ -46,7 +46,7 @@ const meses=ctx.x; meses[key]=null; delete meses[key];
 const ks=Object.keys(meses).concat(key).sort((p,q)=>orden.indexOf(q.slice(0,3))-orden.indexOf(p.slice(0,3)));
 const bloquesExist={}; // reconstruir bloques existentes
 ks.forEach(k=>{ if(k===key) return; const d=meses[k];
-  bloquesExist[k]=`  ${k}:{\n    label:'${d.label}', pagoClaro:${d.pagoClaro?`{fecha:'${d.pagoClaro.fecha}', monto:${d.pagoClaro.monto}}`:'null'},\n    grupos:[\n${d.grupos.map(linea).join('\n')}\n    ]\n  }`;});
+  bloquesExist[k]=`  ${k}:{\n    label:'${d.label}', pagoClaro:${d.pagoClaro?`{fecha:'${d.pagoClaro.fecha}', monto:${d.pagoClaro.monto}}`:'null'},${d.nota?`\n    nota:${JSON.stringify(d.nota)},`:''}\n    grupos:[\n${d.grupos.map(linea).join('\n')}\n    ]\n  }`;});
 bloquesExist[key]=bloque;
 const nuevo='\nconst CONC_MESES = {\n'+ks.map(k=>bloquesExist[k]).join(',\n')+'\n};\n';
 html=html.slice(0,a+15)+nuevo+html.slice(b);
