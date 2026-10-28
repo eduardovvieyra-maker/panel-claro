@@ -65,6 +65,12 @@
       "banco": "MARIO ALBERTO DEL",
       "grupo": "Delcausse / Hornus",
       "q": "Mario Delcausse"
+    },
+    {
+      "banco": "FIORINI/ALBINO",
+      "grupo": "Fiorini / Cabrera",
+      "q": "José Fiorini",
+      "nota": "Eduardo 28/10: cuenta del padre de José Fiorini, la usa para pagarle"
     }
   ],
   "grupos": [
@@ -139,10 +145,6 @@
       "motivo": "Eduardo: no tiene nada que ver con Claro"
     },
     {
-      "banco": "FIORINI/ALBINO",
-      "motivo": "Eduardo: no tiene nada que ver con Claro"
-    },
-    {
       "banco": "TARJ VIRTUAL BB",
       "motivo": "Eduardo: no tiene nada que ver con Claro"
     },
@@ -181,6 +183,16 @@
       "monto": 357034,
       "mes": "feb",
       "motivo": "Eduardo: no tiene nada que ver con Claro"
+    },
+    {
+      "banco": "FIORINI/ALBINO",
+      "mes": "ene",
+      "motivo": "Eduardo: no tiene nada que ver con Claro (ene/feb)"
+    },
+    {
+      "banco": "FIORINI/ALBINO",
+      "mes": "feb",
+      "motivo": "Eduardo: no tiene nada que ver con Claro (ene/feb)"
     }
   ]
 }
